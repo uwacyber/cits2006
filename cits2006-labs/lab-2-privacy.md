@@ -1,0 +1,317 @@
+# Lab 2: Privacy
+
+Coming soon...
+
+<!-- {% hint style="danger" %}
+READ: Any knowledge and techniques presented here are for your learning purposes only. It is **ABSOLUTELY ILLEGAL** to apply the learned knowledge to others without proper consent/permission, and even then, you must check and comply with any regulatory restrictions and laws.
+{% endhint %}
+
+In this lab, we will create and use dummy malware samples on a Windows machine (we just call it malware but it is quite harmless, unless you make it so). To do this lab, we will require two VMs (don't have to be running at the same time) - Kali and Windows.
+
+## 2.0. Setup Windows VM
+
+You can select and download Windows ISO from their official website (this lab has been tested on Windows 11, but Windows 10 or 7 can also be used):
+
+{% hint style="warning" %}
+Using M1 Macbook, I tested this lab on Windows 11 Preview and has worked correctly. But if you are having issues, then you are recommended to use Windows 7 64-bit VM, which makes turning off or bypassing Windows Defender much easier.
+
+* If you use other versions or 32-bit VM, the lab instructions may not work the same way.
+* The output will differ, but the lab still works the same on Windows 7 VMs (also tested on M1, albeit a bit slow).
+{% endhint %}
+
+{% hint style="warning" %}
+Please be advised that the size of the ISO is \~10GB!
+
+Also when installing, advisable resources to give are 2 Cores with 4GB RAM.
+{% endhint %}
+
+{% hint style="info" %}
+I have shared Windows 7 ISO and UTM files on Teams for you to download and use if needed. It is in Labs -> Files.
+{% endhint %}
+
+Official Windows 11 Insider Preview:
+
+{% embed url="https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewiso" %}
+
+Official Windows 11 Insider Preview ARM64:
+
+{% embed url="https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewARM64" %}
+
+For Apple Silicon users, you should also check the guideline here for some frequently faced issues, such as bypassing the network setup page:
+
+{% embed url="https://docs.getutm.app/guides/windows/" %}
+
+{% hint style="info" %}
+Once downloaded, you can install it on your VMM. We just need the Windows running (no specific software or settings required) so you can do the minimal setup where feasible.
+{% endhint %}
+
+Before you start, you have to first turn off Windows Defender, otherwise, our files will just get quarantined and removed. Follow these steps on your Windows VM. On the preview version, this is by default disabled (i.e., you cannot change the security settings). If you like challenges, try disabling them yourself without reading the instructions below.
+
+Follow these steps to be able to modify the Windows Defender settings:
+
+1. Right-click Start -> run -> regedit
+2. Go to HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Defender
+3. Right-click the folder -> permissions -> advanced
+4. Change the Owner -> advanced -> find now
+5. Select Administrator -> OK -> OK
+6. Select “Replace owner on subcontainers and objects”
+7. Select “Replace all child object permission entries with inheritable permission”
+8. Press Apply (you can ignore all warnings and errors).
+9. If error, you can just cancel. Re-enter and check that Owner has changed to Administrator (i.e., you).
+10. Also add “Administrator” and give full control.
+
+<figure><img src="../.gitbook/assets/image (30).png" alt=""><figcaption><p>What it should look like after completing the steps above.</p></figcaption></figure>
+
+By now, you should be able to modify the Windows Defender settings. Follow these steps to turn off Windows Defender:
+
+1. Select **Start** and type "Windows Security" to search for that app.
+2. Select the **Windows Security app** from the search results, go to **Virus & threat protection**, and under **Virus & threat protection settings** select **Manage settings**.
+3. Switch all possible settings to **Off**. It is **OKAY** if some of them turn back on straight away.
+   1. Note that scheduled scans will continue to run. However, files that are downloaded or installed will not be scanned until the next scheduled scan.
+4. Open Powershell as administrator, and type:\
+   `Add-MpPreference -ExclusionPath C:\`\
+   This command should prevent our malware files from being quarantined.
+5. Back in the Windows Security app, disable Firewall for all network.
+
+This should do the trick, but there are other settings that may need to be turned off so if Windows Defender keeps removing your files, find other settings to disable.
+
+## 2.1. Persistent Malware in Registry
+
+In this lab, we will have a look at how to make the malware persistent on the Windows machine. One of the simplest ways of achieving this is to modify the registry keys. Registry keys, specifically the "Run keys", can be configured and are executed when the user logs in.
+
+The following run keys are created by Windows:
+
+* `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`
+* `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce`
+* `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run`
+* `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce`
+
+{% hint style="info" %}
+In the command, replace `HKEY_CURRENT_USER` with `HKCU` and `HKEY_LOCAL_MACHINE` with `HKLM`
+{% endhint %}
+
+![](<../.gitbook/assets/image (4) (1) (2).png>)
+
+{% hint style="info" %}
+The actual outputs may be different depending on the Windows version being used, where newer versions have a "cleaner" output look (i.e., you won't see any output from Windows 7 unless you did something before). As long as you don't get an error, it is fine to continue with the lab.
+{% endhint %}
+
+The listed keys may be different but that is not an issue, what we are interested in is how those keys change when we modify them later. Because those keys are running every time the user logs in, we can attach malware to the run keys then it will become (virtually) permanent!
+
+Now, let's use a simple malware(?) code, which you can get from here:
+
+```
+wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/windows_malware.cpp
+```
+
+The code actually doesn't do much other than display a message box. If it is placed into the run keys, then you will be greeted with the message every time you log in. Since the code needs to run on a Windows machine, you have to compile it for the target machine environment:
+
+```
+sudo apt-get install g++-mingw-w64-x86-64 -y
+```
+
+{% hint style="warning" %}
+If you are using a 32-bit Windows VM, your compiler from kali should be:
+
+`i686-w64-mingw32-g++`
+
+instead of:
+
+`x86_64-w64-mingw32-g++`
+
+The supplied binary is compiled for 64-bit Windows VM, so if you have a 32-bit Windows VM, then you need to use your own compiled executable file.
+{% endhint %}
+
+```
+x86_64-w64-mingw32-g++ -O2 windows_malware.cpp -o bad.exe -mwindows -I/usr/share/mingw-w64/include/ -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive
+```
+
+{% hint style="info" %}
+A good idea is to have a look at all the flags used and see what they do!
+{% endhint %}
+
+![](<../.gitbook/assets/image (9) (1) (1) (1).png>)
+
+Now move the executable `bad.exe` to your target Windows VM. You can also download a copy here from your Windows VM:
+
+```
+wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/bad.exe
+```
+
+{% hint style="info" %}
+If you don't have wget available, either install wget and use it, or just copy the web address on your browser to download the file.
+{% endhint %}
+
+Create a folder `test` inside the C drive i.e., `C:/test/bad.exe` (you can technically save it anywhere, but other scripts will use a hard-coded path so if you don't want to modify the path etc., use this instead). You can also execute it for testing - it should pop up in a message box.
+
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+
+The `bad.exe` only shows the message box, so we have to create a program that will insert this executable file into the registry keys. This is achieved using the `registry_script.cpp`.
+
+```
+wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/registry_script.cpp
+```
+
+{% hint style="info" %}
+Inspect the `registry_script.cpp` and see how easy it is to modify the registry key!
+{% endhint %}
+
+Now compile the script:
+
+```
+x86_64-w64-mingw32-g++ -O2 registry_script.cpp -o bad_script.exe -I/usr/share/mingw-w64/include/ -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive
+```
+
+![](<../.gitbook/assets/image (5) (2).png>)
+
+Before you run the `bad_script.exe`, let's first check the current status of the registry key (should be the same as when you first ran above).
+
+```
+reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /s
+```
+
+<figure><img src="../.gitbook/assets/image (3) (4).png" alt=""><figcaption></figcaption></figure>
+
+You can see a row has been added when the `bad_script.exe` ran, which is pointing at the location of the malware we saved.
+
+If you have disabled everything as needed, you won't see any notifications. However, sometimes you might be notified of this action when a new registry was added (if not all security measures were turned off). See the notification from Windows 10 below:
+
+![](<../.gitbook/assets/image (2) (1) (2).png>)
+
+Nevertheless, now we can test that our persistent malware(?) is working correctly. Log out and log in again to see:
+
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+If you haven't set the security to the lowest level on Windows 7, you will be asked to run the malware executable.
+{% endhint %}
+
+Uh oh, the message box popped up (as expected)!
+
+Now imagine you wrote actual malware (whether by hand or using tools such as `msfvenom` \*cough cough\*) and did this!
+
+{% hint style="danger" %}
+Actually, if you do this to anyone else but yourself, you will go to jail, so please don't.
+{% endhint %}
+
+Finally, let's clean up the registry (so you don't have to see the message every time you log in):
+
+```
+Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "hack"
+```
+
+and check that it is indeed gone:
+
+```
+reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /s
+```
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+## 2.2. Persistent Malware in Screensaver
+
+This is also related to the registry keys, but modifying the existing registry key (in particular, the screensaver) instead of the running keys used at the startup.
+
+There are other registry keys that could be modified, but the screensaver one is chosen so that we can see a timed malware execution instead of logging in.
+
+Screensavers are PE files with a `.scr` extension by default and settings are stored in the following registry keys:
+
+```
+HKEY_CURRENT_USER\Control Panel\Desktop\ScreenSaveActive
+```
+
+You can check that ScreenSaveActive is on by:
+
+```
+reg query "HKCU\Control Panel\Desktop" /s
+```
+
+and find `ScreenSaveActive` has value 1 (indicating it is enabled).
+
+![](<../.gitbook/assets/image (9) (2).png>)
+
+Two other key registry keys important here are:
+
+* `HKEY_CURRENT_USER\Control Panel\Desktop\ScreenSaveTimeOut` - sets user inactivity timeout before the screensaver is executed.
+* `HKEY_CURRENT_USER\Control Panel\Desktop\SCRNSAVE.EXE` - set the app path to run.
+
+For this exercise, we will use the same malware from the previous section (i.e., `bad.exe` we created). So nothing to do for this one. But we do need a different script to modify the screensaver-related registry keys, which you can find here:
+
+```
+wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/screensaver_script.cpp
+```
+
+{% hint style="info" %}
+As before, inspect the `screensaver_script.cpp` and see how the registry keys are changed.
+{% endhint %}
+
+Now compile the script:
+
+```
+x86_64-w64-mingw32-g++ -O2 screensaver_script.cpp -o bad_script2.exe -I/usr/share/mingw-w64/include/ -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive
+```
+
+{% hint style="info" %}
+If you have access to the PowerShell (also possible on cmd) using a reverse shell (or similar), you can directly modify the registry without compiling the code above:
+
+```
+New-ItemProperty -Path 'HKCU:\Control Panel\Desktop\' -Name 'ScreenSaveTimeOut' -Value '10'
+New-ItemProperty -Path 'HKCU:\Control Panel\Desktop\' -Name 'SCRNSAVE.EXE' -Value 'C:\test\bad.exe'
+```
+{% endhint %}
+
+![](<../.gitbook/assets/image (3) (2).png>)
+
+Check if the registry keys are enabled (it should not be on a fresh Windows install, but just in case), and disable them if they are:
+
+```
+reg query "HKCU\Control Panel\Desktop" /s
+Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'ScreenSaveTimeOut'
+Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'SCRNSAVE.EXE'
+```
+
+{% hint style="info" %}
+They may not exist (not enabled), then you will just see error messages.
+{% endhint %}
+
+Now run our malicious script on our target Windows VM and check the registry keys again:
+
+```
+wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/bad_script2.exe
+```
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+So we have successfully added the registry keys using our script!
+
+To test, just log out and log in again, then wait 10 seconds (or slightly more, if the VM is slow).
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+Voila! As the screensaver runs (the background went dark), our malware also gets executed! At this point, you can get out of the screensaver and wait another 10 seconds to see it repeat. Every time the screensaver runs, the malware gets executed.
+
+Once done experimenting, don't forget to tidy up your registry keys:
+
+```
+Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'ScreenSaveTimeOut'
+Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'SCRNSAVE.EXE'
+reg query "HKCU\Control Panel\Desktop" /s
+```
+
+{% hint style="info" %}
+The malicious scripts must run to modify the registry keys so once we manually remove them, they don't get modified unless we run the scripts again.
+{% endhint %}
+
+## 2.3 Summary
+
+In this lab, we covered how to create persistent malware, through running keys and the screensaver application - both through modifying the registry keys. Of course, these are specific to Windows OS, but the concept applies the same with other OSes (Linux, Mac etc.), where almost all OSes have startup scripts (e.g., crontab on Linux) and screensavers.
+
+Next up, Reverse Engineering.
+
+Preparation: You will be assessed on Lab 1, Lab 2 and related lecture materials in Lab Quiz 1 (details of the time and venue, please see the announcements).
+
+Credit: materials adopted from @cocomelonc with some fixes/adjustments. -->
