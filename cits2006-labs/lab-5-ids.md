@@ -21,7 +21,7 @@ wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/ids.zip
 In order to perform IDS, we need to first understand how to access and manipulate dataset we will be using. This is done by using [Pandas](https://pandas.pydata.org/), a Python library for data analysis. We will use Pandas to access the dataset and perform data analysis. If you already know how to use Pandas, you may skip this section (you can always come back as necessary).
 
 {% hint style="info" %}
-In this section, we will be using the pandas.ipynb from the zip file.
+We will be using the pandas.ipynb from the zip file.
 {% endhint %}
 
 ### 5.3.1. Loading the data
@@ -219,6 +219,10 @@ Now you should have sufficient knowledge to use pandas to manipulate datasets fo
 ## 5.4. Exploring the dataset
 We will now explore what is actually in our given datasets, so that we can design and implement our IDS. We will use the dataset ‘Pre_train_D_0.csv’ for this section, which is a benign dataset. 
 
+{% hint style="info" %}
+We will be using the datasets.ipynb from the zip file.
+{% endhint %}
+
 ### 5.4.1. Load the dataset
 We'll first run the code below to load the dataset.
 
@@ -341,11 +345,120 @@ df_summary
 This will be used to design our IDS next. 
 
 ## 5.5. Interval-based IDS
-Coming soon...
+The first concept we will consider is to determine whether an observed traffic is an attack or not based on the time interval between messages. We will use the dataset ‘Pre_train_D_1.csv’ for this section, which is a dataset that contains attacks.
+
+{% hint style="info" %}
+We will be using the ti_ids.ipynb from the zip file.
+{% endhint %}
+
+### 5.5.1. determining the threshold
+To use the time interval for intrusion detection, we need to first define what good time intervals are for different AIDs. To do this, we will first analyse the benign dataset (i.e., no attack data) to determine the threshold. We will use the dataset ‘Pre_train_D_0.csv’ for this section, which is a benign dataset (already loaded for you in the Jupyter notebook). The code below is used to first determine the average and standard deviation of the normal traffic data.
+
+```python
+df_td = pd.concat([
+    df_benign.groupby('Arbitration_ID')['Timedelta'].mean().rename('mean_driving'),
+    df_benign.groupby('Arbitration_ID')['Timedelta'].std().rename('std_driving'),
+], axis=1)
+pd.options.display.max_rows = 100
+df_td 
+```
+
+We now can determine the threshold. We initially try the mean plus/minus 3 std. So a message is considered `attack` if $t_{\text interval}$ does not satisfy $(\mu-3\sigma \le t_{\text interval} \le \mu+3\sigma)$. 
+
+```python
+df_td['threshold_low'] = df_td['mean_driving'] - 3 * df_td['std_driving']
+df_td['threshold_high'] = df_td['mean_driving'] + 3 * df_td['std_driving']
+df_td_threshold = df_td[['threshold_low', 'threshold_high']]
+df_td_threshold
+```
+
+This defines a threshold value for each AID. Now, we are ready to try our IDS based on time interval!
+
+### 5.5.2. detecting attacks
+Whenever a time interval that falls outside the threshold, it is labelled as an attack. The code that does this is provided below.
+
+```python
+df_intrusion = load_dataset('0_Preliminary/0_Training/Pre_train_D_1.csv')
+df_intrusion = df_intrusion.join(df_td_threshold, on='Arbitration_ID')
+
+df_intrusion['y_predicted'] = 0  # Init a column with 0
+df_detected = df_intrusion.query('not (threshold_low <= Timedelta <= threshold_high)')
+df_intrusion.loc[df_detected.index, 'y_predicted'] = 1
+
+abstime_ceil = df_intrusion['abstime'].dt.ceil('10ms')
+y = df_intrusion.groupby(abstime_ceil)['y'].max()
+y_predicted = df_intrusion.groupby(abstime_ceil)['y_predicted'].max()
+```
+
+Let's look at each line of the code above.
+- Line 1: Load the intrusion dataset.
+- Line 2: Join the threshold values to the intrusion dataset.
+- Line 3: (left blank intentionally)
+- Line 4: Init the prediction column with 0 (i.e., normal).
+- Line 5: Query the intrusion dataset to find the messages that are outside the threshold.
+- Line 6: Set the predicted value to 1 for the messages that are outside the threshold.
+- Line 7: (left blank intentionally)
+- Line 8: Round the timestamp to the nearest 10ms.
+- Line 9: Group the predicted values by the rounded timestamp.
+- Line 10: Group the actual values by the rounded timestamp.
+
+I hope lines 1 and 2 are self-explanatory.
+
+Lines 4 to 6 is where the IDS happens. It checks all the time intervals, and if it is outside the threshold value it is relabeled as 1.
+
+Line 8 is determining the sampling rate of IDS. When an IDS is being used, it cannot inspect the traffic in real-time, but it looks at the data periodically. For this example, we are saying that the IDS inspects the traffic every 10ms (in practice, this can be slower). So we round the timestamp to the nearest 10ms to mimic real-world scenario.
+
+Lines 9 and 10 is grouping the predicted and actual values by the rounded timestamp.
+
+
+### 5.5.3. evaluating the IDS
+There are several metrics you can use to evaluate the performance of the IDS. The most common ones are:
+- True Positive (TP): the number of attacks that are correctly detected.
+- False Positive (FP): the number of normal traffic that are incorrectly detected as attacks.
+- True Negative (TN): the number of normal traffic that are correctly detected.
+- False Negative (FN): the number of attacks that are incorrectly detected as normal traffic.
+
+#### TASK 5
+Write a code to calculate the TP, FP, TN, and FN. Then using them to calculate the accuracy, precision and recall. The following output is what you should get if done correctly.
+
+<figure><img src="./img/ti_ids_metrics.png" alt=""><figcaption></figcaption></figure>
+
+To make it more convenient, there is a Python library named [scikit-learn](https://scikit-learn.org/stable/) that provides a lot of useful functions for machine learning. We will use this library to calculate the metrics. The code below shows how to calculate the metrics using scikit-learn.
+
+```python
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+print(accuracy_score(y, y_predicted))
+print(precision_score(y, y_predicted))
+print(recall_score(y, y_predicted))
+
+```
+
+This code should provide the same output as your own code above.
+Further, you can also calculate the confusion matrix using scikit-learn.
+
+```python
+from sklearn.metrics import confusion_matrix, classification_report
+
+print(confusion_matrix(y, y_predicted))
+print(classification_report(y, y_predicted, digits=4))
+
+```
+
+Looking at our IDS performance, it is not very good! Another important metric is the F1-score, a harmonic mean of precision and recall. Simply, having an F1-score of 0.5 for binary decision (such as our IDS example) is the same as randomly guessing (e.g., a coin toss). So our IDS needs to be improved significantly if we really want to use this in practice.
+
+#### TASK 6 (optional)
+There are three variables to our time interval-based IDS: (1) upper SD, (2) lower SD, and (3) ceiling value. Try to change these values and see how much you can improve the performance of our IDS.
+
+To give you an idea, the best accuracy you can achieve is 0.9136, the best F1-score is 0.8637.
+
 
 
 ## 5.6. Entropy-based IDS
-Coming soon...
+
+
+{% hint style="info" %}
+We will be using the entropy_ids.ipynb from the zip file.
+{% endhint %}
 
 
 
