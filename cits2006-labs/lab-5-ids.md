@@ -37,7 +37,7 @@ df = pd.read_csv('dataset.csv')
 Rewrite the code in your Jupyter notebook's first cell so that it loads the file: 0_Preliminary/0_Training/Pre_train_D_1.csv
 
 You should get an output similar to this:
-<figure><img src="/img/pandas_load.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="./img/pandas_load.png" alt=""><figcaption></figcaption></figure>
 
 
 ### 5.3.2. Accessing the data
