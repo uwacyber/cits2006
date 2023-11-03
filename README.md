@@ -2,7 +2,7 @@
 
 ### Content
 
-Coming soon...
+Coming soon... in 2024...
 
 <!-- This unit introduces students to ethical hacking concepts and knowledge. We will explore some of the common and fundamental tactics and techniques to enable students to better understand the wide field of ethical hacking and its implications today. In parallel, methods to mitigate attacks will be explored as necessary.
 
