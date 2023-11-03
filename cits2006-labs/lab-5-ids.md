@@ -212,3 +212,18 @@ df[['Class', 'y']].loc[365300:365300 + 5]
 ```
 
 <figure><img src="./img/pandas_class.png" alt=""><figcaption></figcaption></figure>
+
+Now you should have sufficient knowledge to use pandas to manipulate datasets for this lab.
+
+
+## 5.4. Exploring the dataset
+
+
+
+## 5.5. Interval-based IDS
+Coming soon...
+
+
+## 5.6. Entropy-based IDS
+Coming soon...
+
