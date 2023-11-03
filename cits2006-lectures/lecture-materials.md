@@ -4,9 +4,17 @@ You will find lecture slides available here (you will be able to download the pd
 
 Note that materials are still being updated as noted below.
 
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
+
 ## Week 01
 
-* [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01a.Introduction.pdf)
+Coming soon...
+
+<!-- * [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01a.Introduction.pdf)
 * [01b. Ethics](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01b.Ethics.pdf)
 * [01c. Reconnaissance](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01c.Reconnaissance\_vertical.pdf)
 * Complete [lab 0](../cits2006-labs/lab-0-setup-and-linux.md).
@@ -72,13 +80,11 @@ Note that materials are still being updated as noted below.
 
 
 
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
+
 
 
 
 ## Week 12
 
 * 12\. Guest Lecture and/or Unit Review (TBC)
-* Project task 4 (demo/live session in scheduled labs).
+* Project task 4 (demo/live session in scheduled labs). -->
