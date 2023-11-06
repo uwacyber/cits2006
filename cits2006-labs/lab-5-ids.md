@@ -455,13 +455,67 @@ To give you an idea, the best accuracy you can achieve is 0.9136, the best F1-sc
 
 ## 5.6. Entropy-based IDS
 
-
 {% hint style="info" %}
 We will be using the entropy_ids.ipynb from the zip file.
 {% endhint %}
 
+### 5.6.1. Entropy calculation
+As seen from the previous section, the time interval-based IDS is not very effective. We will now try another approach, which is to use the entropy of the payload. The idea is that the entropy of the payload is consistent for normal traffic, but varies a lot more for attack traffic. So we can use this information to detect attacks.
 
+The equation used to calculate the entropy is as follows: $H' = -\sum_{i=1}^N p_i \ln p_i$
 
+where
+- $N$ the number of types
+- $p_i$ the proportion of individuals belonging to the $i$-th species
+
+#### TASK 7
+Write a code to compute the entropy $H$ of the payload. A template code you can work with is given below. 
+    
+```python
+import numpy as np
+count = df_driving['Arbitration_ID'].value_counts()
+p_i = count / df_driving.shape[0]
+# compute log of p_i, then you can calculate the entropy.
+# you will find numpy useful here
+```
+
+You should wrap the code above in a function (say, named it ‘get_H’), so that you can reuse it later. The input parameter to the function would be the series you wish to compute the entropy of. The following outputs are two examples you should get if implemented correctly.
+
+<figure><img src="./img/entropy_h.png" alt=""><figcaption></figcaption></figure>
+
+There are a couple of other examples in the provided notebook you can run to see if you get the correct outputs.
+
+### 5.6.2. Sliding window concept
+The sliding window concept is used to compute the entropy for given timeframe in the dataset so that the running average can be computed. Once we can compute the running average, we can use it to detect attacks. We will first compute the running average for 1 second windows, which in our case is 2402 (i.e., the average number of messages per second in our dataset). The code is already provided to you in the notebook.
+
+We first look at our driving dataset entropy variation using the code below.
+
+```python
+df_driving.plot(x='monotime', y='entropy', figsize=(12, 3))
+```
+
+We observe that it seems quite random over time, but the peak to trough gap is actually quite small (3.7 to 3.715). 
+
+#### TASK 8
+Analyse the intrusion dataset to see what you observe. Clearly, we see more distinct difference in the entropy values. This is because the attack traffic is more random than the normal traffic, yielding significantly higher or lower running entropy value averages. 
+
+### 5.6.3. Entropy-based IDS
+Now we are ready to implement our entropy-based IDS. To do this, we need to define a threshold value for our entropy value. For starter, we'll set an arbitrary value that seems good enough, say $3.69 \leq H \leq 3.72$.
+
+The code to perform this is provided below.
+
+```python
+df_intrusion['y_predicted'] = 0
+rowidx = ~df_intrusion['entropy'].between(3.69, 3.72)
+df_intrusion.loc[rowidx, 'y_predicted'] = 1
+```
+
+The first line simply sets the predicted value to 0 (i.e., normal traffic). The second line finds the rows that are outside the threshold, and sets the predicted value to 1 (i.e., attack traffic) in the last line.
+
+The evaluation code is also provided in the notebook, so have a look at the result and compare with the time interval-based IDS. We'll see that there has been a significant improvement in the performance of our IDS - an f1-score of 0.87!
+
+#### TASK 9 (optional)
+Explore different entropy threshold values to see whether you could improve the performance of our IDS or not.
 
 
 {% hint style="info" %}
