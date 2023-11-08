@@ -60,6 +60,34 @@ Write a program to compare the hash values H1 and H2. The program should compare
 (optional) Examine the number of bits that are different between H1 and H2 by writing a code for bit comparions.
 
 
+### 1.2.4. One-way vs. collision-free properties
+One-way hash functions are not necessarily collision-free. Collision-free means that it is impossible to find two different messages that have the same hash value. However, one-way hash functions are designed to be computationally infeasible to find a message that has a specific hash value. This means that it is possible to find two different messages that have the same hash value, but it is computationally infeasible to find such messages.
+
+You are given a oneway.py file:
+
+```
+wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/oneway.py
+```
+
+Open and inspect the code. It tests a one-way property of hash functions. It currently implements MD5, but you can easily replace that with other hash functions to test. 
+
+#### TASK 3 Implement Collision-free property checking code
+Similar to the one-way property checking code provided above, you can check the collision-free property of hash functions. You may use the template collisionfree.py:
+
+```
+wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/collisionfree.py
+```
+
+Complete the code and examine the collision-free property of various hash functions.
+
+
+<b>Question:</b> Which property is easier to break using bruteforce attack? Conduct a scientific experiments to prove your point. Discuss with your peers and/or the lab facilitator.
+
+
+Based on the findings above, it should be clear that it is nearly impossible to break modern hash functions using bruteforce atttacks. Many of the cybersecurity concepts, methods and approaches rely on cryptographic properties such as above in order to provide security guarantees.
+
+## 1.3. Blockchain
+Now we will look at blockchain, which is a distributed ledger technology that is used in many applications, such as cryptocurrencies (e.g., Bitcoin, Ethereum), smart contracts, and supply chain management. Blockchain is an example of using hash functions as its primitive building blocks to create an architecture that can be useful in practice with cryptographic properties to guarantee the security. Blockchain is a chain of blocks that contain data. Each block contains a hash value of the previous block, so it is impossible to modify the data in the previous block without changing the hash value. This is because the hash value of the previous block is used to generate the hash value of the current block. 
 
 <!-- {% hint style="danger" %}
 READ: Any knowledge and techniques presented here are for your learning purposes only. It is **ABSOLUTELY ILLEGAL** to apply the learned knowledge to others without proper consent/permission, and even then, you must check and comply with any regulatory restrictions and laws.
