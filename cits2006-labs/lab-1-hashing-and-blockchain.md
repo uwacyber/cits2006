@@ -25,9 +25,40 @@ It will look something like below:
 
 <figure><img src="./img/hash_md5.png" alt=""><figcaption></figcaption></figure>
 
-You can also hash texts without creating the file by piping the text to openssl:
+You can hash texts without creating the file by piping the text to openssl:
 
 <figure><img src="./img/hash_md5_2.png" alt=""><figcaption></figcaption></figure>
+
+You will notice that the hash values are different, because the hash of the file includes the file headers and other information associated with the file, whereas the hash of the text does not include such information.
+
+Voila! This is how simple it is to generate hash values of files and texts!
+
+### 1.2.2. Keyed hash and HMAC
+You can also hash a file using a key. This is called a keyed hash. To do this, you can use the `-hmac` option in openssl:
+
+    openssl dgst -[hashing algorithm] -hmac [key] [file]
+
+<figure><img src="./img/hash_hmac.png" alt=""><figcaption></figcaption></figure>
+
+You can see from the above image, that the hash value would be different if the key is incorrect. This is useful for verifying the integrity of the file sent from someone - the sender could generate a hash value using a shared secret key, so when the file needs to be verified, the receiver could use the same secret key to verify that the same hash value is generated. If they are not the same hash value, then the receiver knows that the file is different to what the sender has sent. It is also near impossible to tamper the generated hash value without knowing the secret key, so the integrity of the file can be guaranteed with high confidence.
+
+#### TASK 1 Experiment with different keys
+Try to use different keys to generate the hash value of the same file. Then, change something from the original file and try to generate the same hash value (by guessing a new key) that matches the original hash value. Discuss your observation with your peers and/or the lab facilitator.
+
+Question: Is there any requirement for the key to be used for keyed hashing? (Some research should be conducted to see what happens to the key!)
+
+### 1.2.3. Properties of one-way hash functions
+To understand the properties of one-way hash functions, we will setup an experiment to conduct. 
+
+1. Hash the text "This is a hash message" and generate the hashvalue H1 using a specific hash algorithm (e.g., MD5, SHA256).
+2. Hash the text "This ir a hash message" and generate the hashvalue H2 using the same hash algorithm. Note that a letter 's' has been changed to 'r'.
+3. Observe whether H1 and H2 (both should be saved onto files) are similar or not. You should write a simple program to compare how many bits are the same between H1 and H2.
+
+#### TASK 2 Write the program to compare the hash values
+Write a program to compare the hash values H1 and H2. The program should compare the hash values byte by byte and count how many bytes are the same. Discuss your observation with your peers and/or the lab facilitator.
+
+(optional) Examine the number of bits that are different between H1 and H2 by writing a code for bit comparions.
+
 
 
 <!-- {% hint style="danger" %}
