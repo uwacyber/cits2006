@@ -1,6 +1,32 @@
 # Lab 1: Hashing and Blockchain
 
-Coming soon...
+## 1.1. Introduction
+There are many fundamental concepts in cryptography and cybersecurity, hashing and blockchain are among one of those. In this lab, we will explore the concept of hashing and blockchain and their applications. We will start with hashing.
+
+## 1.2. Hashing
+Hashing is a process of mapping data of arbitrary size to data of fixed size. The output of a hash function is called a hash value, hash code, hash sum, or simply hash. Hashing is used in many applications, such as password storage, digital signatures, and blockchain. Hash functions have the properties of being quick, irreversible, and collision free (i.e., no two messages will end up with the same hash value). 
+
+### 1.2.1. Hashing Algorithms
+There are many different hashing algorithms used in practice, such as MD5, SHA-1, SHA-2, and SHA-3. We will experiment with some of those algorithms in this lab. For this, we will use the Kali Linux VM. You should have openssl already on your VM, check by typing `openssl` in the terminal. If not, you can install it by typing `sudo apt install openssl`. If properly installed, you should see something like below when you type in `openssl help` in the terminal:
+
+<figure><img src="./img/hash_openssl.png" alt=""><figcaption></figcaption></figure>
+
+To use hashing algorithms, we will use the digest command in openssl:
+    
+    ```
+    openssl dgst -[hashing algorithm] [file]
+    ```
+
+For example, to hash the file `test.txt` using MD5, type:
+
+    ```
+    openssl dgst -md5 test.txt
+    ```
+
+It will look something like below:
+
+<figure><img src="./img/hash_md5.png" alt=""><figcaption></figcaption></figure>
+
 
 <!-- {% hint style="danger" %}
 READ: Any knowledge and techniques presented here are for your learning purposes only. It is **ABSOLUTELY ILLEGAL** to apply the learned knowledge to others without proper consent/permission, and even then, you must check and comply with any regulatory restrictions and laws.

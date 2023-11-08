@@ -1,6 +1,8 @@
 # Lab 5: Intrusion Detection System (NOT READY)
 
 ## 5.1. Introduction
+In a world where everything is becoming smarter, have you ever wondered what it truly means for a device to be "smart"? With the Internet of Things (IoT) connecting everything, including our cars, smart vehicles are becoming increasingly popular as they offer advanced features such as streaming audio and video directly from your car and updating firmware on the go. But this also leaves our vehicles vulnerable to cyber-attacks from hackers who can take control of our cars. Check out [this video](https://youtu.be/AdZ8nx6nRfA) to understand the implication of cyberattacks against smart cars for more motivations. 
+
 In this lab, we will setup and run intrusion detection system (IDS) for vehicle network. Smart cars are becoming more widely used today, allowing hackers to gain access to the vehicle network and control the vehicle. Consequently, the attacker can cause undesireable effects on the car, which can physically impact the driver and passengers. Therefore, it is important to detect and prevent such attacks.
 
 ## 5.2. Lab Environment
