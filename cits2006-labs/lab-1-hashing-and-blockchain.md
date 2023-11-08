@@ -12,20 +12,22 @@ There are many different hashing algorithms used in practice, such as MD5, SHA-1
 <figure><img src="./img/hash_openssl.png" alt=""><figcaption></figcaption></figure>
 
 To use hashing algorithms, we will use the digest command in openssl:
-    
-    ```
+
     openssl dgst -[hashing algorithm] [file]
-    ```
+
 
 For example, to hash the file `test.txt` using MD5, type:
-
-    ```
+    
     openssl dgst -md5 test.txt
-    ```
+
 
 It will look something like below:
 
 <figure><img src="./img/hash_md5.png" alt=""><figcaption></figcaption></figure>
+
+You can also hash texts without creating the file by piping the text to openssl:
+
+<figure><img src="./img/hash_md5_2.png" alt=""><figcaption></figcaption></figure>
 
 
 <!-- {% hint style="danger" %}
