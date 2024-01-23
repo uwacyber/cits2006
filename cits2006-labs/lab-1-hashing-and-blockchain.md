@@ -1,4 +1,4 @@
-# Lab 1: Cryptography
+# Lab 1: Hashing and Blockchain
 
 ## 1.1. Introduction
 There are many fundamental concepts in cryptography and cybersecurity, hashing and blockchain are among one of those. In this lab, we will explore the concept of hashing and blockchain and their applications. We will start with hashing.
