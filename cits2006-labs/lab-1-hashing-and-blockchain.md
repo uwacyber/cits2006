@@ -109,16 +109,16 @@ If you inspect the code, it has three attributes:
 
 Now let's look at the methods.
 
-#### 1.3.2. Adding a new transaction
+### 1.3.2. Adding a new transaction
 The `new_transaction()` method is provided for you that adds a new transaction. This method will take three input parameters: sender, recipient and amount. Once a transaction has been added, the method returns the index of the block, specifying the next one to be mined (i.e., where the next transaction will be stored). Complete the code for `new_transaction()` method. It will append a dictionary into the `current_transactions` list. Note, the values are passed to the method already so you just have to use them.
 
 #### TASK 4 Complete the new_transaction method
 Complete the `new_transaction` method. You can test this by running the code and adding a new transaction manually.
 
-#### 1.3.3. The new block
+### 1.3.3. The new block
 The initial block without the predecessor, which is called the genesis block, is created when the Blockchain is instantiated. Just like every other blocks, the genesis block also needs to have a “proof”. Proof is simply specifying the work done to mine the block. This will be discussed later in the mining section. Three methods work to create a new block: `new_block`, `new_transaction` and `hash`. For convenience, this has already been implemented for you.
 
-#### 1.3.4. Proof of work
+### 1.3.4. Proof of work
 To create or mine new blocks for the Blockchain, a Proof of Work algorithm (PoW) is required. In simple terms, PoW is a number that solves a difficult mathematical problem. Normally, solving this is difficult, but verifying the solution is quick by anyone in the blockchain network. This is done using hashing algorithms. For example, we would like to find a hash given value `x`, such that the last digit of the `hash(x * y)` is 0 (e.g., hash(x*y) = ac23dc...0). Let’s assume the value `x=5`, and we are using the SHA256 hash algorithm. You can easily write this in Python.
 
 
@@ -138,7 +138,7 @@ Complete the `proof_of_work` method. You are already provided with `valid_proof`
 
 
 
-#### 1.3.5. Using the blockchain
+### 1.3.5. Using the blockchain
 At this point, we are ready to test our blockchain. There are some other methods, which you should read and see what they do, but are not necessary at this stage. The Python Flask Framework enables us to interact with the blockchain class over the web using HTTP requests. The necessary codes are already provided for you, we just need to get familiar with how to interact with the blockchain class over the HTTP protocol.
 
 You can start the blockchain server by running the following command:
@@ -168,7 +168,7 @@ And if you go back to your chain, you will see the new transaction added to the 
 
 <figure><img src="./img/blockchain_chain2.png" alt=""><figcaption></figcaption></figure>
 
-#### 1.3.6. The concensus algorithm
+### 1.3.6. The concensus algorithm
 A conflict can occur in a Blockchain network when one node has a different chain to another node. A simple approach to resolve this problem is specifying rules which chain is the authoritative one. Simply, the longest valid chain is authoritative for our exercise (and this is true for typical blockchains).
 
 Two methods in the blockchain class, `valid_chain` and `resolve_conflicts`, are provided. The valid_chain() method ensures that the existing chain is valid by checking each block of its hash and the proof. The resolve_conflicts() method will check all the neighbouring nodes, which downloads their chains and verifies them using the above method. If we find a valid chain that has a greater length that the existing one, we will replace it. Both methods are already implemented for you.
