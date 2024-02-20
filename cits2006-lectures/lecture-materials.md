@@ -5,23 +5,23 @@ You will find lecture slides available here (you will be able to download the pd
 Note that materials are still being updated as noted below.
 
 
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
+
 
 
 ## Week 01
 
-Coming soon...
+* [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2024S1/cits2006-lectures/01a.Introduction.pdf)
+* [01b. Defence Overview](https://github.com/uwacyber/cits2006/raw/2024S1/cits2006-lectures/01b.Defence_overview.pdf)
+* Complete [lab 0](../cits2006-labs/lab-0-setup.md).
 
-<!-- * [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01a.Introduction.pdf)
-* [01b. Ethics](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01b.Ethics.pdf)
-* [01c. Reconnaissance](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/01c.Reconnaissance\_vertical.pdf)
-* Complete [lab 0](../cits2006-labs/lab-0-setup-and-linux.md).
-* (Optional) Complete [Networks 101](../cits2006-labs/network-101.md).
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
 
 ## Week 02
 
+<!-- 
 * [02a. Network Exploits](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/02a.Network\_Exploits\_vertical.pdf)
 * [02b. Malware Basics](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/02b.Malware\_Basics\_vertical.pdf)
 * Complete [lab 1](../cits2006-labs/lab-1-network-security.md).
