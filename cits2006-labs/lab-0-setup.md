@@ -1,6 +1,6 @@
-# Lab 0: Setup, Linux and Networking
+# Lab 0: Linux and Networking
 
-Coming soon...
+This lab is a refresher/crash course on Linux and Networking. So please do these, as you will make yourself more efficient at carrying out the rest of the labs and project later on. For the environment setup, you should be fine using your host machine for most tasks as it would involve some coding in Python (or other selected languages), but if other environment is needed (e.g., VMs, Docker), we will advise you accordingly. The instructions on how to set these up is available from CITS1003 page, so it won't be repeated here. Okay, then let's dig into Linux first!
 
 ## 0.1 Linux refresher
 
