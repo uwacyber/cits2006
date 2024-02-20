@@ -2,101 +2,18 @@
 
 Coming soon...
 
-<!-- ## 0.1. Setup VM and Docker
-
-You will be using Kali as your based VM, and likely various other VM images (and possibly Docker containers in the VMs) to carry out labs and the project. So it is essential that you set up your system to be able to use them wherever required.
-
-{% hint style="info" %}
-If you already have VM and Docker set up and running on your machine, you can skip to [Section 0.2](lab-0-setup-and-linux.md#0.2-linux-refresher) (and maybe revisit here later if things aren't working as intended).
-{% endhint %}
-
-### 0.1.1. VM setup
-
-We will be using [Kali Linux](https://www.kali.org/) as our base VM (the bare metal option), as it comes with various tools we will be using already. Kali also has native builds for both AMD64 and ARM64 (see below), so it is easy to have it ready on most of our machines. Please see below for recommendations if you haven't used a VM before (minimum instruction provided, you are required to do your own research for setting up VMs on your machine):
-
-{% hint style="danger" %}
-In general, you are expected to troubleshoot your setup issues yourself (we already did this in your first year). We will still try to help you with your setup issues, but the helpers will prioritise helping lab-related questions first especially if the labs are very busy.
-{% endhint %}
-
-#### Windows, Linux or Mac using Intel chips AMD64
-
-* You should be good using [VirtualBox](https://www.virtualbox.org/) - all instructions for AMD64 will be based on using VirtualBox.
-* If it doesn't work well, you can try using [VMware Workstation Player](https://www.vmware.com/au/products/workstation-player.html).
-* If the above two fail, please contact the lab facilitator.
-
-{% hint style="warning" %}
-A typical issue people have running VMs on Windows machines are that you have Hyper-V on. You should research and turn it off if your VMs have issues.
-{% endhint %}
-
-#### Mac using Apple Silicon chips ARM64 (M1 series, M2 etc.)
-
-* You can use [UTM](https://mac.getutm.app/) - all instructions for ARM64 will be based on using UTM.
-* You can also use other apps like [Parallels](https://www.parallels.com/au/products/desktop/) only if you prefer, but it would not be required.
-
-{% hint style="warning" %}
-Apple Silicon machines may have incompatibility issues, so not all functionalities may be available to use. Best efforts are made to do the labs on all types of machines, but we may not be able to help you if you used different tools and face problems.
-{% endhint %}
-
-### 0.1.2. Docker setup
-
-The process for installing Docker Desktop is straightforward and involves using the installer for the particular operating system you have (from the drop-down menu, select the appropriate OS):
-
-{% embed url="https://www.docker.com/get-started" %}
-
-{% hint style="warning" %}
-**Docker on Kali**
-
-If you are on Kali VM on M1 Macbook, you can type this in the terminal:
-```bash
-sudo apt-get update && sudo apt-get install -y docker.io
-```
-In general, following the official instructions should work just fine: [https://www.kali.org/docs/containers/installing-docker-on-kali/](https://www.kali.org/docs/containers/installing-docker-on-kali/). Please note that you will not have access to the Docker Desktop application, but you will instead be able to use the Docker CLI (command line interface). 
-{% endhint %}
-
-It is recommended to use Docker within your VM (e.g., Kali) if needed, especially when handling malicious files, carrying out tasks that could damage your system, etc. You will be advised of such activities in the labs.
-
-### 0.1.3. Sharing clipboard between host and VM
-
-If you are using the VirtualBox (i.e., AMD64), there is a feature called "Shared Clipboard" that you can enable to share clipboard between your host and VM. This is useful when you want to copy and paste commands from your host to VM, or vice versa. To enable this, go to the VM settings, then select "General" and "Advanced" tab. You can then select the clipboard type you want to share.
-
-For those using UTM (i.e., ARM64), once your Kali is installed, you can type this in the terminal to enable shared clipboard:
-```
-sudo apt install spice-vdagent spice-webdavd
-```
-Then restart the VM, and you should be able to copy and paste between your host and VM.
-
-### 0.1.4. Transferring files between VMs
-
-Often we will need to transfer files between VMs, most of the time from your attacker VM (Kali) to target hosts (Windows, Ubuntu, Metasploitable etc.). One of the easiest way is to enable web server on Kali:
-
-```
-sudo service apache2 start
-```
-
-This will let you start a web server from your Kali VM, which you can access by typing the IP address of Kali on the browser. Since it is a web server, you can also use `wget` command to retrieve files if you don't have GUI enabled on the VM.
-
-To share, create a share folder located at `/var/www/html/`:
-
-```
-sudo mkdir /var/www/html/share
-```
-
-Now you can place files you want to share in the share folder, then it should appear when you access the web server.
-
-Another way is to create a shared folder in the cloud (e.g., Dropbox, OneDrive, Google Drive etc.) and transfer between the VMs that way. Make sure not to use your personal account as we will be moving malicious files, which may be synced to your host drive if that is enabled.
-
-## 0.2 Linux refresher
+## 0.1 Linux refresher
 
 This lab is to provide a refresher on your Linux knowledge, and you can do this on your Kali VM. You may skim/skip through this lab if you feel confident, but if you haven't done much in Linux for a while (a semester or two), you are strongly advised to complete this lab before moving on to other labs to improve your workflow efficiency. For each example, you should try it yourself before moving on to the next section.
 
-### 0.2.1. Distributions
+### 0.1.1. Distributions
 
 The base system of Linux comes in many different distributions which contain different packages and features written by different groups. These are referred to as distros for short, and they have a wide variety of different uses, purposes, systems, features, and fan bases. This guide will attempt to be distro-independent, however, a few of the more popular distros are listed:
 
 | <p>· Ubuntu</p><p>· Debian</p><p>· Fedora</p><p>· Linux Mint</p> | <p>· Red Hat</p><p>· CentOS</p><p>· Arch Linux</p><p>· Gentoo</p> |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
 
-### 0.2.2. Package manager and repositories
+### 0.1.2. Package manager and repositories
 
 Each distribution comes with a package manager, which handles software installed on the system and has a number of remote repositories from which it gets its software. For example, Ubuntu (also Kali) uses a package manager called aptitude (apt for short). You can type:
 
@@ -112,9 +29,9 @@ to install the Mozilla Firefox web browser. It will search the remote repositori
 will install Firefox on a Fedora machine. You can also install multiple package managers on any one distro, but as they say\_: too many cooks spoil the broth\_.
 {% endhint %}
 
-### 0.2.3. The Terminal
+### 0.1.3. The Terminal
 
-**0.2.3.1. Commands**
+**0.1.3.1. Commands**
 
 Firstly you should get familiar with the man pages, which are essentially the manual, and will display help pages on almost all commands.
 
@@ -156,7 +73,7 @@ These are some extra commands which aren't totally essential but are certainly h
 
 ####
 
-#### **0.2.3.2. Shortcuts**
+#### **0.1.3.2. Shortcuts**
 
 Every key pressed ends a character to the terminal, and you can send different characters by holding down keys like \[Ctrl] or \[Alt]. This is how the shell can tell what key is pressed, and thus, allow shortcuts to be defined. Some of the more useful keyboard shortcuts are defined:
 
@@ -170,7 +87,7 @@ Every key pressed ends a character to the terminal, and you can send different c
 
 ####
 
-#### 0.2.3.3. **Piping and redirection**
+#### 0.1.3.3. **Piping and redirection**
 
 There are a number of little quirks that the shell has that gives it more functionality. Piping takes the `stdout` of the left program and connects it (i.e. _pipes_ it) into `stdin` of the right program with the pipe operator `|`. For example:
 
@@ -187,7 +104,7 @@ Redirection directs data in and out of files, i.e.
 
 ####
 
-#### **0.2.3.4. Wildcards**
+#### **0.1.3.4. Wildcards**
 
 The shell uses a number of special characters called wildcards, similar to regular expressions or regex, which can be used to manipulate what is being dealt with on the command line. The standard wildcards are thus:
 
@@ -199,7 +116,7 @@ The shell uses a number of special characters called wildcards, similar to regul
 
 `{}` Match any item in the braces. For example, `cp {*.doc,*.pdf} ~` copies any files with the extension \`.doc' or \`.pdf' to the home directory.
 
-**0.2.3.5. Conditional execution**
+**0.1.3.5. Conditional execution**
 
 You can chain commands together on one line by separating them with a semicolon \`;'.
 
@@ -221,7 +138,7 @@ To run a command if and only if the last command failed, we use `||`:
 `bash: cd: foo: No such file or directory`\
 `drwxrwxr-x 2 user user 4096 May 24 00:57 foo`
 
-#### **0.2.3.6. Processes**
+#### **0.1.3.6. Processes**
 
 Every program that runs, runs in virtual memory as a process, even the shell. You can list the currently running processes with the command `top`. When you run a command, the terminal session runs it on its process, waits for it to complete, then regains control once the command is finished. So, if you were to close the terminal window while a command was running, that would stop the command. Since this can be inconvenient, we can \`fork' the command into its own process to run in the background, and still use the shell while it runs (which is useful for commands that take a long time). To do this, we end the command with a single ampersand `&`. For example:
 
@@ -242,7 +159,7 @@ Another way to list the processes running is with `ps`, and then end them with `
 
 You can also check what is running in the background and foreground with `bg` and `fg`, respectively.
 
-### 0.2.4. File system structure
+### 0.1.4. File system structure
 
 The file system is structured as a tree that flows down from the root directory, which is simply represented as /. Below shows an example listing of a system’s root directory using the ls command:
 
@@ -265,7 +182,7 @@ Linux will automatically complete a command or filename if you are part-way thro
 
 #### \*\*\*\*
 
-#### **0.2.4.1. File operations**
+#### **0.1.4.1. File operations**
 
 There are a number of useful programs that allow us to do file manipulation. To list some of the main operations:
 
@@ -275,7 +192,7 @@ There are a number of useful programs that allow us to do file manipulation. To 
 |   `rm` | Delete a file. Note that you can also delete empty directories this way, and you can delete a directory and its subdirectories by using `rm -r`. However, be **VERY** careful: if you were to run `rm -rf /`, you would erase every file on your whole computer, because it would delete the root directory and then every file and subdirectory below it and it wouldn't stop because the \`f' in \`-rf' means \`force'. Use `rm -rf` with extreme caution, or even use `rmdir`, which removes a directory. |
 | `grep` | grep stands for Global Regular Expressions Parser, and can search through text for a match. For example, `grep foo bar` searches the file bar for the string foo, and you can also use `ls -l \| grep "foo"`, which searches the file listing for a file called foo. When combined with `sed` and `awk`, you can do almost anything string related.                                                                                                                                                          |
 
-#### **0.2.4.2. $PATH and the environment**
+#### **0.1.4.2. $PATH and the environment**
 
 Variables in the shell are defined using the export command, and when variables are used, they start with a `$`.\
 \
@@ -294,7 +211,7 @@ This would mean that if I were to use the command `ls`, it would search for a bi
 
 This is sometimes used as an exploit by modifying the user's `$PATH` variable so that a path containing malicious binaries with the same names as common commands is on the front. When the user runs these commands, then the malicious binaries are run instead.
 
-### 0.2.5. Users and Permissions
+### 0.1.5. Users and Permissions
 
 Every user has a user ID (uid) and a group ID (gid). Each user also has a list of groups they are a part of which give them the permissions that are assigned to those groups. You can see this by using the 'id' command:\
 \
@@ -303,7 +220,7 @@ Every user has a user ID (uid) and a group ID (gid). Each user also has a list o
 
 #### \*\*\*\*
 
-#### **0.2.5.1. sudo and root**
+#### **0.1.5.1. sudo and root**
 
 Now for the most powerful user on Linux: The root user. Root's uid and gid are both 0.
 
@@ -320,7 +237,7 @@ Say you want to edit the hostname file, which contains the name of your computer
 
 to which it asks you for your password, and then opens nano with the extra privileges provided by `sudo`. There is a `sudoers` file which contains a list of users who can use `sudo`, and what privileges they get from using it.
 
-#### **0.2.5.2. File permissions**
+#### **0.1.5.2. File permissions**
 
 Linux inherits its file permissions system from Unix. You can use the command `ls -l` to display the permissions of a file or files:
 
@@ -343,7 +260,7 @@ where the first set, `u`, refers to the permissions for the user who owns the fi
 
 This is a directory, the user has read/write/execute access, users belonging to the group of the file have read/write/execute access, and everyone else has read/execute access, but not write access.
 
-#### **0.2.5.3. Changing permissions**
+#### **0.1.5.3. Changing permissions**
 
 If you want to change a file's permissions, you can use `chmod`, meaning "change mode". There are two ways to do this: using u/g/o and +/- r/w/x:\
 \
@@ -385,9 +302,9 @@ etc...
 
 So when we set our file junk1 to 755 earlier, we set it to rwxr-xr-x, which is a pretty good permission set on your average file. Realistically, you will usually always have your own user permissions set to rwx or rw-, otherwise you are just inconveniencing yourself. You can also use `chown` to change ownership of a file.
 
-### 0.2.6. Network commands
+### 0.1.6. Network commands
 
-#### 0.2.6.1. ping
+#### 0.1.6.1. ping
 
 * Can be a handful for DNS checks (up / or down) | is a DNS tool to resolve web addresses to an IP address.
 * Test reachability - determine round-trip time, and uses ICMP protocol.
@@ -403,7 +320,7 @@ PING www.google.com (172.217.168.164): 56 data bytes
 round-trip min/avg/max/stddev = 25.236/25.608/25.981/0.373 ms
 ```
 
-#### 0.2.6.2. netstat
+#### 0.1.6.2. netstat
 
 * Network statistics
 * Get info on host system TCP / UDP connections and status of all open and listening ports and routing table.
@@ -416,7 +333,7 @@ netstat -n # (hosts)
 netstat -b # (Show binaries Windows)
 ```
 
-#### 0.2.6.3. traceroute
+#### 0.1.6.3. traceroute
 
 * Traceroute - how packets get from the host to another endpoint. Traceroute is helpful to see what routers are being hit, both internal and external.
 * **Take advantage of ICMP Time to Live (TTL) Exceeded error message**
@@ -446,7 +363,7 @@ traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets
     79.125.252.199 (79.121.251.191)  22.885 ms
 ```
 
-#### 0.2.6.4. arp
+#### 0.1.6.4. arp
 
 * Address resolution protocol - caches of ip-to-ethernet
 * Determine a MAC address based on IP addresses
@@ -461,7 +378,7 @@ traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets
 _gateway (192.168.1.1) at 00:31:33:8b:2a:da [ether] on enp0s10
 ```
 
-#### 0.2.6.5. ifconfig
+#### 0.1.6.5. ifconfig
 
 * Equivalent to ipconfig in Windows for UNIX/Linux OS.
 
@@ -484,7 +401,7 @@ enp0s10: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-#### 0.2.6.6. iwconfig
+#### 0.1.6.6. iwconfig
 
 similar to ifconfig, but is dedicated to the wireless network interface.
 
@@ -503,7 +420,7 @@ wlp3s0b1  IEEE 802.11  ESSID:off/any
 docker0   no wireless extensions.
 ```
 
-#### 0.2.6.7. ip addr
+#### 0.1.6.7. ip addr
 
 show / manipulate routing, network devices, interfaces and tunnels.
 
@@ -525,7 +442,7 @@ Show all the ip configuration, mac address, ipv6 etc.
        valid_lft forever preferred_lft forever
 ```
 
-#### 0.2.6.8. nslookup
+#### 0.1.6.8. nslookup
 
 * Query Internet name servers interactively; check if the DNS server is working
 
@@ -549,7 +466,7 @@ Name:   certifiedhacker.com
 Address: 162.241.216.11
 ```
 
-#### 0.2.6.9. dig
+#### 0.1.6.9. dig
 
 * DNS lookup tool - Functions like `nslookup`, but allows for further functionality.
 
@@ -578,7 +495,7 @@ certifiedhacker.com.    14400   IN      A       162.241.216.11
 ;; MSG SIZE  rcvd: 92
 ```
 
-#### 0.2.6.10. netcat
+#### 0.1.6.10. netcat
 
 TCP/IP swiss army knife; you can make any type of connection and see the results from a command line. With `nc` you can connect to anything on any port number or you can make your system listen on a port number. Can be an aggressive tool for recon.
 
@@ -600,7 +517,7 @@ Please have a look at the below links for more UNIX tutorials.
 
 * [http://www.ee.surrey.ac.uk/Teaching/Unix/](http://www.ee.surrey.ac.uk/Teaching/Unix/)
 * [https://www.sporcle.com/games/sporcilicious/common\_linux\_commands](https://www.sporcle.com/games/sporcilicious/common\_linux\_commands)
-* [https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8](https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8) -->
+* [https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8](https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8) 
 
 
 
