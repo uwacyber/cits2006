@@ -10,14 +10,14 @@ Note that materials are still being updated as noted below.
 
 ## Week 01
 
-* [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2024S1/cits2006-lectures/01a.Introduction.pdf)
-* [01b. Defence Overview](https://github.com/uwacyber/cits2006/raw/2024S1/cits2006-lectures/01b.Defence_overview.pdf)
+* [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/01a.Introduction.pdf)
+* [01b. Defence Overview](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/01b.Defence_overview.pdf)
 * Complete [lab 0](../cits2006-labs/lab-0-setup.md).
 
 
 ## Week 02
 
-* [02. Network Exploits](https://github.com/uwacyber/cits2006/raw/2024S1/cits2006-lectures/02.Cryptography.pdf)
+* [02. Cryptography](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/02.Cryptography.pdf)
 * Complete [lab 1](../cits2006-labs/lab-1-hashing-and-blockchain.md).
 
 
