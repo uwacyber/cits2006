@@ -15,17 +15,16 @@ Note that materials are still being updated as noted below.
 * Complete [lab 0](../cits2006-labs/lab-0-setup.md).
 
 
+## Week 02
+
+* [02. Network Exploits](https://github.com/uwacyber/cits2006/raw/2024S1/cits2006-lectures/02.Cryptography.pdf)
+* Complete [lab 1](../cits2006-labs/lab-1-hashing-and-blockchain.md).
+
+
 {% hint style="warning" %}
 The below has not been updated yet.
 {% endhint %}
-
-## Week 02
-
 <!-- 
-* [02a. Network Exploits](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/02a.Network\_Exploits\_vertical.pdf)
-* [02b. Malware Basics](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/02b.Malware\_Basics\_vertical.pdf)
-* Complete [lab 1](../cits2006-labs/lab-1-network-security.md).
-
 ## Week 03
 
 * [03. More Malware](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/03.More\_malware\_vertical.pdf)
