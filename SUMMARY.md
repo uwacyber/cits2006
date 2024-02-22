@@ -9,11 +9,11 @@
 ## CITS2006 Labs
 
 * [Introduction to Labs](cits2006-labs/introduction-to-labs.md)
-* [Lab 0: Setup, Linux and Networking](cits2006-labs/lab-0-setup.md)
+* [Lab 0: Linux and Networking](cits2006-labs/lab-0-setup.md)
 * [Lab 1: Hashing and Blockchain](cits2006-labs/lab-1-hashing-and-blockchain.md)
 * [Lab 2: Privacy](cits2006-labs/lab-2-privacy.md)
 * [Lab 3: Access Control](cits2006-labs/lab-3-access-control.md)
-* [Lab 4: Vulnerability Scanning](cits2006-labs/lab-4-vulnerability-scanning.md)
+* [Lab 4: Protocols and Tools](cits2006-labs/lab-4-vulnerability-scanning.md)
 * [Lab 5: IDS](cits2006-labs/lab-5-ids.md)
 * [Lab 6: Risk Analysis](cits2006-labs/lab-6-risk-analysis.md)
 
