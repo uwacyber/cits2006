@@ -26,66 +26,69 @@ The below has not been updated yet.
 {% endhint %}
 
 
-<!-- 
 ## Week 03
 
-* [03. More Malware](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/03.More\_malware\_vertical.pdf)
-* Complete [lab 2](../cits2006-labs/lab-2-malware.md).
+* [03. Privacy](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/03.Privacy.pdf)
+* Complete [lab 2](../cits2006-labs/lab-2-privacy.md).
+
 
 ## Week 04
 
-* [04. Software Security](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/04.Software\_security\_vertical.pdf)
+* [04. Access Control](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/04.Access\_Control.pdf)
 * Lab Quiz 1 this week (20%).
 * No new lab this week.
 
+
 ## Week 05
 
-* [05. Reverse Engineering](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/05.Reverse\_engineering\_vertical.pdf)
-* Complete [lab 3](../cits2006-labs/lab-3-reverse-engineering.md).
+* [05. Protocols and Tools](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/05.Protocols\_and\_Tools.pdf)
+* Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
+
+
+## Mid-semester break
+
 
 ## Week 06
 
-* [06. Linux Privilege Escalation](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/06.Local\_Privilege\_Escalation\_Linux.pdf)
-* Complete [lab 4](../cits2006-labs/lab-4-privilege-escalation.md).
+* [06. IDS](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/06.IDS.pdf)
+* Complete [lab 4](../cits2006-labs/lab-4-protocols-and-tools.md).
+
 
 ## Week 07
 
-* [07. Command and Control](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/07.c2_vertical.pdf)
+* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/07.Threat\_Intelligence.pdf)
 * Lab Quiz 2 this week (20%).
 * No new lab this week.
 
-## Week 08
 
-* [08. Web Security](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/08.Web_Security_vertical.pdf)
-* Complete [lab 5](../cits2006-labs/lab-5-web-security.md).
+## Week 08 (ANZAC Day)
+
+* No new lecture.
+* Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 * Project release this week (40%).
   * group formation.
 
-## Week 09 (King's Bday)
 
-* No new lecture.
-* No lab scheduled on the public holiday.
-* Complete [lab 6](../cits2006-labs/lab-6-active-directory.md).
-* Project task 1 due Friday 5pm.
+## Week 09
+
+* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.SMA.pdf)
+* Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
+* Project task 1 due Friday 5pm (TBC).
+
 
 ## Week 10
 
-* [10. Active Directory](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/10.Active_Directory_vertical.pdf)
-* Project task 2 (demo/live session in scheduled labs).
+* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_Cybersecurity.pdf)
+* Project demo/live session in scheduled labs.
+
 
 ## Week 11
 
-* [11. Defence Techniques](https://github.com/uwacyber/cits2006/raw/2023S2/cits2006-lectures/11.Defence_Techniques_vertical.pdf)
+* [11. Security Management](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/11.Security\_Management.pdf)
 * Lab Quiz 3 this week (20%).
-* Project task 3 due Friday 5pm.
-
-
-
-
-
-
+* Project task 3 due Friday 5pm (TBC).
 
 ## Week 12
 
 * 12\. Guest Lecture and/or Unit Review (TBC)
-* Project task 4 (demo/live session in scheduled labs). -->
+* Project demo/live session in scheduled labs.
