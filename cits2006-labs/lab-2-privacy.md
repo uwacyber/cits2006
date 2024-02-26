@@ -1,317 +1,332 @@
 # Lab 2: Privacy
 
-Coming soon...
+## 2.1 Introduction
 
-<!-- {% hint style="danger" %}
-READ: Any knowledge and techniques presented here are for your learning purposes only. It is **ABSOLUTELY ILLEGAL** to apply the learned knowledge to others without proper consent/permission, and even then, you must check and comply with any regulatory restrictions and laws.
+### Lab Activity: Privacy Breach and Mitigation Techniques
+
+#### Scenario
+
+A water service company has collected data on multiple household water usage within a residential  
+areas. Their goal is to be able to curate to different households on their water usage for billing  
+purposes. On the other hand, there are concerns about privacy breaches as data contains sensitive information about each household's daily activities.
+
+## 2.2 Re Identification Attack
+
+So what is a Re Identification Attack? In a nutshell, it is a type of privacy attack where an attacker attempts to determine if a specific record, or 'row of data' actually belongs to the dataset that was used for training a specific machine learning model. For a better understanding, in this scenario, a type of Re Identification Attack involves determining whether a specific household's water usage matches with the main dataset. The objective is by exploiting the model's output, an attacker can determine if a specific record was part of the training dataset.
+
+### 2.2.1 Re Identification Attack: Data Preparation
+
+It starts by data collection, as the water service company has collected data on multiple household water usage within a residential area. This dataset is then used as the foundation for the machine learning model. The dataset contains the following columns:
+
+user.key: A unique identifier for each household  
+datetime: The date and time of the water usage  
+meter.reading: The amount of water used  
+diff: The difference in water usage from the previous reading
+
+Run the wget command to download the dataset.
+
+{% hint style="info" %}  
+Before you start, download the files you need:
+
+```
+wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/water_data.csv
+```
+
 {% endhint %}
 
-In this lab, we will create and use dummy malware samples on a Windows machine (we just call it malware but it is quite harmless, unless you make it so). To do this lab, we will require two VMs (don't have to be running at the same time) - Kali and Windows.
+You are also given a pre proccessing script to clean the data. Run the following command to download the script.
 
-## 2.0. Setup Windows VM
+```python
 
-You can select and download Windows ISO from their official website (this lab has been tested on Windows 11, but Windows 10 or 7 can also be used):
+import csv
+import os
 
-{% hint style="warning" %}
-Using M1 Macbook, I tested this lab on Windows 11 Preview and has worked correctly. But if you are having issues, then you are recommended to use Windows 7 64-bit VM, which makes turning off or bypassing Windows Defender much easier.
+relative_path = os.path.join('water')
+#r_folder_format = 'swm_trialA_{}K.csv'
+r_folder_format = 'water_data.csv'
+w_folder_format = 'households_{}'
+w_file_format = os.path.join('households_{}', '{}.csv')
+wd = os.getcwd()
 
-* If you use other versions or 32-bit VM, the lab instructions may not work the same way.
-* The output will differ, but the lab still works the same on Windows 7 VMs (also tested on M1, albeit a bit slow).
-{% endhint %}
+FILE_ROWS = 40960  # element number within a section
 
-{% hint style="warning" %}
-Please be advised that the size of the ISO is \~10GB!
 
-Also when installing, advisable resources to give are 2 Cores with 4GB RAM.
-{% endhint %}
+# Read the CSV file
+def read_csv(path):
+    with open(path, 'r') as file:
+        reader = csv.reader(file)
+        # Return the header and the rows
+        return [row for row in reader]
 
-{% hint style="info" %}
-I have shared Windows 7 ISO and UTM files on Teams for you to download and use if needed. It is in Labs -> Files.
-{% endhint %}
+# Write the CSV file
+def gen_csv(id):
+    # Read the CSV file
+    r_folder_path = os.path.join(wd, relative_path, r_folder_format.format(id))
+    with open(r_folder_path, 'r') as file:
+        lines = file.readlines()[1:-1]
 
-Official Windows 11 Insider Preview:
+    # Create a dictionary to store the data
+    my_map = {}
+    # Iterate through the rows
+    for line in lines:
+        # Replace the spaces with semicolons and the Null values with 0.001
+        line = line.replace(' ', ';').replace('Null\r', '0.001')
+        # Split the line by semicolons
+        slices = line.split(';')
+        # Get the first slice as the key
+        file_key = slices[0]
+        # If the key is not in the dictionary, add it
+        if file_key not in my_map:
+            # Add the key to the dictionary
+            my_map[file_key] = []
+        # Append the slices to the dictionary
+        my_map[file_key].append(slices[1:])
 
-{% embed url="https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewiso" %}
+    # Create a new folder to store the data
+    w_folder_path = os.path.join(wd, relative_path, w_folder_format.format(FILE_ROWS))
+    # Create the folder if it does not exist
+    os.makedirs(w_folder_path, exist_ok=True)
 
-Official Windows 11 Insider Preview ARM64:
+    # Iterate through the dictionary
+    for key, value in my_map.items():
+        # If the length of the value is less than the file rows, continue
+        if len(value) < FILE_ROWS:
+            print(f"[{key}] has {len(value)} rows.")
+            continue
+        # Create a new file to store the data
+        w_file_path = os.path.join(wd, relative_path, w_file_format.format(FILE_ROWS, key))
+        # Write the data to the file
+        with open(w_file_path, 'w', newline='') as new_file:
+            writer = csv.writer(new_file)
+            writer.writerows(value)
 
-{% embed url="https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewARM64" %}
+    print(f"len: {len(my_map)}")
 
-For Apple Silicon users, you should also check the guideline here for some frequently faced issues, such as bypassing the network setup page:
 
-{% embed url="https://docs.getutm.app/guides/windows/" %}
+def main():
+    print(wd)
+    gen_csv(1)
 
-{% hint style="info" %}
-Once downloaded, you can install it on your VMM. We just need the Windows running (no specific software or settings required) so you can do the minimal setup where feasible.
-{% endhint %}
 
-Before you start, you have to first turn off Windows Defender, otherwise, our files will just get quarantined and removed. Follow these steps on your Windows VM. On the preview version, this is by default disabled (i.e., you cannot change the security settings). If you like challenges, try disabling them yourself without reading the instructions below.
-
-Follow these steps to be able to modify the Windows Defender settings:
-
-1. Right-click Start -> run -> regedit
-2. Go to HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Defender
-3. Right-click the folder -> permissions -> advanced
-4. Change the Owner -> advanced -> find now
-5. Select Administrator -> OK -> OK
-6. Select “Replace owner on subcontainers and objects”
-7. Select “Replace all child object permission entries with inheritable permission”
-8. Press Apply (you can ignore all warnings and errors).
-9. If error, you can just cancel. Re-enter and check that Owner has changed to Administrator (i.e., you).
-10. Also add “Administrator” and give full control.
-
-<figure><img src="../.gitbook/assets/image (30).png" alt=""><figcaption><p>What it should look like after completing the steps above.</p></figcaption></figure>
-
-By now, you should be able to modify the Windows Defender settings. Follow these steps to turn off Windows Defender:
-
-1. Select **Start** and type "Windows Security" to search for that app.
-2. Select the **Windows Security app** from the search results, go to **Virus & threat protection**, and under **Virus & threat protection settings** select **Manage settings**.
-3. Switch all possible settings to **Off**. It is **OKAY** if some of them turn back on straight away.
-   1. Note that scheduled scans will continue to run. However, files that are downloaded or installed will not be scanned until the next scheduled scan.
-4. Open Powershell as administrator, and type:\
-   `Add-MpPreference -ExclusionPath C:\`\
-   This command should prevent our malware files from being quarantined.
-5. Back in the Windows Security app, disable Firewall for all network.
-
-This should do the trick, but there are other settings that may need to be turned off so if Windows Defender keeps removing your files, find other settings to disable.
-
-## 2.1. Persistent Malware in Registry
-
-In this lab, we will have a look at how to make the malware persistent on the Windows machine. One of the simplest ways of achieving this is to modify the registry keys. Registry keys, specifically the "Run keys", can be configured and are executed when the user logs in.
-
-The following run keys are created by Windows:
-
-* `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`
-* `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce`
-* `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run`
-* `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce`
-
-{% hint style="info" %}
-In the command, replace `HKEY_CURRENT_USER` with `HKCU` and `HKEY_LOCAL_MACHINE` with `HKLM`
-{% endhint %}
-
-![](<../.gitbook/assets/image (4) (1) (2).png>)
-
-{% hint style="info" %}
-The actual outputs may be different depending on the Windows version being used, where newer versions have a "cleaner" output look (i.e., you won't see any output from Windows 7 unless you did something before). As long as you don't get an error, it is fine to continue with the lab.
-{% endhint %}
-
-The listed keys may be different but that is not an issue, what we are interested in is how those keys change when we modify them later. Because those keys are running every time the user logs in, we can attach malware to the run keys then it will become (virtually) permanent!
-
-Now, let's use a simple malware(?) code, which you can get from here:
+if __name__ == "__main__":
+    main()
 
 ```
-wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/windows_malware.cpp
-```
 
-The code actually doesn't do much other than display a message box. If it is placed into the run keys, then you will be greeted with the message every time you log in. Since the code needs to run on a Windows machine, you have to compile it for the target machine environment:
+Feel free to explore the dataset and the script to understand the data and the pre processing steps.  
+The script outputs in your terminal how many rows of data that a specific household has. This is a potential privacy breach as the data contains sensitive information about each household's daily activities
 
-```
-sudo apt-get install g++-mingw-w64-x86-64 -y
-```
+NOTE: Depending on where you downloaded the dataset, you may need to change the path in the script.
 
-{% hint style="warning" %}
-If you are using a 32-bit Windows VM, your compiler from kali should be:
+### 2.2.2 Re Identification Attack: Attacker Scenario
 
-`i686-w64-mingw32-g++`
+Let's assume the position of the attacker. The attacker has access to the publicly available machine learning model, but not the original dataset. Once again, their main objective is to determine if a specific household's water usage matches with the main dataset. The attacker can use the model's output to determine if a specific record was part of the training dataset.
 
-instead of:
+The attacker then begins by selecting a specific target household and obtaining their water usage data. Then it used the trained model to predict the water usage patterns of the target household. The attacker then compares the model's output with the actual water usage data of the target household. If the model's output is similar to the actual water usage data, the attacker can infer that the target household's data was part of the training dataset.
 
-`x86_64-w64-mingw32-g++`
+### 2.2.3 Privacy Implications
 
-The supplied binary is compiled for 64-bit Windows VM, so if you have a 32-bit Windows VM, then you need to use your own compiled executable file.
-{% endhint %}
+The successful execution of the Re Identification Attack raises serious privacy concerns for the water service company's customers. By exploiting the model's output, the attacker can deduce whether specific households are included in the training dataset, compromising their privacy.
 
-```
-x86_64-w64-mingw32-g++ -O2 windows_malware.cpp -o bad.exe -mwindows -I/usr/share/mingw-w64/include/ -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive
-```
+Furthermore, if the attacker identifies a household as part of the training dataset, they may infer sensitive information about the household's water usage habits, daily routines, and occupancy patterns. This information could be exploited for malicious purposes, such as targeted advertising, profiling, or even burglary.
 
-{% hint style="info" %}
-A good idea is to have a look at all the flags used and see what they do!
-{% endhint %}
+### 2.2.4 Re Identification Attack: Mitigation Techniques
 
-![](<../.gitbook/assets/image (9) (1) (1) (1).png>)
+There a a couple of techniques to mitigate the risk of Re Identification attacks, and some several strategy implementations are:
 
-Now move the executable `bad.exe` to your target Windows VM. You can also download a copy here from your Windows VM:
+Differential Privacy: By introduce noise to the training dataset or model predictions to prevent attackers from accurately inferring identification status.
 
-```
-wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/bad.exe
-```
+Limited Model Access: Restrict access to the trained model and ensure that only authorized personnel can query the model's predictions.
 
-{% hint style="info" %}
-If you don't have wget available, either install wget and use it, or just copy the web address on your browser to download the file.
-{% endhint %}
+Homomorphic Encryption: Encrypt the training dataset and model to prevent attackers from accessing sensitive information.
 
-Create a folder `test` inside the C drive i.e., `C:/test/bad.exe` (you can technically save it anywhere, but other scripts will use a hard-coded path so if you don't want to modify the path etc., use this instead). You can also execute it for testing - it should pop up in a message box.
+## Task 1
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+You are to perform a Re Identification Attack using the dataset above:
 
-The `bad.exe` only shows the message box, so we have to create a program that will insert this executable file into the registry keys. This is achieved using the `registry_script.cpp`.
+Complete the TODO section in the code below to perform the Re Identification Attack.  
+The code will train a machine learning model using the dataset, and then perform a Re Identification Attack on a specific target record. What you have to write is explained in the comments of the code.
 
-```
-wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/registry_script.cpp
-```
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 
-{% hint style="info" %}
-Inspect the `registry_script.cpp` and see how easy it is to modify the registry key!
-{% endhint %}
+# Load the dataset with semicolon as the separator
+data_path = 'water_data.csv'
+data = pd.read_csv(data_path, sep=';')
 
-Now compile the script:
+# Display the first few rows of the dataset
+X = data.drop(columns=['user.key'])
+y = data['user.key']
+print("Columns of the CSV file:", data.columns)
 
-```
-x86_64-w64-mingw32-g++ -O2 registry_script.cpp -o bad_script.exe -I/usr/share/mingw-w64/include/ -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive
-```
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(data.drop(columns=['user.key', 'datetime']), data['user.key'], test_size=0.2, random_state=42)
 
-![](<../.gitbook/assets/image (5) (2).png>)
+# Display the shapes of the training and testing sets
+print("Training set shape:", X_train.shape, y_train.shape)
+print("Testing set shape:", X_test.shape, y_test.shape)
 
-Before you run the `bad_script.exe`, let's first check the current status of the registry key (should be the same as when you first ran above).
+# Train a machine learning model using the training set
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
 
-```
-reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /s
-```
+# Model Evaluation
+# Predict the testing set and calculate the accuracy
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model accuracy: {accuracy}")
 
-<figure><img src="../.gitbook/assets/image (3) (4).png" alt=""><figcaption></figcaption></figure>
+# Perform Re Identification Attack
 
-You can see a row has been added when the `bad_script.exe` ran, which is pointing at the location of the malware we saved.
+# ------------TODO--------------
+def re_identification_attack(model, target_record):
 
-If you have disabled everything as needed, you won't see any notifications. However, sometimes you might be notified of this action when a new registry was added (if not all security measures were turned off). See the notification from Windows 10 below:
 
-![](<../.gitbook/assets/image (2) (1) (2).png>)
+    # Step 1: Predict Target Record: Use the predict method of the model to predict the target record. Remember to reshape the target record using reshape(1, -1) before passing it to the predict method.
+    #TODO
+    
+    # Step 2: Generate Synthetic Data: Create synthetic data by copying the target record and modifying one spefic feature. Can be a specific data value to make a syntehtic data point.
+    #TODO
+    
+    # Step 3: Predict Synthetic Data: Use the predict method again to predict the synthetic data point.
+    #TODO
+    
+    # Step 4: Return Result: Return True if the predictions are different (indicating re identification), and False otherwise.
+    return #TODO
 
-Nevertheless, now we can test that our persistent malware(?) is working correctly. Log out and log in again to see:
+#------------END TODO--------------
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+# Choose a target record for the attack
+target_index = 0
+target_record = X_test.iloc[target_index]
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-If you haven't set the security to the lowest level on Windows 7, you will be asked to run the malware executable.
-{% endhint %}
-
-Uh oh, the message box popped up (as expected)!
-
-Now imagine you wrote actual malware (whether by hand or using tools such as `msfvenom` \*cough cough\*) and did this!
-
-{% hint style="danger" %}
-Actually, if you do this to anyone else but yourself, you will go to jail, so please don't.
-{% endhint %}
-
-Finally, let's clean up the registry (so you don't have to see the message every time you log in):
+# Perform the Re Identification Attack
+is_member = re_identification_attack(model, target_record.values)
+print(f"Is target record a member of the training set? {'Yes' if is_member else 'No'}")
 
 ```
-Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "hack"
+
+STEPS TO COMPLETE THE TODO SECTION:
+
+Step 1: Predict Target Record: Use the predict method of the model to predict the target record. Remember to reshape the target record using reshape(1, -1) before passing it to the predict method.
+
+Step 2: Generate Synthetic Data: Create synthetic data by copying the target record and modifying one spefic feature. Can be a specific data value to make a syntehtic data point.
+
+Step 3: Predict Synthetic Data: Use the predict method again to predict the synthetic data point.
+
+Step 4: Return Result: Return True if the predictions are different (indicating re identification), and False otherwise.
+
+Hints:
+
+- Use the predict() method to retrieve the prediction of target and syntehtic data.
+- ONLY Modify one feature of the target record to isolate prediction.
+
+
+
+## 2.3 Task 2: Data Aggregation
+
+### 2.3.1 Overview
+
+Now with privacy concerns raised by the customers, the water company now decide to implement data aggregation techniques to help mitigate the privacy risks caused by a re identification attack or a re-identification attack. The goal of data aggregation is to make it harder for an attacker to identify specific individuals from a large data by extracting sensitive information. This way, data aggregation technique groups the data into larger clusters or intervals, where it gets harder to match if a known dataset matches with the target dataset specified.
+
+### 2.3.2 How it Works
+
+The concept of data aggregation is pretty simple, it aggregates the data into larger intervals making it harder to match. For example, if the water company has a dataset of water usage for each household, they can aggregate the data into larger intervals such as weekly or monthly usage. This way, it becomes harder for an attacker to match the known dataset with the target dataset. The data aggregation technique can be applied to both the training dataset and the model's predictions.
+
+## Task 2
+
+You are to write a python script that reads in the csv file given above and aggregate the data of each 'user.key' into larger intervals and outputs it into a new csv file. Attempt to use your working code of the attack in Task 1 and see if the value ot model prediction changes. Complete the TODO section in the code below to aggregate the data.
+
+```python
+import pandas as pd
+
+# Read the CSV file with semicolon delimiter, skipping the first row (header)
+df = pd.read_csv('water_data.csv', delimiter=';', skiprows=[0], names=['user.key', 'datetime', 'meter.reading', 'diff'])
+
+# TODO: Iterate through each row and convert 'datetime' column to datetime format
+
+# Set 'datetime' column as the index
+df.set_index('datetime', inplace=True)
+
+# Print the first few rows of the DataFrame to verify the changes
+print("DataFrame after converting 'datetime' column to datetime format:")
+print(df.head())
+
+# Resample data into 5-minute intervals and sum the values
+df_aggregated = df.resample('5T').sum()
+
+# Reset index to make 'datetime' column a column again
+df_aggregated.reset_index(inplace=True)
+
+# Print the first few rows of the aggregated DataFrame
+print("Aggregated DataFrame:")
+print(df_aggregated.head())
+
+# Write aggregated data to a new CSV file
+df_aggregated.to_csv('water/output_aggregated_5min.csv', index=False)
+print("Aggregated data saved to 'output_aggregated_5min.csv'")
 ```
 
-and check that it is indeed gone:
+## 2.4 Task 3: Privacy Techniques
 
-```
-reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /s
-```
+### 2.4.1 Differential Privacy
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+Now lets head over to privacy techniques that can be used to mitigate such risks of privacy breach. In this lab, two techniques will be discussed and they are Differential Privacy and Homomorphic Encryption.  
+Starting off with differential privacy (DP for short), its main technique is to add 'noise' to the data to mainly prevent attackers from accurately inferring re identification status which confirms if a specirfic record was part of a dataset. An easy way to understand it is , imagine you are in a crowded room, and you have a nosy neighbor hoping to know if a specific person is in the room. Due to the absolute noise, the neighbor cannot deduce if that specifric person is in the room or not. Same concept with differential privacy. We will be more focused on using differential privacy in this lab.
 
-## 2.2. Persistent Malware in Screensaver
 
-This is also related to the registry keys, but modifying the existing registry key (in particular, the screensaver) instead of the running keys used at the startup.
 
-There are other registry keys that could be modified, but the screensaver one is chosen so that we can see a timed malware execution instead of logging in.
+### 2.4.2 Homomorphic Encryption
 
-Screensavers are PE files with a `.scr` extension by default and settings are stored in the following registry keys:
+On the other hand, there is homomorphic encryption. What this does is it encrypts the training dataset and the model preventing attackers from accessing any sensitive information. Now what's interesting with this, as it is a homomorphic encryption, it allows the data itself to be encrypted and stay encrypted and to have computations to be done without any need of decrypting the information in the first place. It can be simplified into three main steps:
 
-```
-HKEY_CURRENT_USER\Control Panel\Desktop\ScreenSaveActive
-```
+- Encrypt the data: First the data is encrypted using a momorphic encryption algorithm.
+- Computation and training done on the encrypted data: The encrypted data is then used to train the model and perform computations. Interestingly, unlike any other traditional encryption algorithims, homomorphic encryption allows specific operations to be performed directly on the encrypted data.
+- Decrypt the results: The results are then decrypted to obtain the final output. After everything has been encrypted and computed, the result that is obtained is in its encrypted form, and using the decryption key from the original algorithm method, the ciphertext is decrypted to obtain the final output.
 
-You can check that ScreenSaveActive is on by:
+## Task 3
 
-```
-reg query "HKCU\Control Panel\Desktop" /s
-```
+Your last task for this lab is to complete the differential privacy code below. From the same csv file downloaded above, your task is to use DP on the 'meter.reading' column and add noise to the data. The code below is a template to get you started.
 
-and find `ScreenSaveActive` has value 1 (indicating it is enabled).
+```python
 
-![](<../.gitbook/assets/image (9) (2).png>)
+import pandas as pd
+import numpy as np
 
-Two other key registry keys important here are:
+def add_noise(value, epsilon):
+    scale = 1 / epsilon
+    noise = np.random.laplace(scale=scale)
+    return value + noise
 
-* `HKEY_CURRENT_USER\Control Panel\Desktop\ScreenSaveTimeOut` - sets user inactivity timeout before the screensaver is executed.
-* `HKEY_CURRENT_USER\Control Panel\Desktop\SCRNSAVE.EXE` - set the app path to run.
+def apply_differential_privacy(input_file, output_file, epsilon):
+    # TODO
 
-For this exercise, we will use the same malware from the previous section (i.e., `bad.exe` we created). So nothing to do for this one. But we do need a different script to modify the screensaver-related registry keys, which you can find here:
+def main():
+    input_file = 'water_data.csv'
+    output_file = 'output.csv'
+    epsilon = 1.0  # Privacy budget
+    apply_differential_privacy(input_file, output_file, epsilon)
+    print("Differential privacy applied successfully to the CSV file.")
 
-```
-wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/screensaver_script.cpp
-```
-
-{% hint style="info" %}
-As before, inspect the `screensaver_script.cpp` and see how the registry keys are changed.
-{% endhint %}
-
-Now compile the script:
-
-```
-x86_64-w64-mingw32-g++ -O2 screensaver_script.cpp -o bad_script2.exe -I/usr/share/mingw-w64/include/ -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive
+if __name__ == "__main__":
+    main()
 ```
 
-{% hint style="info" %}
-If you have access to the PowerShell (also possible on cmd) using a reverse shell (or similar), you can directly modify the registry without compiling the code above:
+Deducing the code above, we can see there are two functions apart from the main function. Once again, in general, applying DP is basically taking in the original data and add noise to it.
 
-```
-New-ItemProperty -Path 'HKCU:\Control Panel\Desktop\' -Name 'ScreenSaveTimeOut' -Value '10'
-New-ItemProperty -Path 'HKCU:\Control Panel\Desktop\' -Name 'SCRNSAVE.EXE' -Value 'C:\test\bad.exe'
-```
-{% endhint %}
+add_noise() function: This function takes in two parameters, the value and the epsilon. The value is the original data and the epsilon is the privacy budget. The function then adds noise to the value and returns the value with noise. What is privacy budget (epsilon)? It is the main parameter that determines how much 'noise' is added to the data. The smaller the value, the more noise is added and more privacy is preserved. Counterwise, the larger the value, the less noise is added. Feel free to play around with the epsilon value to see how it affects the noise data.
 
-![](<../.gitbook/assets/image (3) (2).png>)
+apply_differential_privacy() function: This function takes in three parameters, the input file, the output file and the epsilon. This is your TODO function. Use this function to read the csv file, add noise and create a new column in the csv file with the noisy data. From there see how much the value changes.
 
-Check if the registry keys are enabled (it should not be on a fresh Windows install, but just in case), and disable them if they are:
+## Task 4 (Optional)
 
-```
-reg query "HKCU\Control Panel\Desktop" /s
-Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'ScreenSaveTimeOut'
-Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'SCRNSAVE.EXE'
-```
+If you have time and would like to proceed further, you can attempt to implement homomorphic encryption on the dataset. This is an optional task and is not required to complete the lab. Feel free to explore and implement homomorphic encryption on the dataset.
 
-{% hint style="info" %}
-They may not exist (not enabled), then you will just see error messages.
-{% endhint %}
+Create a simple python script that reads in the csv file and encrypts the data using homomorphic encryption. Feel free to use any homomorphic encryption library of your choice. Once the data is encrypted, perform some simple computations on the encrypted data and decrypt the results to obtain the final output. Some notable libraries for HE are PySEAL and TenSEAL. Do note that PySEAL does not work properly with Python3, therefore if you would like to use this library, you would have to use Python2.7. (Use a new environment, virtual machine, or docker container)
 
-Now run our malicious script on our target Windows VM and check the registry keys again:
+## Summary
 
-```
-wget https://github.com/uwacyber/cits3006/raw/2023S2/cits3006-labs/files/bad_script2.exe
-```
-
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
-
-So we have successfully added the registry keys using our script!
-
-To test, just log out and log in again, then wait 10 seconds (or slightly more, if the VM is slow).
-
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
-
-Voila! As the screensaver runs (the background went dark), our malware also gets executed! At this point, you can get out of the screensaver and wait another 10 seconds to see it repeat. Every time the screensaver runs, the malware gets executed.
-
-Once done experimenting, don't forget to tidy up your registry keys:
-
-```
-Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'ScreenSaveTimeOut'
-Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'SCRNSAVE.EXE'
-reg query "HKCU\Control Panel\Desktop" /s
-```
-
-{% hint style="info" %}
-The malicious scripts must run to modify the registry keys so once we manually remove them, they don't get modified unless we run the scripts again.
-{% endhint %}
-
-## 2.3 Summary
-
-In this lab, we covered how to create persistent malware, through running keys and the screensaver application - both through modifying the registry keys. Of course, these are specific to Windows OS, but the concept applies the same with other OSes (Linux, Mac etc.), where almost all OSes have startup scripts (e.g., crontab on Linux) and screensavers.
-
-Next up, Reverse Engineering.
-
-Preparation: You will be assessed on Lab 1, Lab 2 and related lecture materials in Lab Quiz 1 (details of the time and venue, please see the announcements).
-
-Credit: materials adopted from @cocomelonc with some fixes/adjustments. -->
+In this lab, you have learned about the concept of Re-Identification Attack and how it can be used to determine if a specific record was part of the training dataset. You have also learned about data aggregation and how it can be used to mitigate the privacy risks caused by a re-identification attack. Finally, you have learned about differential privacy and how it can be used to add noise to the data to prevent attackers from accurately inferring re identification status and knowing if the data is actually part of the training set or not. You have also learned about homomorphic encryption and how it can be used to encrypt the training dataset and model to prevent attackers from accessing sensitive information.
