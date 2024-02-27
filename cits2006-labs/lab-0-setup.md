@@ -98,7 +98,8 @@ Redirection directs data in and out of files, i.e.
 
 `# Redirect stdout to file`\
 `echo "Hello world" > helloworld.txt`\
-``\ `# Redirect stdout to the end of a file`\ `echo "world." >> hello.txt`\``\
+`# Redirect stdout to the end of a file`\ 
+`echo "world." >> hello.txt`\
 `# Redirect a file to stdin`\
 `more < helloworld.txt`
 
