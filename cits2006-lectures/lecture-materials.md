@@ -21,15 +21,17 @@ Note that materials are still being updated as noted below.
 * Complete [lab 1](../cits2006-labs/lab-1-hashing-and-blockchain.md).
 
 
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
-
-
 ## Week 03
 
 * [03. Privacy](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/03.Privacy.pdf)
 * Complete [lab 2](../cits2006-labs/lab-2-privacy.md).
+
+
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
 
 
 ## Week 04
