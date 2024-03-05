@@ -114,7 +114,7 @@ if __name__ == "__main__":
 ```
 
 Feel free to explore the dataset and the script to understand the data and the pre processing steps.  
-The script outputs in your terminal how many rows of data that a specific household has. This is a potential privacy breach as the data contains sensitive information about each household's daily activities
+The script outputs in your terminal how many rows of data that a specific household has. This is a potential privacy breach as the data contains sensitive information about each household's daily activities.
 
 NOTE: Depending on where you downloaded the dataset, you may need to change the path in the script.
 
@@ -221,7 +221,7 @@ Step 4: Return Result: Return True if the predictions are different (indicating 
 
 Hints:
 
-- Use the predict() method to retrieve the prediction of target and syntehtic data.
+- Use the predict() method to retrieve the prediction of target and synthetic data.
 - ONLY Modify one feature of the target record to isolate prediction.
 
 
