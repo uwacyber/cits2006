@@ -65,6 +65,10 @@ The `get_hotp_toke` function is the main one, where the hashing algorithm hmac i
 Complete the `verify_totp` function to make it work properly. You will need to use the `get_hotp_token` function to generate the token, and then compare it with the token provided by the user. You will also need to use the `time` library to get the current time, also remembering that the token is supposed to expire after 10 seconds by default. The passed in `token` is the user-input, which means you should generate the possible tokens using the same password in the last 10 seconds and compare it with the user-input token.
 
 
+{% hint style="danger" %}
+More tasks coming soon...
+{% endhint %}
+
 <!-- {% hint style="danger" %}
 READ: Any knowledge and techniques presented here are for your learning purposes only. It is **ABSOLUTELY ILLEGAL** to apply the learned knowledge to others without proper consent/permission, and even then, you must check and comply with any regulatory restrictions and laws.
 {% endhint %}
