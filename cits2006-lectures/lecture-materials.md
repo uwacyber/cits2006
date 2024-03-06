@@ -63,9 +63,9 @@ The below has not been updated yet.
 * No new lab this week.
 
 
-## Week 08 (ANZAC Day)
+## Week 08
 
-* No new lecture.
+* [08. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/08.SMA.pdf)
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 * Project release this week (40%).
   * group formation.
@@ -73,14 +73,14 @@ The below has not been updated yet.
 
 ## Week 09
 
-* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.SMA.pdf)
+* [09. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.Proactive\_Cybersecurity.pdf)
 * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
 * Project task 1 due Friday 5pm (TBC).
 
 
 ## Week 10
 
-* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_Cybersecurity.pdf)
+* [10. AI and Security](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.AI\_and\_security.pdf)
 * Project demo/live session in scheduled labs.
 
 
