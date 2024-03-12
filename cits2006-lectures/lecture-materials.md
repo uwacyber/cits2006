@@ -36,14 +36,14 @@ The below has not been updated yet.
 
 ## Week 04
 
-* [04. Access Control](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/04.Access\_Control.pdf)
+* [04. Security Management](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/04.Security\_Management.pdf)
 * Lab Quiz 1 this week (20%).
 * No new lab this week.
 
 
 ## Week 05
 
-* [05. Protocols and Tools](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/05.Protocols\_and\_Tools.pdf)
+* [05. Access Control](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/05.Access\_Control.pdf)
 * Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
 
 
@@ -52,7 +52,7 @@ The below has not been updated yet.
 
 ## Week 06
 
-* [06. IDS](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/06.IDS.pdf)
+* [06. Protocols and Tools](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/06.Protocols\_and\_Tools.pdf)
 * Complete [lab 4](../cits2006-labs/lab-4-protocols-and-tools.md).
 
 
@@ -65,7 +65,7 @@ The below has not been updated yet.
 
 ## Week 08
 
-* [08. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/08.SMA.pdf)
+* [08. IDS](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/08.IDS.pdf)
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 * Project release this week (40%).
   * group formation.
@@ -73,20 +73,20 @@ The below has not been updated yet.
 
 ## Week 09
 
-* [09. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.Proactive\_Cybersecurity.pdf)
+* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.SMA.pdf)
 * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
 * Project task 1 due Friday 5pm (TBC).
 
 
 ## Week 10
 
-* [10. AI and Security](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.AI\_and\_security.pdf)
+* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_Cybersecurity.pdf)
 * Project demo/live session in scheduled labs.
 
 
 ## Week 11
 
-* [11. Security Management](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/11.Security\_Management.pdf)
+* [11. AI and Security](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/11.AI\_and\_security.pdf)
 * Lab Quiz 3 this week (20%).
 * Project task 3 due Friday 5pm (TBC).
 
