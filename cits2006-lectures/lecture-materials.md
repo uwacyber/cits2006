@@ -27,18 +27,18 @@ Note that materials are still being updated as noted below.
 * Complete [lab 2](../cits2006-labs/lab-2-privacy.md).
 
 
+## Week 04
+
+* [04. Security Management](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/04.Security\_management.pdf)
+* Lab Quiz 1 this week (20%).
+* No new lab this week.
+
+
 
 {% hint style="warning" %}
 The below has not been updated yet.
 {% endhint %}
 
-
-
-## Week 04
-
-* [04. Security Management](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/04.Security\_Management.pdf)
-* Lab Quiz 1 this week (20%).
-* No new lab this week.
 
 
 ## Week 05
