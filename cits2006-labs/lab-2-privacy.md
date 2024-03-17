@@ -42,7 +42,6 @@ import csv
 import os
 
 relative_path = os.path.join('water')
-#r_folder_format = 'swm_trialA_{}K.csv'
 r_folder_format = 'water_data.csv'
 w_folder_format = 'households_{}'
 w_file_format = os.path.join('households_{}', '{}.csv')
@@ -234,41 +233,80 @@ Now with privacy concerns raised by the customers, the water company now decide 
 
 ### 2.3.2 How it Works
 
-The concept of data aggregation is pretty simple, it aggregates the data into larger intervals making it harder to match. For example, if the water company has a dataset of water usage for each household, they can aggregate the data into larger intervals such as weekly or monthly usage. This way, it becomes harder for an attacker to match the known dataset with the target dataset. The data aggregation technique can be applied to both the training dataset and the model's predictions.
+The concept of data aggregation is pretty simple, it aggregates the data into larger intervals making it harder to match. For example, if the water company has a dataset of water usage for each household, they can aggregate the data into larger intervals such as daily, weekly or monthly usage. This way, it becomes harder for an attacker to match the known dataset with the target dataset. The data aggregation technique can be applied to both the training dataset and the model's predictions.
 
 ## Task 2
 
-You are to write a python script that reads in the csv file given above and aggregate the data of each 'user.key' into larger intervals and outputs it into a new csv file. Attempt to use your working code of the attack in Task 1 and see if the value ot model prediction changes. Complete the TODO section in the code below to aggregate the data.
+You are to complete the given python script that reads in the csv file given above and aggregate the data into larger intervals and outputs it into a new csv file. Attempt to use your working code of the attack in Task 1 and see if the value ot model prediction changes. Complete the TODO section in the code below to aggregate the data. The given CSV file is in minute interval, change it to daily interval.
 
 ```python
 import pandas as pd
 
-# Read the CSV file with semicolon delimiter, skipping the first row (header)
-df = pd.read_csv('water_data.csv', delimiter=';', skiprows=[0], names=['user.key', 'datetime', 'meter.reading', 'diff'])
+# Read the CSV file
+df = pd.read_csv('water_data.csv', delimiter=';')
 
-# TODO: Iterate through each row and convert 'datetime' column to datetime format
+# Convert 'datetime' column to datetime format
+df['datetime'] = pd.to_datetime(df['datetime'], format='%d/%m/%Y %H:%M:%S')
 
 # Set 'datetime' column as the index
 df.set_index('datetime', inplace=True)
 
-# Print the first few rows of the DataFrame to verify the changes
-print("DataFrame after converting 'datetime' column to datetime format:")
-print(df.head())
+# TO:DO Resample data into daily intervals and calculate the average meter reading for each day
+# HINT : Look at Pandas dataframe.resample() method
 
-# Resample data into 5-minute intervals and sum the values
-df_aggregated = df.resample('5T').sum()
 
-# Reset index to make 'datetime' column a column again
-df_aggregated.reset_index(inplace=True)
-
-# Print the first few rows of the aggregated DataFrame
-print("Aggregated DataFrame:")
-print(df_aggregated.head())
+# Reset index to make 'datetime' and 'user.key' columns again
+df_aggregated = df_aggregated.reset_index()
 
 # Write aggregated data to a new CSV file
-df_aggregated.to_csv('water/output_aggregated_5min.csv', index=False)
-print("Aggregated data saved to 'output_aggregated_5min.csv'")
+df_aggregated.to_csv('output_aggregated_daily.csv', index=False)
+print("Aggregated data saved to 'output_aggregated_daily.csv'")
+
 ```
+ Here is a example solution of what the before and after the aggregation of the csv file should look like. The before csv file is the original dataset and the after csv file is the aggregated dataset. 
+
+ Hourly Data (Before Aggregation)
+
+ ```
+user.key;datetime;meter.reading;diff
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 01:19:43;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 02:19:43;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 03:19:43;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 04:19:43;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 05:39:54;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 06:39:54;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 07:39:54;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 08:39:54;68321;0
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 09:19:43;68326;5
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 10:19:43;68338;12
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 11:19:43;68344;6
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 12:19:43;68349;5
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 13:22:48;68355;6
+1f8730a9-5d67-4895-9215-6e247087ea00;01/03/2016 14:22:48;68367;12
+ ```
+
+ Aggregated Data (After Aggregation)
+
+ ```
+ user.key;datetime;meter.reading;diff
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-01,68347.4
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-02,68493.17391304347
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-03,68771.53846153847
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-04,68927.05263157895
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-05,69108.57142857143
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-06,69315.17391304347
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-07,69480.2
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-08,69836.5294117647
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-09,70142.47368421052
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-10,70275.5
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-11,70334.70833333333
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-12,70765.375
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-13,71041.875
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-14,71194.22222222222
+1f8730a9-5d67-4895-9215-6e247087ea00,2016-03-15,71450.5
+ ```
+
+Feel free to tinker with the code, and you can change the interval of the aggregation to see how it affects the data.
 
 ## 2.4 Task 3: Privacy Techniques
 
