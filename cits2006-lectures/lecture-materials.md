@@ -34,17 +34,18 @@ Note that materials are still being updated as noted below.
 * No new lab this week.
 
 
+## Week 05
+
+* [05. Access Control](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/05.Access\_Control.pdf)
+* Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
+
+
+
 
 {% hint style="warning" %}
 The below has not been updated yet.
 {% endhint %}
 
-
-
-## Week 05
-
-* [05. Access Control](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/05.Access\_Control.pdf)
-* Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
 
 
 ## Mid-semester break
