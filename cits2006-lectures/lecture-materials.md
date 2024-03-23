@@ -40,15 +40,15 @@ Note that materials are still being updated as noted below.
 * Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
 
 
+## Mid-semester break
+
+
 
 
 {% hint style="warning" %}
 The below has not been updated yet.
 {% endhint %}
 
-
-
-## Mid-semester break
 
 
 ## Week 06
