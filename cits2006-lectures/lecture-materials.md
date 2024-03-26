@@ -54,7 +54,7 @@ The below has not been updated yet.
 ## Week 06
 
 * [06. Protocols and Tools](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/06.Protocols\_and\_Tools.pdf)
-* Complete [lab 4](../cits2006-labs/lab-4-protocols-and-tools.md).
+* Complete [lab 4](../cits2006-labs/lab-4-vulnerability-analysis.md).
 
 
 ## Week 07
