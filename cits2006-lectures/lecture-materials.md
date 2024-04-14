@@ -49,6 +49,13 @@ Note that materials are still being updated as noted below.
 * Complete [lab 4](../cits2006-labs/lab-4-vulnerability-analysis.md).
 
 
+## Week 07
+
+* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/07.Threat\_intelligence.pdf)
+* Lab Quiz 2 this week (20%).
+* No new lab this week.
+
+
 
 
 {% hint style="warning" %}
@@ -56,12 +63,6 @@ The below has not been updated yet.
 {% endhint %}
 
 
-
-## Week 07
-
-* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/07.Threat\_Intelligence.pdf)
-* Lab Quiz 2 this week (20%).
-* No new lab this week.
 
 
 ## Week 08
