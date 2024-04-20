@@ -31,10 +31,19 @@ Please note that you are required to submit an individual report, so you should 
 
 Complete Task 0 Group forming by end of week 8 (i.e., by Friday 26 April).
 
-<!--
-## Task 1: Configure a Vulnerable Box for Pentesting Exercise (Week 9)
 
-Your group of renowned cybersecurity experts is conducting a security exercise for your pen testers. This is done by building a vulnerable web server (you can use any kind of theme you would like). Then the pen testers are tasked to find those vulnerabilities you have “hidden” in the vulnerable web server. The VM must have the following attributes:
+## Task 1: Configure security solutions as per requirements (Week 9-11)
+
+Your group is a renowned cybersecurity experts hired to provide security solutions to the RapidoBank (RBa) filesystem. There were several features requested by the RBa CEO Monte:
+
+* Customised Yara engine to detect improper files in their filesystems.
+* Customised cipher system and hashing algorithm to protect their files.
+* Customised Moving Target Defence (MTD) to change protection settings.
+* Customised security recommendations to improve their data security when attacks are detected.
+
+
+
+is conducting a security exercise for your pen testers. This is done by building a vulnerable web server (you can use any kind of theme you would like). Then the pen testers are tasked to find those vulnerabilities you have “hidden” in the vulnerable web server. The VM must have the following attributes:
 
 * 3 network-based vulnerabilities.
 * 3 types of web-based vulnerabilities (e.g., SQLi, XSS).
@@ -67,6 +76,7 @@ What does "Quality" mean? In the context of this project, it means that you are 
 Of course, you will need to meet all requirements to receive marks for other tasks, which means your contributions may vary (i.e., you might have to cover for other members if needed).
 {% endhint %}
 
+<!--
 ## Task 2: Live Demo of the Configured Vulnerable Box (Week 10)
 
 Your group will demonstrate live the configured vulnerable box during the scheduled lab. All members are expected to attend the scheduled session, and be able to demonstrate the contributed portion of the configurations as required (however, how you perform demonstration is up to the group i.e., a single presenter could perform the demo if it seems more appropriate).
