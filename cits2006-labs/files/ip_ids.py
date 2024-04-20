@@ -41,9 +41,9 @@ def live_alert():
 # 104.154.89.105 - badssl.com
 
 def main():
-    # live_monitoring() # ctrl + C to stop
+    live_monitoring() # ctrl + C to stop
     # process_pcap('test.pcap')
-    live_alert() # ctrl + C to stop
+    # live_alert() # ctrl + C to stop
 
 if __name__ == '__main__':
     main()
