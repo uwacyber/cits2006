@@ -31,7 +31,7 @@ Please note that you are required to submit an individual report, so you should 
 
 Complete Task 0 Group forming by end of week 8 (i.e., by Friday 26 April).
 
-
+<!-- 
 ## Task 1: Configure security solutions as per requirements (Week 9-11)
 
 Your group is a renowned cybersecurity experts hired to provide security solutions to the RapidoBank (RBa) filesystem. There were several features requested by the RBa CEO Monte:
