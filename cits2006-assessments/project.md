@@ -17,7 +17,7 @@ This project is to be carried out as a group.
 
 You are to form your own group, but your group must meet the following requirements:
 
-* The group's average grade from LQ1 and LQ2 must not exceed 73 (i.e., add all LQ marks, divide it by 2 (i.e., there are 2 LQs), then divide by the number of members). If you don't want to reveal your marks, you can employ multiparty encryption, or as a last resort you can form the group first and contact me to check whether your group meets this eligibility or not.
+* The group's average grade from LQ1 must not exceed 73 (i.e., add all LQ marks then divide by the number of members). If you don't want to reveal your marks, you can employ multiparty encryption, or as a last resort you can form the group first and contact me to check whether your group meets this eligibility or not.
 
 The number of members should be 5 (4 or 6 may be considered - requires approval).
 
