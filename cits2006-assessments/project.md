@@ -111,13 +111,13 @@ The live demo will be no longer than 30 mins, you should aim it to be around 20 
 <table>
     <thead>
         <tr>
-            <th width="200">Component</th>
-            <th width="100">Weight</th>
-            <th width="200">N</th>
-            <th width="200">P</th>
-            <th width="200">CR</th>
-            <th width="200">D</th>
-            <th width="200">HD</th>
+            <th width="250">Component</th>
+            <th width="80">Weight</th>
+            <th width="250">N</th>
+            <th width="250">P</th>
+            <th width="250">CR</th>
+            <th width="250">D</th>
+            <th width="250">HD</th>
         </tr>
     </thead>
     <tbody>
