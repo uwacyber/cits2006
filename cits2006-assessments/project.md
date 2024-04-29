@@ -28,6 +28,12 @@ Please note that you are required to submit an individual report, so you should 
 
 Complete Task 0 Group forming by end of week 8 (i.e., by Friday 26 April).
 
+{% hint style="info" %}
+Please note:
+* You have your group report and your INDIVIDUAL report to submit by the due date.
+* Late penalty, which is 5% per day from the raw mark, is applied to all members for the group report and demo.
+* You may use any resources to complete this project, including any code/script/tool/software available, including ChatGPT and alike tools - just make sure you comply with the requirements below which do specify some restrictions.
+{% endhint %}
 
 ## Main Task: Configure security solutions as per requirements (Week 9-11)
 
