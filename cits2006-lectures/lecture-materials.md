@@ -56,7 +56,6 @@ Note that materials are still being updated as noted below.
 * No new lab this week.
 
 
-
 ## Week 08
 
 * [08. IDS](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/08.ids.pdf)
@@ -65,27 +64,28 @@ Note that materials are still being updated as noted below.
   * group formation.
 
 
+## Week 09
+
+* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.Security_modelling_and_analysis.pdf)
+
+
 {% hint style="warning" %}
 The below has not been updated yet.
 {% endhint %}
 
 
-## Week 09
-
-* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.SMA.pdf)
-* Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
-
-
 ## Week 10
 
 * [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_Cybersecurity.pdf)
+* Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
 
 
 ## Week 11
 
 * [11. AI and Security](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/11.AI\_and\_security.pdf)
 * Lab Quiz 3 this week (20%).
-* Project report due Friday 5pm (TBC).
+* Project report due Friday 5pm.
+
 
 ## Week 12
 
