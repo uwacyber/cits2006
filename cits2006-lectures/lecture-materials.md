@@ -71,7 +71,7 @@ Note that materials are still being updated as noted below.
 
 ## Week 10
 
-* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_Cybersecurity.pdf)
+* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_security.pdf)
 * Sorry no lab 6...
 <!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
 
