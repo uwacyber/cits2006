@@ -30,7 +30,7 @@ Complete Task 0 Group forming by end of week 8 (i.e., by Friday 26 April).
 
 {% hint style="info" %}
 Please note:
-* You have your group report and your INDIVIDUAL report to submit by the due date.
+* You have your group report and your INDIVIDUAL report (along with any supplementary materials) to submit by the due date.
 * Late penalty, which is 5% per day from the raw mark, is applied to all members for the group report and demo.
 * You may use any resources to complete this project, including any code/script/tool/software available, including ChatGPT and alike tools - just make sure you comply with the requirements below which do specify some restrictions.
 {% endhint %}
@@ -81,8 +81,8 @@ Regular security recommendations are generated based on the information collecte
 ### Main task todo:
 
 1. Complete all security feature implementations.
-2. By Friday 5pm of week 11, your group leader must submit the group report on LMS outlining the implementation of the security features. This report will be used during the live demo as a guideline for the marker, and any new security features/implementations not in the report will not be counted toward the grade. 
-3. You must also submit your individual report on LMS (by Friday 5pm of week 11). This should outline your contribution to the group project clearly and concisely. Remember, quality over quantity.
+2. By Friday 5pm of week 11, your group leader must submit the group report and any supplementary materials (e.g., code) on LMS outlining the implementation of the security features. This report will be used during the live demo as a guideline for the marker, and any new security features/implementations not in the report will not be counted toward the grade. 
+3. You must also submit your individual report and any supplementary materials on LMS (by Friday 5pm of week 11). This should outline your contribution to the group project clearly and concisely. Remember, quality over quantity.
 4. The group leader must schedule your demo slot from the available slots provided on MS Teams -> Project Discussion -> CITS2006 Project Groups -> Demo booking (week 12).
 
 {% hint style="warning" %}
@@ -101,8 +101,8 @@ Your group will demonstrate your layered security implementation during the sche
 ### **Demonstration preparation:**
 1. The group leader must book the group demonstration slot on the MS Teams -> Project Discussion -> CITS2006 Project Groups -> Demo booking (week 12).
 2. Ensure all group members can attend the session.
-3. Ensure the group report is submitted by the due date (Friday 5 pm of week 11).
-4. Ensure the individual report is submitted by the due date (Friday 5 pm of week 11).
+3. Ensure the group report and supplementary materials are submitted by the due date (Friday 5 pm of week 11).
+4. Ensure the individual report and supplementary materials are submitted by the due date (Friday 5 pm of week 11).
 5. The demo should demonstrate the functionality of defence features implemented.
 
 
@@ -128,7 +128,7 @@ The live demo will be no longer than 30 mins, you should aim it to be around 20 
     </thead>
     <tbody>
         <tr>
-            <td>Configuring a layered defence (report)</td>
+            <td>Configuring a layered defence (group submission)</td>
             <td>50%</td>
             <td>(1) Attempts were made, but none of the security features are functional.<br><br>(2) Report is not aligned with the demo and difficult to comprehend.</td>
             <td>(1) Implemented almost all security features outlined and functional with reasonable justifications and discussions provided.<br><br>(2) Report aligns with the demo but is lacking details and legibility.</td>
@@ -146,7 +146,7 @@ The live demo will be no longer than 30 mins, you should aim it to be around 20 
             <td>(1) Demo demonstrated the functionality of security features clearly and professionally.<br><br>(2) Group answered the questions precisely with technical reasoning and justifications.</td>
         </tr>
         <tr>
-            <td>Individual report</td>
+            <td>Individual submission</td>
             <td>30%</td>
             <td>No or nearly none evidence of contributions made to the project.</td>
             <td>(1) Made some contribution to the project, demonstrating some defensive cybersecurity skills.<br><br>(2) Shows some indication of research done, exploring new defensive cybersecurity skills not covered in the class.</td>
