@@ -107,8 +107,20 @@ Your group will demonstrate your layered security implementation during the sche
 
 
 {% hint style="info" %}
-The live demo will be no longer than 30 mins, you should aim it to be around 20 mins demonstration and 10 mins for Q&A.
+The live demo will be no longer than 30 mins, you should aim it to be around 20 mins demonstration with Q&A throughout the demo.
 {% endhint %}
+
+
+## Peer Evaluation
+You are to submit peer evaluation of your group members, including yourself of the contribution made for the project. The link will be provided to you on MS Teams. The value you enter will be between 0 and 1, where 0 indicates no contribution and 1 indicates expected contribution. For example, if the peer completed given tasks, you should give your peer 1. If they didn't complete some given tasks, but completed most, you may give 0.9, and so on. The peer evaluation is due by the end of week 12.
+
+The actual value for you is calculated by removing minimum and maximum values, then computing MAX(average, median) using the remaining 3 values.
+
+Your contribution factor is based on the majority vote (e.g., 2 members gave you 0 and the other 2 and yourself gave you 1, then the median will be 1). This factor will then be multiplied to your group project marks.
+
+Why are we doing this? This is to ensure that all members are contributing to the project. If you are not contributing, you will not receive the full marks for the project. This aligns with the assessment policy where marks are given to work completed and presented by students, and therefore students who do not contribute cannot receive marks.
+
+
 
 
 
