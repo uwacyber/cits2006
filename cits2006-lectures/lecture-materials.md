@@ -15,6 +15,12 @@ Note that materials are still being updated as noted below.
 * Complete [lab 0](../cits2006-labs/lab-0-setup.md).
 
 
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
+
 ## Week 02
 
 * [02. Cryptography](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/02.Cryptography.pdf)
@@ -74,11 +80,6 @@ Note that materials are still being updated as noted below.
 * [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_security.pdf)
 * Sorry no lab 6...
 <!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
-
-
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
 
 
 ## Week 11

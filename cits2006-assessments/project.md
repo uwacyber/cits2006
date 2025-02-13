@@ -1,5 +1,8 @@
 # Project
-In this project, you will be working as a group to perform defensive cybersecurity techniques. 
+
+This is coming soon...
+
+<!-- In this project, you will be working as a group to perform defensive cybersecurity techniques. 
 Please note, you are expected to conduct further research to learn more about various defensive cybersecurity techniques and use them in this project.
 
 More details are as follows.
@@ -167,7 +170,7 @@ Why are we doing this? This is to ensure that all members are contributing to th
             <td>(1) Made major contributions in the project, demonstrating advanced defensive cybersecurity skills.<br><br>(2) Shows a comprehensive level of research done, exploring new and advanced defensive cybersecurity skills not covered in the class.</td>
         </tr>
     </tbody>
-</table>
+</table> -->
 
 
 
