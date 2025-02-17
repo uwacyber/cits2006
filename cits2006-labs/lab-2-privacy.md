@@ -29,7 +29,7 @@ Run the wget command to download the dataset.
 Before you start, download the files you need:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/water_data.csv
+wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/water_data.csv
 ```
 
 {% endhint %}

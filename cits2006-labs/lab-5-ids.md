@@ -15,7 +15,7 @@ If you are stuck getting Jupyter notebook running, it is a good time to seek hel
 {% hint style="info" %}
 Before you start, download the files you need:
 ```
-wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/ids.zip
+wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/ids.zip
 ```
 {% endhint %}
 

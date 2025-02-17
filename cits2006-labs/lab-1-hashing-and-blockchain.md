@@ -66,7 +66,7 @@ One-way hash functions are not necessarily collision-free. Collision-free means 
 You are given a oneway.py file:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/oneway.py
+wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/oneway.py
 ```
 
 Open and inspect the code. It tests a one-way property of hash functions. It currently implements MD5, but you can easily replace that with other hash functions to test. 
@@ -75,7 +75,7 @@ Open and inspect the code. It tests a one-way property of hash functions. It cur
 Similar to the one-way property checking code provided above, you can check the collision-free property of hash functions. You may use the template collisionfree.py:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/collisionfree.py
+wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/collisionfree.py
 ```
 
 Complete the code and examine the collision-free property of various hash functions.
@@ -93,13 +93,13 @@ Now we will look at blockchain, which is a distributed ledger technology that is
 You are given the almost complete code already, which you will complete the rest as part of this lab:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/blockchain.py
+wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/blockchain.py
 ```
 
 And you will need this for creating new transactions later:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2024/cits2006-labs/files/blockchain_transaction.py
+wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/blockchain_transaction.py
 ```
 
 If you inspect the code, it has three attributes:
