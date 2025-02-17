@@ -10,8 +10,8 @@ Note that materials are still being updated as noted below.
 
 ## Week 01
 
-* [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/01a.Introduction.pdf)
-* [01b. Defence Overview](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/01b.Defence_overview.pdf)
+* [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/01a.Introduction.pdf)
+* [01b. Defence Overview](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/01b.Defence_overview.pdf)
 * Complete [lab 0](../cits2006-labs/lab-0-setup.md).
 
 
@@ -23,26 +23,26 @@ The below has not been updated yet.
 
 ## Week 02
 
-* [02. Cryptography](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/02.Cryptography.pdf)
+* [02. Cryptography](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/02.Cryptography.pdf)
 * Complete [lab 1](../cits2006-labs/lab-1-hashing-and-blockchain.md).
 
 
 ## Week 03
 
-* [03. Privacy](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/03.Privacy.pdf)
+* [03. Privacy](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/03.Privacy.pdf)
 * Complete [lab 2](../cits2006-labs/lab-2-privacy.md).
 
 
 ## Week 04
 
-* [04. Security Management](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/04.Security\_management.pdf)
+* [04. Security Management](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/04.Security\_management.pdf)
 * Lab Quiz 1 this week (20%).
 * No new lab this week.
 
 
 ## Week 05
 
-* [05. Access Control](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/05.Access\_Control.pdf)
+* [05. Access Control](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/05.Access\_Control.pdf)
 * Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
 
 
@@ -51,20 +51,20 @@ The below has not been updated yet.
 
 ## Week 06
 
-* [06. Security Tools](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/06.Security\_Tools.pdf)
+* [06. Security Tools](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/06.Security\_Tools.pdf)
 * Complete [lab 4](../cits2006-labs/lab-4-vulnerability-analysis.md).
 
 
 ## Week 07
 
-* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/07.Threat\_intelligence.pdf)
+* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/07.Threat\_intelligence.pdf)
 * Lab Quiz 2 this week (20%).
 * No new lab this week.
 
 
 ## Week 08
 
-* [08. IDS](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/08.ids.pdf)
+* [08. IDS](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/08.ids.pdf)
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 * Project release this week (40%).
   * group formation.
@@ -72,19 +72,19 @@ The below has not been updated yet.
 
 ## Week 09
 
-* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/09.Security_modelling_and_analysis.pdf)
+* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/09.Security_modelling_and_analysis.pdf)
 
 
 ## Week 10
 
-* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/10.Proactive\_security.pdf)
+* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/10.Proactive\_security.pdf)
 * Sorry no lab 6...
 <!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
 
 
 ## Week 11
 
-* [11. AI and Security](https://github.com/uwacyber/cits2006/raw/2024/cits2006-lectures/11.AI\_and\_security.pdf)
+* [11. AI and Security](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/11.AI\_and\_security.pdf)
 * Lab Quiz 3 this week (20%).
 * Project report due Friday 5pm.
 
