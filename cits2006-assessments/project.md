@@ -1,8 +1,6 @@
 # Project
 
-This is coming soon...
-
-<!-- In this project, you will be working as a group to perform defensive cybersecurity techniques. 
+In this project, you will be working as a group to improve cybersecurity in community.
 Please note, you are expected to conduct further research to learn more about various defensive cybersecurity techniques and use them in this project.
 
 More details are as follows.
@@ -11,85 +9,43 @@ More details are as follows.
 The standard UWA late penalty applies to ALL members if you defer your group deliverable/demo (i.e., -5% per day from raw marks for 7 days, then 0).
 {% endhint %}
 
-## Pretask: Group forming (week 8)
+## Pretask: Group forming (week 3)
 
-This project is to be carried out as a group.
-
-You are to form your own group, but your group must meet the following requirements:
-
-* The group's average grade from LQ1 must not exceed 73 (i.e., add all LQ marks then divide by the number of members). If you don't want to reveal your marks, you can employ multiparty encryption, or as a last resort you can form the group first and contact me to check whether your group meets this eligibility or not.
+This project is to be carried out as a group, and you are to form your own group. If you don't have a group, you can find one in the labs or using MS Teams. Do not expect me to put you in a group, because I won't and you won't have a group.
 
 The number of members should be 5 (4 or 6 may be considered - requires approval).
 
 {% hint style="info" %}
-If the group's average grade is higher than 73, and you cannot find an appropriate group, you should contact me. I will either allocate you to a different group or allow an exemption. You are encouraged to find group members at the labs and using MS Teams. The only time I will allocate you to a group is if your currently formed group's average grade is higher than 73.
+You are encouraged to find group members at the labs and using MS Teams. 
 {% endhint %}
 
 Once the group has been formed, go to MS Teams -> Project Discussion, and there is the "CITS2006 Project Groups" tab. There is a "Group details" tab, where you enter your group details (group name, group leader (main contact) and members' student IDs). The group leader will also contact me to confirm the group formation. Once confirmed, you may start with Task 1 below.
 
-Please note that you are required to submit an individual report, so you should also be keeping records of individual contributions so that individual assessment components can be evaluated later. Please note that this doesn't mean you are competing with your group members, but instead, a chance to demonstrate your own skills and contributions to the project.
+Please note that you are required to indicate clearly of the individual contributions of the project, so you should also be keeping records of individual contributions so that individual assessment components can be evaluated later. No individual contribution means you will not get any marks for that component. Please note that this doesn't mean you are competing with your group members, but instead, a chance to demonstrate your own skills and contributions to the project.
 
-Complete Task 0 Group forming by end of week 8 (i.e., by Friday 26 April).
+Complete Task 0 Group forming by end of week 3 (i.e., by Friday 14 March).
 
 {% hint style="info" %}
 Please note:
-* You have your group report and your INDIVIDUAL report (along with any supplementary materials) to submit by the due date.
+* You have your group report (along with any supplementary materials) to submit by the due date.
 * Late penalty, which is 5% per day from the raw mark, is applied to all members for the group report and demo.
 * You may use any resources to complete this project, including any code/script/tool/software available, including ChatGPT and alike tools - just make sure you comply with the requirements below which do specify some restrictions.
 {% endhint %}
 
-## Main Task: Configure security solutions as per requirements (Week 9-11)
+## Task 1: Security issues in the community (weeks 4 - 6)
 
-Your group is formed of renowned cybersecurity experts hired to provide security solutions to the RapidoBank (RBa) filesystem. You can setup the filesystem like a server of your choice of OS. There were several features requested by the RBa CEO Monte:
+You are to investigate the security issues in the community. This could be a community of your choice, such as a school, a small business, a local government, etc. You are to identify the security issues in the community and provide a report on the security issues identified. The report should include the following:
 
-* Customised Yara engine to detect improper files in their filesystems.
-* Customised cipher system and hashing algorithm to protect their files.
-* Customised Moving Target Defence (MTD) to change protection settings.
-* Customised security recommendations to improve their data security when attacks are detected.
+1. Communities investigated.
+2. Security issues identified.
+3. Details and impact of the security issues identified.
+4. Recommendations to mitigate the security issues identified.
 
-How each of these security features operate is up to your group. However, consider usability, effectiveness and practicality when implementing these features and how they would operate in your implementation.
+Please note, this exercise does not only involve vulnerability patching, but could also involve security awareness, policy, and other security measures to improve the security posture of the community. Also, not only cybersecurity but also physical security could be considered.
 
-### Yara engine
-Your Yara engine must be able to do the following:
-
-1. Detect malware in the filesystem.
-2. Detect hidden files containing sensitive information (i.e., files were not encrypted but hidden by user(s) by mistake).
-3. Detect scripts.
-4. Detect executables accessing network resources.
-5. Detect malicious URLs an executable file is trying to access.
-6. Detect custom signatures (e.g., a specific string or pattern) you might find in the filesystem.
-
-How you define each of these requirement is up to your group, but to get high marks, they must be comprehensive, reasonable and practical. You can use the Yara rules provided in the labs as a starting point, but you are expected to create your own rules to detect these files, as well as do further research to make them comprehensive. Make sure to prepare examples to demonstrate the above features.
-
-### Cipher system and hashing algorithm
-The cipher system is used to encrypt sensitive files in the RBa filesystem. To confuse the attackers, multiple cipher systems are used randomly (see later MTD how it can change the cipher system). The length of the cipher key should be 50 characters long. You must NOT use any cryptography libraries for this task. You don't have to build a commercial-grade cipher system for this task, but ensure that the cipher system is functional. 
-
-The hashing algorithm is used to hash the files in the filesystem to detect any changes made to the files. The length of the hash should be 50 characters long. You must NOT use any cryptography libraries for this task. You should consider the hash algorithm's properties, such as one-way, collision-free (see lab 1 for a refresher), and other properties that make it suitable for this task.
-
-Make sure you have a discussion about the cipher system and hashing algorithm you are implementing, and provide justifications for your choices. You should also provide examples to demonstrate how the cipher system and hashing algorithm work.
-
-### Moving Target Defence (MTD)
-Implement a Moving Target Defence (MTD) system to change protection settings. This could be a system that changes the encryption key, the hashing algorithm, or the cipher system used to encrypt the files. The MTD system should be able to change the protection settings based on the following:
-
-* an alert has been raised by the Yara engine.
-* a file has been added/modified/deleted in the filesystem.
-* a certain time interval has passed.
-
-The actual MTD you implement is up to your group, but make sure to provide valid justifications and analysis on why you chose the MTD system you implemented. You should also provide examples to demonstrate how the MTD system works.
-
-### Security recommendations
-Regular security recommendations are generated based on the information collected from the security features above. How and what security recommendations are to be generated will be up to your group, but they must be relevant to the security information provided from the above security features (i.e., cannot be generic, repetitive, etc.).
-
-
-### Main task todo:
-
-1. Complete all security feature implementations.
-2. By Friday 5pm of week 11, your group leader must submit the group report and any supplementary materials (e.g., code) on LMS outlining the implementation of the security features. This report will be used during the live demo as a guideline for the marker, and any new security features/implementations not in the report will not be counted toward the grade. 
-3. You must also submit your individual report and any supplementary materials on LMS (by Friday 5pm of week 11). This should outline your contribution to the group project clearly and concisely. Remember, quality over quantity.
-4. The group leader must schedule your demo slot from the available slots provided on MS Teams -> Project Discussion -> CITS2006 Project Groups -> Demo booking (week 12).
 
 {% hint style="warning" %}
-DON'T do everything yourself. This is not a race among the group members. If you read the rubric on individual reports, the marks are based on your ability to demonstrate defensive cybersecurity skills, which means QUALITY over QUANTITY (i.e., you don't have to get full marks in other tasks to receive full marks for your individual report).
+DON'T do everything yourself. This is not a race among the group members. If you read the rubric on individual contributions, the marks are based on your ability to demonstrate defensive cybersecurity skills, which means QUALITY over QUANTITY (i.e., you don't have to get full marks in other tasks to receive full marks for your individual report).
 
 What does "Quality" mean? In the context of this project, it means that you are able to not only demonstrate skills you have learned in the unit, but have also researched and applied more advanced skills derived from further research into the topic. That is, you are expected to conduct further research to learn more about various defensive cybersecurity techniques and use them in this project.
 
@@ -97,17 +53,23 @@ Of course, you will need to meet all requirements to receive marks for other tas
 {% endhint %}
 
 
-## Demonstration: Live Demo of the Configured Layered Defence (Week 12)
+## Task 2: Enhancing security in the community (weeks 7 - 11)
 
-Your group will demonstrate your layered security implementation during the scheduled lab. All members are expected to attend the scheduled session, and be able to demonstrate the contributed portion of the implementations as required (however, how you perform demonstration is up to the group i.e., a single presenter could perform the demo if it seems more appropriate).
+Based on the security issues identified in Task 1, you are to enhance the security of the chosen community entity. Based on the security recommendatations, your group is to implement them. You are to provide a report on the security enhancements implemented. The report should include the following:
 
-### **Demonstration preparation:**
-1. The group leader must book the group demonstration slot on the MS Teams -> Project Discussion -> CITS2006 Project Groups -> Demo booking (week 12).
-2. Ensure all group members can attend the session.
-3. Ensure the group report and supplementary materials are submitted by the due date (Friday 5 pm of week 11).
-4. Ensure the individual report and supplementary materials are submitted by the due date (Friday 5 pm of week 11).
-5. The demo should demonstrate the functionality of defence features implemented.
+1. Security enhancements implemented.
+2. Justifications for the security enhancements implemented.
+3. Details of the security enhancements implemented.
+4. Impact of the security enhancements implemented.
+5. Feedback from the community entity of the solutions implemented.
 
+Finally, create a short video (no more than 1 minute) indicating the problem faced and the solution implemented. Upload it on a platform where you can share it (e.g., YouTube). The link should be included in the report near the top.
+
+
+
+## Task 3: Project report and demo (week 12)
+
+You are to submit a group report on the security enhancements implemented. The report should include the details provided in Tasks 1 and 2 above. The demo will be conducted in the scheduled labs in week 12. The demo is for your group to showcase the security enhancements implemented and elaborate on the impact it had in the community. 
 
 {% hint style="info" %}
 The live demo will be no longer than 30 mins, you should aim it to be around 20 mins demonstration with Q&A throughout the demo.
@@ -121,7 +83,7 @@ The actual value for you is calculated by removing minimum and maximum values, t
 
 Your contribution factor is based on the majority vote (e.g., 2 members gave you 0 and the other 2 and yourself gave you 1, then the median will be 1). This factor will then be multiplied to your group project marks.
 
-Why are we doing this? This is to ensure that all members are contributing to the project. If you are not contributing, you will not receive the full marks for the project. This aligns with the assessment policy where marks are given to work completed and presented by students, and therefore students who do not contribute cannot receive marks.
+Why are we doing this? This is to ensure that all members are contributing to the project to the expectations of all members. If you are not contributing, you will not receive the full marks for the project. This aligns with the assessment policy where marks are given to work completed and presented by students, and therefore students who do not contribute cannot receive marks.
 
 
 
@@ -143,25 +105,34 @@ Why are we doing this? This is to ensure that all members are contributing to th
     </thead>
     <tbody>
         <tr>
-            <td>Configuring a layered defence (group submission)</td>
-            <td>50%</td>
-            <td>(1) Attempts were made, but none of the security features are functional.<br><br>(2) Report is not aligned with the demo and difficult to comprehend.</td>
-            <td>(1) Implemented almost all security features outlined and functional with reasonable justifications and discussions provided.<br><br>(2) Report aligns with the demo but is lacking details and legibility.</td>
-            <td>(1) Implemented almost all security features outlined, fully functional with detailed justification and discussions.<br><br>(2) Report aligns with the demo with full details in well formatted document.</td>
-            <td>(1) Implemented all security features outlined, reflecting research with comprehensive details in implementations.<br><br>(2) Report aligns with the demo and is professionally formatted.</td>
-            <td>(1) Implemented all security features outlined, with state-of-the-art or high specifications of the security details applied.<br><br>(2) Report aligns with the demo and is formatted professionally. Explanations are concise and easily understood, using various visual techniques to support the explanations and discussions.</td>
-        </tr>
-        <tr>
-            <td>Demonstration</td>
+            <td>Discovering community entities and their security issues</td>
             <td>20%</td>
-            <td>(1) Demo failed to demonstrate the implemented security features.<br><br>(2) Group did not answer the questions sufficiently.</td>
-            <td>(1) Demo demonstrated the functionality of security features.<br><br>(2) Group answered the questions but failed to provide sufficient details or reasonings.</td>
-            <td>(1) Demo demonstrated the functionality of security features clearly.<br><br>(2) Group answered the questions with sufficient details and reasonings.</td>
-            <td>(1) Demo demonstrated the functionality of security features clearly and comprehensively.<br><br>(2) Group answered the questions with sufficient details and reasonings.</td>
-            <td>(1) Demo demonstrated the functionality of security features clearly and professionally.<br><br>(2) Group answered the questions precisely with technical reasoning and justifications.</td>
+            <td>Unable to identify security issues in the community.</td>
+            <td>(1) Some community entities were found, but the security details are general and not comprehensive.<br><br>(2) Mitigations are described but of generic nature and lacks details.</td>
+            <td>(1) Community entities were found, and the security details are clear and descriptive.<br><br>(2) Mitigations are described with sufficient details.</td>
+            <td>(1) Various community entities were found, and the security details are clear and comprehensive.<br><br>(2) Advanced mitigations are described with sufficient details and reasonings.</td>
+            <td>(1) Many community entities were found, and the security details are clear and comprehensive.<br><br>(2) Advanced and practical mitigations are described with sufficient details and reasonings.</td>
         </tr>
         <tr>
-            <td>Individual submission</td>
+            <td>Enhancing the security of chosen community entity</td>
+            <td>30%</td>
+            <td>(1) Security solutions were not implemented.<br><br>(2) Details of the security implementations are not provided.<br><br>(3) Had minimum or no impact to the community.</td>
+            <td>(1) Basic security solutions were implemented, but not comprehensive.<br><br>(2) Details of the security implementations are provided but lacks clarity, details and justifications.<br><br>(3) Had some impact to the community.</td>
+            <td>(1) Security solutions were implemented, demonstrating a variety of defensive cybersecurity skills.<br><br>(2) Details of the security implementations are provided with clarity, details and justifications.<br><br>(3) Had a reasonable impact to the community.</td>
+            <td>(1) Advanced security solutions were implemented, demonstrating a variety of defensive cybersecurity skills.<br><br>(2) Details of the security implementations are provided with clarity, details and justifications.<br><br>(3) Had a significant impact to the community.</td>
+            <td>(1) Advanced and practical security solutions were implemented, demonstrating advanced defensive cybersecurity skills.<br><br>(2) Comprehensive details of the security implementations are provided with clarity, details and justifications.<br><br>(3) Had a significant and positive impact to the community.</td>
+        </tr>
+        <tr>
+            <td>Demonstration and highlight video</td>
+            <td>20%</td>
+            <td>(1) Demo failed to demonstrate the implemented security features.<br><br>(2) Group did not answer the questions sufficiently.<br><br>(3) Highlight video is not provided or is incomprehensive.</td>
+            <td>(1) Demo demonstrated the functionality of security features.<br><br>(2) Group answered the questions but failed to provide sufficient details or reasonings.<br><br>(3) Highlight video is understandable but lacks impact.</td>
+            <td>(1) Demo demonstrated the functionality of security features clearly.<br><br>(2) Group answered the questions with sufficient details and reasonings.<br><br>(3) Highlight video is of good quality and showcases the impact of the project.</td>
+            <td>(1) Demo demonstrated the functionality of security features clearly and comprehensively.<br><br>(2) Group answered the questions with sufficient details and reasonings.<br><br>(3) Highlight video is of high quality with key components clearly captured and explained.</td>
+            <td>(1) Demo demonstrated the functionality of security features clearly and professionally.<br><br>(2) Group answered the questions precisely with technical reasoning and justifications.<br><br>(3) Highlight video is outstanding, impactful and informative.</td>
+        </tr>
+        <tr>
+            <td>Individual contributions</td>
             <td>30%</td>
             <td>No or nearly none evidence of contributions made to the project.</td>
             <td>(1) Made some contribution to the project, demonstrating some defensive cybersecurity skills.<br><br>(2) Shows some indication of research done, exploring new defensive cybersecurity skills not covered in the class.</td>
@@ -170,7 +141,7 @@ Why are we doing this? This is to ensure that all members are contributing to th
             <td>(1) Made major contributions in the project, demonstrating advanced defensive cybersecurity skills.<br><br>(2) Shows a comprehensive level of research done, exploring new and advanced defensive cybersecurity skills not covered in the class.</td>
         </tr>
     </tbody>
-</table> -->
+</table> 
 
 
 
