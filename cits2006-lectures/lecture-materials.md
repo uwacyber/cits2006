@@ -15,12 +15,6 @@ Note that materials are still being updated as noted below.
 * Complete [lab 0](../cits2006-labs/lab-0-setup.md).
 
 
-
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
-
-
 ## Week 02
 
 * [02. Cryptography](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/02.Cryptography.pdf)
@@ -31,6 +25,13 @@ The below has not been updated yet.
 
 * [03. Privacy](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/03.Privacy.pdf)
 * Complete [lab 2](../cits2006-labs/lab-2-privacy.md).
+
+
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
 
 
 ## Week 04
