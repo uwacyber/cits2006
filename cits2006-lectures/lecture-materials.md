@@ -13,6 +13,7 @@ Note that materials are still being updated as noted below.
 * [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/01a.Introduction.pdf)
 * [01b. Defence Overview](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/01b.Defence_overview.pdf)
 * Complete [lab 0](../cits2006-labs/lab-0-setup.md).
+* Portfolio specs given out.
 
 
 ## Week 02
@@ -28,26 +29,25 @@ Note that materials are still being updated as noted below.
 
 
 
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
-
-
-
 ## Week 04
 
-* [04. Security Management](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/04.Security\_management.pdf)
-* Lab Quiz 1 this week (20%).
-* No new lab this week.
+* [04. Access Control](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/04.Access\_Control.pdf)
+* Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
+
 
 
 ## Week 05
 
-* [05. Access Control](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/05.Access\_Control.pdf)
-* Complete [lab 3](../cits2006-labs/lab-3-access-control.md).
+* [05. Security Management](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/05.Security\_management.pdf)
+* Lab Quiz 1 this week (20%).
+* No new lab this week.
 
 
-## Mid-semester break
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
 
 
 ## Week 06
@@ -69,6 +69,9 @@ The below has not been updated yet.
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 * Project release this week (40%).
   * group formation.
+
+
+## Mid-semester break
 
 
 ## Week 09
