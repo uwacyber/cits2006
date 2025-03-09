@@ -79,8 +79,8 @@ class Blockchain:
     def proof_of_work(self, last_block):
         """
         Bitcoin's SHA-256 mining algorithm:
-        - Find a number p' such that hash(pp') contains leading 4 zeroes, where p is the previous p'
-        - p is the previous proof, and p' is the new proof
+        - Find a number p' such that hash(pp'h) contains leading 4 zeroes, where:
+        - p is the previous proof, and p' is the new proof, and h is the hash of the previous block
 
         :param last_block: <dict> last Block
         :return: <int>
