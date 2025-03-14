@@ -53,6 +53,9 @@ Of course, you will need to meet all requirements to receive marks for other tas
 {% endhint %}
 
 
+<!-- Have a demo or some sort of submission system after T1 to check the findings/progress -->
+
+
 ## Task 2: Enhancing security in the community (weeks 7 - 11)
 
 Based on the security issues identified in Task 1, you are to enhance the security of the chosen community entity. Based on the security recommendatations, your group is to implement them. You are to provide a report on the security enhancements implemented. The report should include the following:
