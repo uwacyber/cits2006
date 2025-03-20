@@ -49,26 +49,26 @@ B10.&nbsp; Talk to 2 cybersecurity experts from the industry and find out their 
 
 ### Contribution Activities
 
-C1.	Teach your friends about cybersecurity topic of your choice.
-C2.	Teach your family about cybersecurity topic of your choice.
-C3.	Teach an elderly person about cybersecurity topic of your choice.
-C4.	Survey the current state-of-the-art solutions in cybersecurity.
-C5. 	Implement one of the current state-of-the-art solution and evaluate it.
-C6.	Contribute to an open-source project related to cybersecurity.
-C7. 	Implement a security solution of your choice and put it on your GitHub.
-C8. 	Find and fix a vulnerability from a GitHub project.
-C9. 	Enhance the security of a GitHub project.
-C10. 	Design and implement a cybersecurity learning activity.
-C11.	Enhance the cybersecurity of a website from your community.
-C12.	Enhance the cybersecurity at your home.
-C13.	Test an intrusion detection system and discuss its effectiveness.
-C14.	Design and implement access control of your choice.
-C15.	Design and implement a threat intelligence module of your choice.
-C16. 	Design and implement a privacy-preserving technique for an appropriate application.
-C17.	Help another student in this unit struggling to understand/learn a cybersecurity concept.
-C18.	Apply a learned concept in this unit to a real-world application/problem/environment.
-C19.	Produce a cyber safety flyer for (choose 1): elders, high school students, CEOs, Uni students.
-C20.	Complete an online cybersecurity module.
+C1. Teach your friends about cybersecurity topic of your choice.
+C2. Teach your family about cybersecurity topic of your choice.
+C3. Teach an elderly person about cybersecurity topic of your choice.
+C4. Survey the current state-of-the-art solutions in cybersecurity.
+C5. Implement one of the current state-of-the-art solution and evaluate it.
+C6. Contribute to an open-source project related to cybersecurity.
+C7. Implement a security solution of your choice and put it on your GitHub.
+C8. Find and fix a vulnerability from a GitHub project.
+C9. Enhance the security of a GitHub project.
+C10. Design and implement a cybersecurity learning activity.
+C11. Enhance the cybersecurity of a website from your community.
+C12. Enhance the cybersecurity at your home.
+C13. Test an intrusion detection system and discuss its effectiveness.
+C14. Design and implement access control of your choice.
+C15. Design and implement a threat intelligence module of your choice.
+C16. Design and implement a privacy-preserving technique for an appropriate application.
+C17. Help another student in this unit struggling to understand/learn a cybersecurity concept.
+C18. Apply a learned concept in this unit to a real-world application/problem/environment.
+C19. Produce a cyber safety flyer for (choose 1): elders, high school students, CEOs, Uni students.
+C20. Complete an online cybersecurity module.
 
 
 ## Submission
