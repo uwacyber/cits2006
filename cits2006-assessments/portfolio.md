@@ -35,16 +35,16 @@ A20.	Discover 10 different types of locks in use.
 
 ### Participation Activities
 
-B1.	Participate in 3 in-class activities in labs (facilitators will administer such activities).
-B2.	Attend 2 cybersecurity related talks/seminars.
-B3. 	Attend 2 cyber ethics/law related talks/seminars.
-B4. 	Participate in CS/cybersecurity clubs’ activity.
-B5.	Participate in a hackathon.
-B6. 	Participate in a cybersecurity activity as part of job/internship/volunteering etc.
-B7. 	Participate in a discussion with your friends about cybersecurity event.
-B8. 	Participate in an online cybersecurity discussion.
-B9.	Participate in an industry-related cybersecurity event.
-B10.	Talk to 2 cybersecurity experts from the industry and find out their latest projects.
+B1.&nbsp; Participate in 3 in-class activities in labs (facilitators will administer such activities).
+B2.&nbsp; Attend 2 cybersecurity related talks/seminars.
+B3.&nbsp; Attend 2 cyber ethics/law related talks/seminars.
+B4.&nbsp; Participate in CS/cybersecurity clubs’ activity.
+B5.&nbsp; Participate in a hackathon.
+B6.&nbsp; Participate in a cybersecurity activity as part of job/internship/volunteering etc.
+B7.&nbsp; Participate in a discussion with your friends about cybersecurity event.
+B8.&nbsp; Participate in an online cybersecurity discussion.
+B9.&nbsp; Participate in an industry-related cybersecurity event.
+B10.&nbsp; Talk to 2 cybersecurity experts from the industry and find out their latest projects.
 
 
 ### Contribution Activities
@@ -97,6 +97,6 @@ Below are some additional guidelines and tips.
 ## Marking Scheme
 
 Each activity is worth 2 marks. There are 50 activities, a total of 100 marks is achievable in this assessment.
-0 mark	This means you did not complete the activity (no submission/completion, or unsatisfactory attempt has been made).
-1 mark	This means your activity completion is satisfactory.
-2 marks	This means your activity completion is outstanding.
+0 mark:	This means you did not complete the activity (no submission/completion, or unsatisfactory attempt has been made).
+1 mark:	This means your activity completion is satisfactory.
+2 marks:	This means your activity completion is outstanding.
