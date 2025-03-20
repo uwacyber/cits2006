@@ -19,5 +19,6 @@
 
 ## CITS2006 Assessments
 
+* [Portfolio](cits2006-assessments/portfolio.md)
 * [Lab Quizzes](cits2006-assessments/lab-quizzes.md)
 * [Project](cits2006-assessments/project.md)

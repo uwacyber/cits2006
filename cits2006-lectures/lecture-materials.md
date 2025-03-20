@@ -65,10 +65,9 @@ The below has not been updated yet.
 
 ## Week 08
 
-* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/07.Threat\_intelligence.pdf)
-* Lab Quiz 2 this week (20%).
-* No new lab this week.
-
+* [08. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/09.Security_modelling_and_analysis.pdf)
+* Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
+* This is the last lab.
 
 
 
@@ -77,25 +76,26 @@ The below has not been updated yet.
 
 ## Week 09
 
-* [09. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/09.Security_modelling_and_analysis.pdf)
-* Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
-* This is the last lab.
+* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/10.Proactive\_security.pdf)
+* Lab Quiz 2 timed take-home this week (20%).
+<!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
+
 
 ## Week 10
 
-* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/10.Proactive\_security.pdf)
-* Lab Quiz 2 this week (20%).
-<!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
+* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/07.Threat\_intelligence.pdf)
+* Lab Quiz 2 Demo this week.
+
 
 
 ## Week 11
 
 * [11. AI and Security](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/11.AI\_and\_security.pdf)
-
+* Project report due Friday 11.59pm (submission via LMS).
 
 
 ## Week 12
 
 * 12\. Guest Lecture and/or Unit Review (TBC)
-* Project demo/live session in scheduled labs.
+* Project demo in scheduled labs.
 * Portfolio due.
