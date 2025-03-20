@@ -58,17 +58,17 @@ The below has not been updated yet.
 
 ## Week 07
 
-* [08. IDS](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/08.ids.pdf)
+* [07. IDS](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/07.ids.pdf)
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 
 
 
 ## Week 08
 
-* [08. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/09.Security_modelling_and_analysis.pdf)
+* [08. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/08.Security_modelling_and_analysis.pdf)
 * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
 * This is the last lab.
-
+<!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
 
 
 ## Mid-semester break
@@ -76,14 +76,13 @@ The below has not been updated yet.
 
 ## Week 09
 
-* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/10.Proactive\_security.pdf)
+* [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/09.Proactive\_security.pdf)
 * Lab Quiz 2 timed take-home this week (20%).
-<!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
 
 
 ## Week 10
 
-* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/07.Threat\_intelligence.pdf)
+* [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/10.Threat\_intelligence.pdf)
 * Lab Quiz 2 Demo this week.
 
 
