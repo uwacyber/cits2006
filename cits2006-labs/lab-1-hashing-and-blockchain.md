@@ -52,7 +52,7 @@ To understand the properties of one-way hash functions, we will setup an experim
 
 1. Hash the text "This is a hash message" and generate the hashvalue H1 using a specific hash algorithm (e.g., MD5, SHA256).
 2. Hash the text "This ir a hash message" and generate the hashvalue H2 using the same hash algorithm. Note that a letter 's' has been changed to 'r'.
-3. Observe whether H1 and H2 (both should be saved onto files) are similar or not. You should write a simple program to compare how many bits are the same between H1 and H2.
+3. Observe whether H1 and H2 (both should be saved onto files) are similar or not. You should write a simple program to compare how many bytes are the same between H1 and H2.
 
 #### TASK 2 Write the program to compare the hash values
 Write a program to compare the hash values H1 and H2. The program should compare the hash values byte by byte and count how many bytes are the same. Discuss your observation with your peers and/or the lab facilitator.
