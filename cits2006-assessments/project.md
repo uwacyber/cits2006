@@ -9,6 +9,16 @@ More details are as follows.
 The standard UWA late penalty applies to ALL members if you defer your group deliverable/demo (i.e., -5% per day from raw marks for 7 days, then 0).
 {% endhint %}
 
+{% hint style="important" %}
+You should show the below information to the community entities you wish to engage with:
+
+The students in this unit completing the project below are learning more about defensive cybersecurity, and the project is for them to explore some vulnerabilities found in our communities’ systems and see if they can improve/enhance it. Having said that, they are not professionals, so they won’t be comprehensive, but rather focused on their learning through these activities. Regardless, they still need owner’s permission to carry out any active scanning and whatnot.
+
+As a owner of the system, you can provide permission and/or access to our students things that you are happy for them to see. If required, you may ask them, myself and other teaching team to sign an NDA, as me and some teaching staff will be marking their submissions outlining the system details they found/have access to. Even if we trust our students, it is best practice to have them sign NDA, and any other required contracts (if necessary) for them to inspect your system, especially if it is not public facing. 
+
+Thank you for working with our students and their journey to learn more about cybersecurity, we wish to improve the cybersecurity posture of our community through these exercises, and your help is greatly appreciated.
+{% endhint %}
+
 ## Pretask: Group forming (week 3)
 
 This project is to be carried out as a group, and you are to form your own group. If you don't have a group, you can find one in the labs or using MS Teams. Do not expect me to put you in a group, because I won't and you won't have a group.
