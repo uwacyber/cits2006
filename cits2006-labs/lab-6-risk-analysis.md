@@ -146,5 +146,8 @@ In this lab, we have learned about attack trees and how to implement them. We ha
 
 
 
+{% hint style="info" %}
+This is the last lab! Please remember to complete your portfolio and the project, and revise completed labs for the upcoming lab quiz.
+{% endhint %}
 
 
