@@ -15,7 +15,7 @@
 * [Lab 3: Access Control](cits2006-labs/lab-3-access-control.md)
 * [Lab 4: Vulnerability Analysis](cits2006-labs/lab-4-vulnerability-analysis.md)
 * [Lab 5: IDS](cits2006-labs/lab-5-ids.md)
-* [Lab 6: Risk Analysis](cits2006-labs/lab-6-risk-analysis.md)
+* [Lab 6: Security Modelling and Analysis](cits2006-labs/lab-6-security-modelling-and-analysis.md)
 
 ## CITS2006 Assessments
 

@@ -1,5 +1,5 @@
-# Lab 6: Risk Analysis
-Risk Analysis is a critical component of cybersecurity, enabling organizations to identify, assess, and prioritise risks to their information systems. This lab will cover attack trees to better understand security modelling and analysis approaches.
+# Lab 6: Security Modelling and Analysis
+Security Modelling and Analysis is a critical component of cybersecurity, enabling organizations to identify, assess, and prioritise risks to their information systems. This lab will cover attack trees to better understand security modelling and analysis approaches.
 
 ## 5.1. Attack Trees
 Attack Trees are a graphical representation of potential attacks on a system. They help in understanding the various ways an attacker can compromise a system and the steps involved in each attack.

@@ -43,13 +43,6 @@ Note that materials are still being updated as noted below.
 * No new lab this week.
 
 
-
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
-
-
-
 ## Week 06
 
 * [06. Security Tools](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/06.Security\_Tools.pdf)
@@ -62,13 +55,11 @@ The below has not been updated yet.
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 
 
-
 ## Week 08
 
 * [08. Security Modelling and Analysis](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/08.Security_modelling_and_analysis.pdf)
-* Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md).
+* Complete [lab 6](../cits2006-labs/lab-6-security-modelling-and-analysis.md).
 * This is the last lab.
-<!-- * Complete [lab 6](../cits2006-labs/lab-6-risk-analysis.md). -->
 
 
 ## Mid-semester break
@@ -78,6 +69,13 @@ The below has not been updated yet.
 
 * [10. Proactive Cybersecurity](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/09.Proactive\_security.pdf)
 * Lab Quiz 2 timed take-home this week (20%).
+
+
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
 
 
 ## Week 10
