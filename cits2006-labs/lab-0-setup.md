@@ -1,19 +1,21 @@
 # Lab 0: Linux and Networking
 
+## Lab 0: Linux and Networking
+
 This lab is a refresher/crash course on Linux and Networking. So please do these, as you will make yourself more efficient at carrying out the rest of the labs and project later on. For the environment setup, you should be fine using your host machine for most tasks as it would involve some coding in Python (or other selected languages), but if other environment is needed (e.g., VMs, Docker), we will advise you accordingly. The instructions on how to set these up is available from CITS1003 page, so it won't be repeated here. Okay, then let's dig into Linux first!
 
-## 0.1 Linux refresher
+### 0.1 Linux refresher
 
 This lab is to provide a refresher on your Linux knowledge, and you can do this on your Kali VM. You may skim/skip through this lab if you feel confident, but if you haven't done much in Linux for a while (a semester or two), you are strongly advised to complete this lab before moving on to other labs to improve your workflow efficiency. For each example, you should try it yourself before moving on to the next section.
 
-### 0.1.1. Distributions
+#### 0.1.1. Distributions
 
 The base system of Linux comes in many different distributions which contain different packages and features written by different groups. These are referred to as distros for short, and they have a wide variety of different uses, purposes, systems, features, and fan bases. This guide will attempt to be distro-independent, however, a few of the more popular distros are listed:
 
 | <p>· Ubuntu</p><p>· Debian</p><p>· Fedora</p><p>· Linux Mint</p> | <p>· Red Hat</p><p>· CentOS</p><p>· Arch Linux</p><p>· Gentoo</p> |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
 
-### 0.1.2. Package manager and repositories
+#### 0.1.2. Package manager and repositories
 
 Each distribution comes with a package manager, which handles software installed on the system and has a number of remote repositories from which it gets its software. For example, Ubuntu (also Kali) uses a package manager called aptitude (apt for short). You can type:
 
@@ -29,7 +31,7 @@ to install the Mozilla Firefox web browser. It will search the remote repositori
 will install Firefox on a Fedora machine. You can also install multiple package managers on any one distro, but as they say\_: too many cooks spoil the broth\_.
 {% endhint %}
 
-### 0.1.3. The Terminal
+#### 0.1.3. The Terminal
 
 **0.1.3.1. Commands**
 
@@ -71,9 +73,9 @@ These are some extra commands which aren't totally essential but are certainly h
 `su ------ # Switch user`\
 `tty ----- # Display which tty you are on`
 
-####
 
-#### **0.1.3.2. Shortcuts**
+
+**0.1.3.2. Shortcuts**
 
 Every key pressed ends a character to the terminal, and you can send different characters by holding down keys like \[Ctrl] or \[Alt]. This is how the shell can tell what key is pressed, and thus, allow shortcuts to be defined. Some of the more useful keyboard shortcuts are defined:
 
@@ -85,9 +87,9 @@ Every key pressed ends a character to the terminal, and you can send different c
 * `Ctrl + Z :` Send the currently running process to the background
 * `Ctrl + L :` Clear the screen, same as running the clear command
 
-####
 
-#### 0.1.3.3. **Piping and redirection**
+
+**0.1.3.3. Piping and redirection**
 
 There are a number of little quirks that the shell has that gives it more functionality. Piping takes the `stdout` of the left program and connects it (i.e. _pipes_ it) into `stdin` of the right program with the pipe operator `|`. For example:
 
@@ -98,14 +100,13 @@ Redirection directs data in and out of files, i.e.
 
 `# Redirect stdout to file`\
 `echo "Hello world" > helloworld.txt`\
-`# Redirect stdout to the end of a file`\ 
-`echo "world." >> hello.txt`\
+`# Redirect stdout to the end of a file`\ `echo "world." >> hello.txt`\
 `# Redirect a file to stdin`\
 `more < helloworld.txt`
 
-####
 
-#### **0.1.3.4. Wildcards**
+
+**0.1.3.4. Wildcards**
 
 The shell uses a number of special characters called wildcards, similar to regular expressions or regex, which can be used to manipulate what is being dealt with on the command line. The standard wildcards are thus:
 
@@ -139,7 +140,7 @@ To run a command if and only if the last command failed, we use `||`:
 `bash: cd: foo: No such file or directory`\
 `drwxrwxr-x 2 user user 4096 May 24 00:57 foo`
 
-#### **0.1.3.6. Processes**
+**0.1.3.6. Processes**
 
 Every program that runs, runs in virtual memory as a process, even the shell. You can list the currently running processes with the command `top`. When you run a command, the terminal session runs it on its process, waits for it to complete, then regains control once the command is finished. So, if you were to close the terminal window while a command was running, that would stop the command. Since this can be inconvenient, we can \`fork' the command into its own process to run in the background, and still use the shell while it runs (which is useful for commands that take a long time). To do this, we end the command with a single ampersand `&`. For example:
 
@@ -160,7 +161,7 @@ Another way to list the processes running is with `ps`, and then end them with `
 
 You can also check what is running in the background and foreground with `bg` and `fg`, respectively.
 
-### 0.1.4. File system structure
+#### 0.1.4. File system structure
 
 The file system is structured as a tree that flows down from the root directory, which is simply represented as /. Below shows an example listing of a system’s root directory using the ls command:
 
@@ -181,9 +182,9 @@ The standard path is listed as all the directories to a file, separated by the `
 
 Linux will automatically complete a command or filename if you are part-way through typing it; all you have to do is hit the \[Tab] key. Press \[Tab] enough times and it will list possible suggestions based on what you currently have typed in the terminal.
 
-#### \*\*\*\*
+**\*\*\*\***
 
-#### **0.1.4.1. File operations**
+**0.1.4.1. File operations**
 
 There are a number of useful programs that allow us to do file manipulation. To list some of the main operations:
 
@@ -193,7 +194,7 @@ There are a number of useful programs that allow us to do file manipulation. To 
 |   `rm` | Delete a file. Note that you can also delete empty directories this way, and you can delete a directory and its subdirectories by using `rm -r`. However, be **VERY** careful: if you were to run `rm -rf /`, you would erase every file on your whole computer, because it would delete the root directory and then every file and subdirectory below it and it wouldn't stop because the \`f' in \`-rf' means \`force'. Use `rm -rf` with extreme caution, or even use `rmdir`, which removes a directory. |
 | `grep` | grep stands for Global Regular Expressions Parser, and can search through text for a match. For example, `grep foo bar` searches the file bar for the string foo, and you can also use `ls -l \| grep "foo"`, which searches the file listing for a file called foo. When combined with `sed` and `awk`, you can do almost anything string related.                                                                                                                                                          |
 
-#### **0.1.4.2. $PATH and the environment**
+**0.1.4.2. $PATH and the environment**
 
 Variables in the shell are defined using the export command, and when variables are used, they start with a `$`.\
 \
@@ -212,16 +213,16 @@ This would mean that if I were to use the command `ls`, it would search for a bi
 
 This is sometimes used as an exploit by modifying the user's `$PATH` variable so that a path containing malicious binaries with the same names as common commands is on the front. When the user runs these commands, then the malicious binaries are run instead.
 
-### 0.1.5. Users and Permissions
+#### 0.1.5. Users and Permissions
 
 Every user has a user ID (uid) and a group ID (gid). Each user also has a list of groups they are a part of which give them the permissions that are assigned to those groups. You can see this by using the 'id' command:\
 \
 `user@MY-PC:~$ id`\
 `uid=1000(user)gid=1000(user)groups=1000(user),4(adm),24(cdrom),27(sudo),29(audio),30(dip),44(video),46(plugdev),109(lpadmin),119(pulse),124(sambashare)`
 
-#### \*\*\*\*
+**\*\*\*\***
 
-#### **0.1.5.1. sudo and root**
+**0.1.5.1. sudo and root**
 
 Now for the most powerful user on Linux: The root user. Root's uid and gid are both 0.
 
@@ -238,7 +239,7 @@ Say you want to edit the hostname file, which contains the name of your computer
 
 to which it asks you for your password, and then opens nano with the extra privileges provided by `sudo`. There is a `sudoers` file which contains a list of users who can use `sudo`, and what privileges they get from using it.
 
-#### **0.1.5.2. File permissions**
+**0.1.5.2. File permissions**
 
 Linux inherits its file permissions system from Unix. You can use the command `ls -l` to display the permissions of a file or files:
 
@@ -261,7 +262,7 @@ where the first set, `u`, refers to the permissions for the user who owns the fi
 
 This is a directory, the user has read/write/execute access, users belonging to the group of the file have read/write/execute access, and everyone else has read/execute access, but not write access.
 
-#### **0.1.5.3. Changing permissions**
+**0.1.5.3. Changing permissions**
 
 If you want to change a file's permissions, you can use `chmod`, meaning "change mode". There are two ways to do this: using u/g/o and +/- r/w/x:\
 \
@@ -303,9 +304,9 @@ etc...
 
 So when we set our file junk1 to 755 earlier, we set it to rwxr-xr-x, which is a pretty good permission set on your average file. Realistically, you will usually always have your own user permissions set to rwx or rw-, otherwise you are just inconveniencing yourself. You can also use `chown` to change ownership of a file.
 
-### 0.1.6. Network commands
+#### 0.1.6. Network commands
 
-#### 0.1.6.1. ping
+**0.1.6.1. ping**
 
 * Can be a handful for DNS checks (up / or down) | is a DNS tool to resolve web addresses to an IP address.
 * Test reachability - determine round-trip time, and uses ICMP protocol.
@@ -321,7 +322,7 @@ PING www.google.com (172.217.168.164): 56 data bytes
 round-trip min/avg/max/stddev = 25.236/25.608/25.981/0.373 ms
 ```
 
-#### 0.1.6.2. netstat
+**0.1.6.2. netstat**
 
 * Network statistics
 * Get info on host system TCP / UDP connections and status of all open and listening ports and routing table.
@@ -334,7 +335,7 @@ netstat -n # (hosts)
 netstat -b # (Show binaries Windows)
 ```
 
-#### 0.1.6.3. traceroute
+**0.1.6.3. traceroute**
 
 * Traceroute - how packets get from the host to another endpoint. Traceroute is helpful to see what routers are being hit, both internal and external.
 * **Take advantage of ICMP Time to Live (TTL) Exceeded error message**
@@ -364,7 +365,7 @@ traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets
     79.125.252.199 (79.121.251.191)  22.885 ms
 ```
 
-#### 0.1.6.4. arp
+**0.1.6.4. arp**
 
 * Address resolution protocol - caches of ip-to-ethernet
 * Determine a MAC address based on IP addresses
@@ -379,7 +380,7 @@ traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets
 _gateway (192.168.1.1) at 00:31:33:8b:2a:da [ether] on enp0s10
 ```
 
-#### 0.1.6.5. ifconfig
+**0.1.6.5. ifconfig**
 
 * Equivalent to ipconfig in Windows for UNIX/Linux OS.
 
@@ -402,7 +403,7 @@ enp0s10: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-#### 0.1.6.6. iwconfig
+**0.1.6.6. iwconfig**
 
 similar to ifconfig, but is dedicated to the wireless network interface.
 
@@ -421,7 +422,7 @@ wlp3s0b1  IEEE 802.11  ESSID:off/any
 docker0   no wireless extensions.
 ```
 
-#### 0.1.6.7. ip addr
+**0.1.6.7. ip addr**
 
 show / manipulate routing, network devices, interfaces and tunnels.
 
@@ -443,7 +444,7 @@ Show all the ip configuration, mac address, ipv6 etc.
        valid_lft forever preferred_lft forever
 ```
 
-#### 0.1.6.8. nslookup
+**0.1.6.8. nslookup**
 
 * Query Internet name servers interactively; check if the DNS server is working
 
@@ -467,7 +468,7 @@ Name:   certifiedhacker.com
 Address: 162.241.216.11
 ```
 
-#### 0.1.6.9. dig
+**0.1.6.9. dig**
 
 * DNS lookup tool - Functions like `nslookup`, but allows for further functionality.
 
@@ -496,7 +497,7 @@ certifiedhacker.com.    14400   IN      A       162.241.216.11
 ;; MSG SIZE  rcvd: 92
 ```
 
-#### 0.1.6.10. netcat
+**0.1.6.10. netcat**
 
 TCP/IP swiss army knife; you can make any type of connection and see the results from a command line. With `nc` you can connect to anything on any port number or you can make your system listen on a port number. Can be an aggressive tool for recon.
 
@@ -510,33 +511,27 @@ TCP/IP swiss army knife; you can make any type of connection and see the results
 * Become a backdoor
   * Run a shell from a remote device
 
-
-
-### Need more practice?
+#### Need more practice?
 
 Please have a look at the below links for more UNIX tutorials.
 
 * [http://www.ee.surrey.ac.uk/Teaching/Unix/](http://www.ee.surrey.ac.uk/Teaching/Unix/)
-* [https://www.sporcle.com/games/sporcilicious/common\_linux\_commands](https://www.sporcle.com/games/sporcilicious/common\_linux\_commands)
-* [https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8](https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8) 
+* [https://www.sporcle.com/games/sporcilicious/common\_linux\_commands](https://www.sporcle.com/games/sporcilicious/common_linux_commands)
+* [https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8](https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8)
 
-
-
-
-# Background: Networks 101
+## Background: Networks 101
 
 {% hint style="info" %}
-Go through this if you need a refresher on Computer Networks. Otherwise skip.
-Credits to #Samsar4@Github for preparing the materials.
+Go through this if you need a refresher on Computer Networks. Otherwise skip. Credits to #Samsar4@Github for preparing the materials.
 {% endhint %}
 
 > ⚠ Networking 101 is a simple introduction to the most important network concepts for ethical hacking. This is a huge subject and is recommended to learn from different sources like courses, books and certifications like [Cisco CCNA](https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html) or [CompTIA Network+](https://www.comptia.org/certifications/network). Also there is a ton of **free training** out there, I recommend to [check this list](https://freetraining.dfirdiva.com/free-networking-training) later.
 
-#### Objectives
+**Objectives**
 
 * Understand network basic concepts
 
-#### **This module follows the order:**
+**This module follows the order:**
 
 1. Introduction
 2. IP and MAC Addresses
@@ -545,9 +540,9 @@ Credits to #Samsar4@Github for preparing the materials.
 5. Ports & Protocols
 6. OSI Model
 
-## 1. Introduction
+### 1. Introduction
 
-### So, what the heck is a Network?
+#### So, what the heck is a Network?
 
 A network consists of two or more computers that are linked in order to share resources. Computer networks are the basis of communication in IT. They are used in a huge variety of ways and can include many different types of network. A computer network is a set of computers that are connected together so that they can share information. The earliest examples of computer networks are from the 1960s, but they have come a long way in the half-century since then.
 
@@ -557,27 +552,27 @@ LAN Network Topology - SOHO / Small Home Network
 
 **Two very common types of networks include: LAN (Local Area Network) and WAN (Wide Area Network)**
 
-### Topologies
+#### Topologies
 
 There are many different types of network, which can be used for different purposes and by different types of people and organization. Here are some of the network types that you might come across:
 
-#### LAN - Local Area Network
+**LAN - Local Area Network**
 
 * A LAN is a network that has a logical and physical borders that a computer can broadcast
 
 ![](https://www.geocities.ws/alcantara97/starhttt.gif)
 
-#### WAN - Wide Area Network
+**WAN - Wide Area Network**
 
 * WAN is a multiple LANs or additional WANs with routing functionality for interconnectivity.
 
 ![](https://gist.github.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/a3f9b5f3f243467208da83e0d0e543b32233c5d6/wan-topo.jpg)
 
-#### MAN - Metropolitan Area Network
+**MAN - Metropolitan Area Network**
 
 ![](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/f37cec4e00f726cb4be3661f20ccad77751e003a/man-topo.jpg)
 
-#### Internet
+**Internet**
 
 Connecting WANs through WANs until complete the entire world = Internet.
 
@@ -586,7 +581,7 @@ Connecting WANs through WANs until complete the entire world = Internet.
 
 ![](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/8c176b8a798fb5749c4391c45015ee5d14d56f13/internet.png)
 
-#### Intranet
+**Intranet**
 
 If you're using the TCP/IP stack and making your own LAN or WAN = Intranet.
 
@@ -594,7 +589,7 @@ If you're using the TCP/IP stack and making your own LAN or WAN = Intranet.
 
 ![](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/8c176b8a798fb5749c4391c45015ee5d14d56f13/intranet.png)
 
-### Common Terms in Networking
+#### Common Terms in Networking
 
 * **IP (internet protocol) address**: the network address of the system across the network, which is also known as the Logical Address).
 * **MAC address**: the MAC address or physical address uniquely identifies each host. It is associated with the Network Interface Card (NIC).
@@ -608,15 +603,15 @@ If you're using the TCP/IP stack and making your own LAN or WAN = Intranet.
 * **Dynamic host configuration protocol (DHCP)**: assigns dynamic IP addresses to hosts and is maintained by the internet service provider.
 * **Internet service providers (ISP)**: companies that provide everyone with their internet connection, both to individuals and to businesses and other organizations.
 
-## 2. IP & MAC Address
+### 2. IP & MAC Address
 
-### What is an IP Address (Internet Protocol)?
+#### What is an IP Address (Internet Protocol)?
 
-![ip](https://media.fs.com/images/community/upload/wangEditor/201912/24/\_1577182449\_2uLs0pQcuT.jpg)
+![ip](https://media.fs.com/images/community/upload/wangEditor/201912/24/_1577182449_2uLs0pQcuT.jpg)
 
 An IP address is a unique address that identifies a device on the internet or a local network. IP stands for "Internet Protocol," which is the set of rules governing the format of data sent via the internet or local network.
 
-### Check your local IP address
+#### Check your local IP address
 
 1. If you are using Linux or MacOS you can open your terminal and type `ifconfig` command
 2. For Windows machine you can open up the cmd prompt or powershell, then type `ipconfig /all`
@@ -629,7 +624,7 @@ An IP address is a unique address that identifies a device on the internet or a 
   * `inet6` --> Is a new version of IP (IPv6), using 128 bits hexadecimal value.
 * `ether` --> MAC address - unique identifier assigned to a network interface controller (NIC)
 
-### More about the IPv4 decimal value:
+#### More about the IPv4 decimal value:
 
 ```
 IPv4 = 32 bits range (4 octets of 8 bits, from 0-255 each(4))
@@ -638,7 +633,7 @@ IPv4 = 32 bits range (4 octets of 8 bits, from 0-255 each(4))
    192  .   168  .   64   .  3        [IPv4 decimal]
 ```
 
-#### The arithmetic behind IPv4:
+**The arithmetic behind IPv4:**
 
 * One octet have 8 bits:
 
@@ -672,23 +667,23 @@ To calculate the first octet (192.), from binary format to decimal:
 
 ⚠️ **Why? Computers see everything in terms of binaryll; on and off.**
 
-### IPv4 and IPv6
+#### IPv4 and IPv6
 
-![ipv](https://academy.avast.com/hs-fs/hubfs/New\_Avast\_Academy/IPv4%20vs.%20IPv6%20What%E2%80%99s%20the%20Difference/IPv4-vs-IPv6.png?width=2750\&name=IPv4-vs-IPv6.png)
+![ipv](https://academy.avast.com/hs-fs/hubfs/New_Avast_Academy/IPv4%20vs.%20IPv6%20What%E2%80%99s%20the%20Difference/IPv4-vs-IPv6.png?width=2750\&name=IPv4-vs-IPv6.png)
 
-### Private and Public IP Addresses
+#### Private and Public IP Addresses
 
 All IPv4 addresses can be divided into two major groups: **global (or public, external)** - this group can also be called 'WAN addresses' — those that are used on the Internet, and **private (or local, internal) addresses** — those that are used in the local network (LAN).
 
 ![priv-pub](https://wiki.teltonika-networks.com/wikibase/images/thumb/a/a7/Sip.png/1100px-Sip.png)
 
-### More about **Private IP** addresses:
+#### More about **Private IP** addresses:
 
 Private (internal) addresses are not routed on the Internet and no traffic can be sent to them from the Internet, they only supposed to work within the local network. Private addresses include IP addresses from the following subnets:
 
-![private-ip](https://66.media.tumblr.com/02a533c1d55ca0ba83e0176168df06ec/tumblr\_inline\_o4m1taQugo1u4ytoo\_1280.jpg)
+![private-ip](https://66.media.tumblr.com/02a533c1d55ca0ba83e0176168df06ec/tumblr_inline_o4m1taQugo1u4ytoo_1280.jpg)
 
-### NAT - Network Address Translation
+#### NAT - Network Address Translation
 
 NAT stands for network address translation. It’s a way to map multiple local private addresses to a public one before transferring the information. Organizations that want multiple devices to employ a single IP address use NAT, as do most home routers.
 
@@ -701,15 +696,15 @@ NAT stands for network address translation. It’s a way to map multiple local p
 
     Instead of choosing the same IP address every time, this NAT goes through a pool of public IP addresses. This results in the router or NAT device getting a different address each time the router translates the local address to a public address.
 
-#### ⚠️ IP Addresses operates on **Layer 3 of OSI Model**
+**⚠️ IP Addresses operates on Layer 3 of OSI Model**
 
 _Note: This module will cover OSI model later._
 
-![osi3](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/b9d7f33be654d299f6618feeacb97fc5fd5bd7d2/OSI\_L3.png)
+![osi3](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/b9d7f33be654d299f6618feeacb97fc5fd5bd7d2/OSI_L3.png)
 
-## 3. Subnetting
+### 3. Subnetting
 
-#### Why subnetting?
+**Why subnetting?**
 
 The way IP addresses are constructed makes it relatively simple for Internet routers to find the right network to route data into. However, in a Class A network (for instance), there could be millions of connected devices, and it could take some time for the data to find the right device. This is why subnetting comes in handy: subnetting narrows down the IP address to usage within a range of devices.
 
@@ -717,14 +712,14 @@ Because an IP address is limited to indicating the network and the device addres
 
 > ⚠️ Subnetting is really important for penetration testers and aspiring hackers, eventually you will face several cases involving small or large networks in your future engagements. Understanding the IP address type, range, available hosts is crucial for any network analysis.
 
-### Cheat sheet makes easier for subnetting
+#### Cheat sheet makes easier for subnetting
 
 ![subnetting](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/5ce4b7daa9c2c10ccd44675eadaceae646e487e2/cyber-mentor-subnetting.png)
 
 * CyberMentor Subnetting Sheet: https://twitter.com/thecybermentor/status/1211335431406727169
 * Subnetting Cheat sheet alternative: https://nsrc.org/workshops/2009/summer/presentations/day3/subnetting.pdf
 
-### Exercises:
+#### Exercises:
 
 Subnetting comes in handy to awnser basic questions like:
 
@@ -754,7 +749,7 @@ Subnetting comes in handy to awnser basic questions like:
 | -------------- | ------------- | ----- | ----------- | ------------- |
 | 192.168.0.0/22 | 255.255.252.0 | 1022  | 192.168.0.0 | 192.168.3.255 |
 
-### Other relevant information about IPs
+#### Other relevant information about IPs
 
 * **IPv4 Main Address Types**
   * **Unicast** - acted on by a single recipient
@@ -771,7 +766,7 @@ Subnetting comes in handy to awnser basic questions like:
   * If they are all 0s, it's the network address
   * Any other combination indicates an address in the range
 
-## MAC Addresses
+### MAC Addresses
 
 * MAC (Media Access Control) address is provided by NIC Card'd manufacturer and gives the physical address of a computer.
 
@@ -786,7 +781,7 @@ ________ ________
 00:0c:29:99:98:ca
 ```
 
-### Checking vendor behind MAC addresse
+#### Checking vendor behind MAC addresse
 
 1. Check your MAC address use the command `ifconfig` (Linux) or `/ipconfig` (Windows) ![mac](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/214242916f8947f09fc15d5bdde6a668fd4a4c1f/mac2.png)
 2. Copy and save the **first three bytes** of your address. _(The first three bytes from image above is `00:0c:29`)_
@@ -795,13 +790,13 @@ ________ ________
 
 _So, to summarize, the **first three bytes** are assigned to a manufacturer of networking equipment and the manufacturer assigns the last three bytes of an address._
 
-#### ⚠️ MAC Addresses operates on Layer 2 of OSI Model
+**⚠️ MAC Addresses operates on Layer 2 of OSI Model**
 
-![osil2](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/b9d7f33be654d299f6618feeacb97fc5fd5bd7d2/OSI\_L2.png)
+![osil2](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/b9d7f33be654d299f6618feeacb97fc5fd5bd7d2/OSI_L2.png)
 
-## 4. TCP/IP, UDP and 3-Way-Handshake
+### 4. TCP/IP, UDP and 3-Way-Handshake
 
-### Transmission Control Protocol/Internet Protocol (TCP/IP)
+#### Transmission Control Protocol/Internet Protocol (TCP/IP)
 
 * What is TCP used for?
 
@@ -824,21 +819,21 @@ TCP/IP Model
 
 TCP is the most commonly used of these protocols and accounts for the most traffic used on a TCP/IP network. **UDP is an alternative to TCP that does not provide error correction, is less reliable, and has less overhead, which makes it ideal for streaming.**
 
-### The User Datagram Protocol (UDP)
+#### The User Datagram Protocol (UDP)
 
 Is a lightweight data transport protocol that works on top of IP. UDP provides a mechanism to detect corrupt data in packets, but it does not attempt to solve other problems that arise with packets, such as lost or out of order packets. That's why UDP is sometimes known as the Unreliable Data Protocol. UDP is simple but fast, at least in comparison to other protocols that work over IP. It's often used for time-sensitive applications (such as real-time video streaming) where speed is more important than accuracy.
 
 * On Linux and Unix systems you can issue the `lsof` command to see which processes is using UDP ports ![udp](https://cdn.kastatic.org/ka-perseus-images/edbdf593300fc4a51c60a97998c4d01a51ccd3b1.png)
 
-### The TCP format
+#### The TCP format
 
 ![tc](https://cdn.kastatic.org/ka-perseus-images/e5fdf560fdb40a1c0b3c3ce96f570e5f00fff161.svg)
 
-### The UDP format
+#### The UDP format
 
 ![udp](https://cdn.kastatic.org/ka-perseus-images/9d185d3d44c7ef1e2cd61655e47befb4d383e907.svg)
 
-### TCP Handshake
+#### TCP Handshake
 
 TCP uses a three-way handshake to establish a reliable connection. The connection is full duplex, and both sides synchronize (SYN) and acknowledge (ACK) each other. The exchange of these four flags is performed in three steps:
 
@@ -850,7 +845,7 @@ TCP uses a three-way handshake to establish a reliable connection. The connectio
 
 The three message mechanism is designed so that two computers that want to pass information back and forth to each other can negotiate the parameters of the connection before transmitting data such as HTTP browser requests.
 
-### More TCP Flags
+#### More TCP Flags
 
 | Flag | Name           | Function                                                                         |
 | ---- | -------------- | -------------------------------------------------------------------------------- |
@@ -861,23 +856,23 @@ The three message mechanism is designed so that two computers that want to pass 
 | PSH  | Push           | Forces the delivery of data without concern for buffering                        |
 | URG  | Urgent         | Data inside is being sent out of band. Example is cancelling a message           |
 
-### Capturing 3 Way handshakes (Example)
+#### Capturing 3 Way handshakes (Example)
 
 * The figure below shows the 3-way-handshake packets captured by [Wireshark](https://www.wireshark.org/)
 
 ![wireshark](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/5213becc28e3f9f46c976d05cd090ffd070ff5d1/wireshark0.png)
 
-## 5. Ports & Protocols
+### 5. Ports & Protocols
 
-### What is a Port?
+#### What is a Port?
 
 In computer networking, a port is a communication endpoint. At the software level, within an operating system, a port is a logical construct that identifies a specific process or a type of network service.
 
-### The most common ports
+#### The most common ports
 
 As a penetration tester or ethical hacker you should be familiar with the common ports and protocols used by popular services.
 
-#### Port Numbers
+**Port Numbers**
 
 * **Internet Assigned Numbers Authority** (IANA) - maintains Service Name and Transport Protocol Port Number Registry which lists all port number reservations
 * Ranges
@@ -911,7 +906,7 @@ As a penetration tester or ethical hacker you should be familiar with the common
     * **netstat -an** displays connections in numerical form
     * **netstat -b** displays executables tied to the open port (admin only)
 
-## 6. OSI Model
+### 6. OSI Model
 
 OSI Model is a hypothetical networking framework that uses specific protocols and mechanisms in every layer of it. This model is used to divide the network architecture into seven different layers conceptually. These layers are:
 
@@ -919,46 +914,46 @@ OSI Model is a hypothetical networking framework that uses specific protocols an
 
 There also involves some security postures and mechanisms that a security professional must know to detect and put the security method effectively in every layer.
 
-### More about the Layers:
+#### More about the Layers:
 
-### Layer 7 - Application
+#### Layer 7 - Application
 
 ![l7](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/7-application-layer.svg)
 
 * This is the only layer that directly interacts with data from the user. Software applications like web browsers and email clients rely on the application layer to initiate communications. But it should be made clear that client software applications are not part of the application layer; rather the application layer is responsible for the protocols and data manipulation that the software relies on to present meaningful data to the user. Application layer protocols include HTTP as well as SMTP (Simple Mail Transfer Protocol is one of the protocols that enables email communications).
 
-### Layer 6 - Presentation
+#### Layer 6 - Presentation
 
 ![l6](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/6-presentation-layer.svg)
 
 * This layer is primarily responsible for preparing data so that it can be used by the application layer; in other words, layer 6 makes the data presentable for applications to consume. The presentation layer is responsible for translation, encryption, and compression of data.
 
-### Layer 5 - Session Layer
+#### Layer 5 - Session Layer
 
 ![l5](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/5-session-layer.svg)
 
 * This is the layer responsible for opening and closing communication between the two devices. The time between when the communication is opened and closed is known as the session. The session layer ensures that the session stays open long enough to transfer all the data being exchanged, and then promptly closes the session in order to avoid wasting resources.
 
-### Layer 4 - Transport Layer
+#### Layer 4 - Transport Layer
 
 ![l4](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/4-transport-layer.svg)
 
 * Layer 4 is responsible for end-to-end communication between the two devices. This includes taking data from the session layer and breaking it up into chunks called segments before sending it to layer 3. The transport layer on the receiving device is responsible for reassembling the segments into data the session layer can consume.
 * The transport layer is also responsible for flow control and error control. Flow control determines an optimal speed of transmission to ensure that a sender with a fast connection doesn’t overwhelm a receiver with a slow connection. The transport layer performs error control on the receiving end by ensuring that the data received is complete, and requesting a retransmission if it isn’t.
 
-### Layer 3 - Network Layer
+#### Layer 3 - Network Layer
 
 ![l3](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/3-network-layer.svg)
 
 * The network layer is responsible for facilitating data transfer between two different networks. If the two devices communicating are on the same network, then the network layer is unnecessary. The network layer breaks up segments from the transport layer into smaller units, called packets, on the sender’s device, and reassembling these packets on the receiving device. The network layer also finds the best physical path for the data to reach its destination; this is known as routing.
 
-### Layer 2 - Data Link Layer
+#### Layer 2 - Data Link Layer
 
 ![l2](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/2-data-link-layer.svg)
 
 * The data link layer is very similar to the network layer, except the data link layer facilitates data transfer between two devices on the SAME network. The data link layer takes packets from the network layer and breaks them into smaller pieces called frames. Like the network layer, the data link layer is also responsible for flow control and error control in intra-network communication (The transport layer only does flow control and error control for inter-network communications).
 
-### Layer 1 - Physical Layer
+#### Layer 1 - Physical Layer
 
 ![l1](https://www.cloudflare.com/img/learning/ddos/glossary/open-systems-interconnection-model-osi/1-physical-layer.svg)
 

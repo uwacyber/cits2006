@@ -1,25 +1,27 @@
-# Lab 5: Intrusion Detection System (NOT READY)
+# Lab 5: IDS
 
 ## 5.1. Introduction
-In a world where everything is becoming smarter, have you ever wondered what it truly means for a device to be "smart"? With the Internet of Things (IoT) connecting everything, including our cars, smart vehicles are becoming increasingly popular as they offer advanced features such as streaming audio and video directly from your car and updating firmware on the go. But this also leaves our vehicles vulnerable to cyber-attacks from hackers who can take control of our cars. Check out [this video](https://youtu.be/AdZ8nx6nRfA) to understand the implication of cyberattacks against smart cars for more motivations. 
+
+In a world where everything is becoming smarter, have you ever wondered what it truly means for a device to be "smart"? With the Internet of Things (IoT) connecting everything, including our cars, smart vehicles are becoming increasingly popular as they offer advanced features such as streaming audio and video directly from your car and updating firmware on the go. But this also leaves our vehicles vulnerable to cyber-attacks from hackers who can take control of our cars. Check out [this video](https://youtu.be/AdZ8nx6nRfA) to understand the implication of cyberattacks against smart cars for more motivations.
 
 In this lab, we will setup and run intrusion detection system (IDS) for vehicle network. Smart cars are becoming more widely used today, allowing hackers to gain access to the vehicle network and control the vehicle. Consequently, the attacker can cause undesireable effects on the car, which can physically impact the driver and passengers. Therefore, it is important to detect and prevent such attacks.
 
 ## 5.2. Lab Environment
+
 We will use Jupyter notebook to conduct this lab. To do this, we need to have the Jupyter notebook installed. You could technically use the web version, but that would require uploading files (i.e., datasets), which will take time to setup. Therefore, you are encouraged to use the local version of Jupyter notebook (e.g., plugin to VSCode or other similar IDEs).
 
 If you are stuck getting Jupyter notebook running, it is a good time to seek help from the facilitator.
 
-
-
 {% hint style="info" %}
 Before you start, download the files you need:
+
 ```
 wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/ids.zip
 ```
 {% endhint %}
 
 ## 5.3. Data Manipulation
+
 In order to perform IDS, we need to first understand how to access and manipulate dataset we will be using. This is done by using [Pandas](https://pandas.pydata.org/), a Python library for data analysis. We will use Pandas to access the dataset and perform data analysis. If you already know how to use Pandas, you may skip this section (you can always come back as necessary).
 
 {% hint style="info" %}
@@ -27,6 +29,7 @@ We will be using the pandas.ipynb from the zip file.
 {% endhint %}
 
 ### 5.3.1. Loading the data
+
 Pandas provides a DataFrame class, which is a 2D array (i.e., a table). We will use the DataFrame class to load the dataset and perform data analysis. This is simply done by importing pandas, then loading dataset using pandas (such as CSV files).
 
 ```python
@@ -36,47 +39,52 @@ df = pd.read_csv('dataset.csv')
 ```
 
 #### TASK 1
-Rewrite the code in your Jupyter notebook's first cell so that it loads the file: 0_Preliminary/0_Training/Pre_train_D_1.csv
+
+Rewrite the code in your Jupyter notebook's first cell so that it loads the file: 0\_Preliminary/0\_Training/Pre\_train\_D\_1.csv
 
 You should get an output similar to this:
-<figure><img src="./img/pandas_load.png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/pandas_load.png" alt=""><figcaption></figcaption></figure>
 
 ### 5.3.2. Accessing the data
-- [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html): a Pandas class representing a table (2D array)
-- [Series](https://pandas.pydata.org/docs/reference/api/pandas.Series.html): a Pandas class representing an 1D array
+
+* [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html): a Pandas class representing a table (2D array)
+* [Series](https://pandas.pydata.org/docs/reference/api/pandas.Series.html): a Pandas class representing an 1D array
 
 #### DataFrame
-There are three main cases on how you can access the dataframe using pandas:
-- Case 1. Access a column: **`df[COL_IDX]`**, `df.loc[, COL_IDX]` -> It returns a *Series*.
-- Case 2. Access a row: **`df.loc[ROW_IDX]`**, `df.loc[ROW_IDX, ]`  -> It returns a *Series*.
-- Case 3: Access an element: `df.loc[ROW_IDX, COL_IDX]` -> It returns a *value*.
 
-The first two cases will return a *Series* object, which is a 1D array. You can access the value of the *Series* object using the index (e.g., `series[IDX]`). The last case is used to access a value in the dataframe by specifying both the row and column index.
+There are three main cases on how you can access the dataframe using pandas:
+
+* Case 1. Access a column: **`df[COL_IDX]`**, `df.loc[, COL_IDX]` -> It returns a _Series_.
+* Case 2. Access a row: **`df.loc[ROW_IDX]`**, `df.loc[ROW_IDX, ]` -> It returns a _Series_.
+* Case 3: Access an element: `df.loc[ROW_IDX, COL_IDX]` -> It returns a _value_.
+
+The first two cases will return a _Series_ object, which is a 1D array. You can access the value of the _Series_ object using the index (e.g., `series[IDX]`). The last case is used to access a value in the dataframe by specifying both the row and column index.
 
 #### Series
+
 Just consider it a Python list: `series[IDX]`
 
-For more information, you should read the pandas documentation:
-[Pandas user guide: Indexing and selecting data](https://pandas.pydata.org/docs/user_guide/indexing.html)
+For more information, you should read the pandas documentation: [Pandas user guide: Indexing and selecting data](https://pandas.pydata.org/docs/user_guide/indexing.html)
 
 #### TASK 2 (2.1 - 2.5)
-Write the code required in subsequent cells as specified in the comments.
-You should also experiment by trying to load different series as well as values.
+
+Write the code required in subsequent cells as specified in the comments. You should also experiment by trying to load different series as well as values.
 
 You should get an output similar to this:
-<figure><img src="./img/pandas_t2.1.png" alt=""><figcaption>Task 2.1</figcaption></figure>
 
-<figure><img src="./img/pandas_t2.2.png" alt=""><figcaption>Task 2.2</figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_t2.1.png" alt=""><figcaption><p>Task 2.1</p></figcaption></figure>
 
-<figure><img src="./img/pandas_t2.3.png" alt=""><figcaption>Task 2.3</figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_t2.2.png" alt=""><figcaption><p>Task 2.2</p></figcaption></figure>
 
-<figure><img src="./img/pandas_t2.4.png" alt=""><figcaption>Task 2.4</figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_t2.3.png" alt=""><figcaption><p>Task 2.3</p></figcaption></figure>
 
-<figure><img src="./img/pandas_t2.5.png" alt=""><figcaption>Task 2.5</figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_t2.4.png" alt=""><figcaption><p>Task 2.4</p></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/pandas_t2.5.png" alt=""><figcaption><p>Task 2.5</p></figcaption></figure>
 
 ### 5.3.3 Conditional Indexing
+
 We can filter out unnecessary or uninterested data using conditional indexing. Below is a simple example that filters all DLC values not equal to 8.
 
 ```python
@@ -115,12 +123,13 @@ df3 = df[condition1 & condition2]
 df3
 ```
 
-
 ### 5.3.4. Checking the dataset validity
+
 There are a few things to consider for us to determine whether the given dataset is valid or not. In our case, the three main checks are:
-- Is there any missing values (e.g., NA or NaN)?
-- Are the messages in the correct order?
-- Any preprocessing required?
+
+* Is there any missing values (e.g., NA or NaN)?
+* Are the messages in the correct order?
+* Any preprocessing required?
 
 To answer the first question, we can simply run the code below.
 
@@ -151,26 +160,28 @@ else:
 
 You only have to run one of the two cases provided, but you are encouraged to try both and see how they differ.
 
-
 Finally, we check if any preprocessing is needed. This is a bit tricky, as you need to look at each column to see whether you have expected data type or not. The code below shows the information about the dataframe we have loaded.
 
 ```python
 df.info()
 ```
 
-<figure><img src="./img/pandas_info.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_info.png" alt=""><figcaption></figcaption></figure>
 
 You will see something similar as the figure shown above. The Dtype object specifies that it is stored as a string. We observe 3 issues:
+
 1. The scientific notation of `Timestamp` is not straightforward.
 2. `Arbitration_ID` was supposed to be represented as an integer. But the data type is string (object).
-2. `Class` : 'Normal' -> 0, 'Attack' -> 1
+3. `Class` : 'Normal' -> 0, 'Attack' -> 1
 
 We will resove these problems as below.
 
 #### Timestamp
+
 We will make two new timestamp fields.
- - the absolute timestamp
- - the monotonic timestamp *starting with 0*
+
+* the absolute timestamp
+* the monotonic timestamp _starting with 0_
 
 The below code converts the timestamp to the absolute timestamp.
 
@@ -180,10 +191,10 @@ df['monotime'] = df['Timestamp'] - df['Timestamp'].min()
 df[['Timestamp', 'abstime', 'monotime']]
 ```
 
-<figure><img src="./img/pandas_monotime.png" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../.gitbook/assets/pandas_monotime.png" alt=""><figcaption></figcaption></figure>
 
 #### Arbitration ID
+
 The issue with the arbitration ID (AID) is that the values are in hex, but pandas did not recognised it. We can let pandas know and store the values as integers using the code below.
 
 ```python
@@ -195,15 +206,15 @@ df['aid_int'] = df['Arbitration_ID'].map(func_hexstr_to_int)  #
 df[['Arbitration_ID', 'aid_int']]
 ```
 
-<figure><img src="./img/pandas_aid.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_aid.png" alt=""><figcaption></figcaption></figure>
 
 #### Class
+
 The term ‘Class’ here refers to whether the data is part of an attack or not. Class is is usually binary classification (either an attack or normal). Here, value 0 indicates that it is a normal traffic, while value 1 indicates that this is an attack traffic. We can simply count the number of attacks and normal traffic using the code below.
 
 ```python
 df['Class'].value_counts()
 ```
-
 
 You can also write some code to make the presentation easier to read.
 
@@ -213,19 +224,20 @@ df['y'] = df['Class'].map(dict_class)
 df[['Class', 'y']].loc[365300:365300 + 5]
 ```
 
-<figure><img src="./img/pandas_class.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/pandas_class.png" alt=""><figcaption></figcaption></figure>
 
 Now you should have sufficient knowledge to use pandas to manipulate datasets for this lab.
 
-
 ## 5.4. Exploring the dataset
-We will now explore what is actually in our given datasets, so that we can design and implement our IDS. We will use the dataset ‘Pre_train_D_0.csv’ for this section, which is a benign dataset. 
+
+We will now explore what is actually in our given datasets, so that we can design and implement our IDS. We will use the dataset ‘Pre\_train\_D\_0.csv’ for this section, which is a benign dataset.
 
 {% hint style="info" %}
 We will be using the datasets.ipynb from the zip file.
 {% endhint %}
 
 ### 5.4.1. Load the dataset
+
 We'll first run the code below to load the dataset.
 
 ```python
@@ -257,10 +269,11 @@ You will notice that it is simply a series of code we have already seen in the p
 
 You should see that there are a total of 179346 rows by 9 columns.
 
-
 ### 5.4.2. Explore the dataset
+
 #### Arbitration ID
-Arbitration ID (AID) is used to identify message in the CAN Bus, a network used in vehicle networks. For simplicity, you can think of them as different components in the car, and they have their own unique arbitration ID. 
+
+Arbitration ID (AID) is used to identify message in the CAN Bus, a network used in vehicle networks. For simplicity, you can think of them as different components in the car, and they have their own unique arbitration ID.
 
 You can compute the number of AIDs using the code below.
 
@@ -276,19 +289,21 @@ df['Arbitration_ID'].unique()
 
 If you want to count the number of messages for each AID, you can use the code below.
 
-```python  
+```python
 df['Arbitration_ID'].value_counts()
 ```
 
 There are a few more basic code to explore the dataset. You can try them out yourself.
 
 ### 5.4.3. Time interval measurement
+
 We will now measure the time interval between messages. This is important because we can use this information to detect attacks. For example, if the time interval between messages is too short, then it indicates that it is an anomaly, which is likely that the attacker is trying to send a lot of messages in a short period of time. This is a sign of a DoS attack.
 
 #### TASK 3
+
 Write a code to add a column to the dataframe that shows the time difference between two consecutive messages. The following output is what you should get if done correctly.
 
-<figure><img src="./img/datasets_td.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/datasets_td.png" alt=""><figcaption></figcaption></figure>
 
 Unfortunately, this is not what we want. The time difference calculated are between the two consecutive rows, which have different AIDs. Instead, we want to calculate the time difference between two consecutive messages with the same AID. To do this, we need to group the dataframe by AID, then calculate the time difference. The code is provided as below.
 
@@ -301,8 +316,7 @@ df['td'] = gb['Timestamp'].diff()
 
 The time difference grouped by AID can be seen from the first 30 rows as below.
 
-<figure><img src="./img/datasets_30.png" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../.gitbook/assets/datasets_30.png" alt=""><figcaption></figcaption></figure>
 
 Using the gb object, we can also calculate the average time difference for each AID.
 
@@ -310,22 +324,23 @@ Using the gb object, we can also calculate the average time difference for each 
 gb['td'].mean()
 ```
 
-<figure><img src="./img/datasets_gbmean.png" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../.gitbook/assets/datasets_gbmean.png" alt=""><figcaption></figcaption></figure>
 
 #### TASK 4
+
 Try to draw two charts:
+
 1. A bar graph that shows the average time difference for each AID.
 2. A histogram that shows the distribution of the average time difference.
 
 Examples for the two charts are shown below.
 
-<figure><img src="./img/datasets_tdbar.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/datasets_tdbar.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="./img/datasets_hist.png" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../.gitbook/assets/datasets_hist.png" alt=""><figcaption></figcaption></figure>
 
 ### 5.4.4. Summarising the dataset
+
 We can finally summarise the dataset using the code below.
 
 ```python
@@ -344,17 +359,19 @@ df_summary
 
 ```
 
-This will be used to design our IDS next. 
+This will be used to design our IDS next.
 
 ## 5.5. Interval-based IDS
-The first concept we will consider is to determine whether an observed traffic is an attack or not based on the time interval between messages. We will use the dataset ‘Pre_train_D_1.csv’ for this section, which is a dataset that contains attacks.
+
+The first concept we will consider is to determine whether an observed traffic is an attack or not based on the time interval between messages. We will use the dataset ‘Pre\_train\_D\_1.csv’ for this section, which is a dataset that contains attacks.
 
 {% hint style="info" %}
-We will be using the ti_ids.ipynb from the zip file.
+We will be using the ti\_ids.ipynb from the zip file.
 {% endhint %}
 
 ### 5.5.1. determining the threshold
-To use the time interval for intrusion detection, we need to first define what good time intervals are for different AIDs. To do this, we will first analyse the benign dataset (i.e., no attack data) to determine the threshold. We will use the dataset ‘Pre_train_D_0.csv’ for this section, which is a benign dataset (already loaded for you in the Jupyter notebook). The code below is used to first determine the average and standard deviation of the normal traffic data.
+
+To use the time interval for intrusion detection, we need to first define what good time intervals are for different AIDs. To do this, we will first analyse the benign dataset (i.e., no attack data) to determine the threshold. We will use the dataset ‘Pre\_train\_D\_0.csv’ for this section, which is a benign dataset (already loaded for you in the Jupyter notebook). The code below is used to first determine the average and standard deviation of the normal traffic data.
 
 ```python
 df_td = pd.concat([
@@ -365,7 +382,7 @@ pd.options.display.max_rows = 100
 df_td 
 ```
 
-We now can determine the threshold. We initially try the mean plus/minus 3 std. So a message is considered `attack` if $t_{\text interval}$ does not satisfy $(\mu-3\sigma \le t_{\text interval} \le \mu+3\sigma)$. 
+We now can determine the threshold. We initially try the mean plus/minus 3 std. So a message is considered `attack` if $t\_{\text interval}$ does not satisfy $(\mu-3\sigma \le t\_{\text interval} \le \mu+3\sigma)$.
 
 ```python
 df_td['threshold_low'] = df_td['mean_driving'] - 3 * df_td['std_driving']
@@ -377,6 +394,7 @@ df_td_threshold
 This defines a threshold value for each AID. Now, we are ready to try our IDS based on time interval!
 
 ### 5.5.2. detecting attacks
+
 Whenever a time interval that falls outside the threshold, it is labelled as an attack. The code that does this is provided below.
 
 ```python
@@ -393,16 +411,17 @@ y_predicted = df_intrusion.groupby(abstime_ceil)['y_predicted'].max()
 ```
 
 Let's look at each line of the code above.
-- Line 1: Load the intrusion dataset.
-- Line 2: Join the threshold values to the intrusion dataset.
-- Line 3: (left blank intentionally)
-- Line 4: Init the prediction column with 0 (i.e., normal).
-- Line 5: Query the intrusion dataset to find the messages that are outside the threshold.
-- Line 6: Set the predicted value to 1 for the messages that are outside the threshold.
-- Line 7: (left blank intentionally)
-- Line 8: Round the timestamp to the nearest 10ms.
-- Line 9: Group the predicted values by the rounded timestamp.
-- Line 10: Group the actual values by the rounded timestamp.
+
+* Line 1: Load the intrusion dataset.
+* Line 2: Join the threshold values to the intrusion dataset.
+* Line 3: (left blank intentionally)
+* Line 4: Init the prediction column with 0 (i.e., normal).
+* Line 5: Query the intrusion dataset to find the messages that are outside the threshold.
+* Line 6: Set the predicted value to 1 for the messages that are outside the threshold.
+* Line 7: (left blank intentionally)
+* Line 8: Round the timestamp to the nearest 10ms.
+* Line 9: Group the predicted values by the rounded timestamp.
+* Line 10: Group the actual values by the rounded timestamp.
 
 I hope lines 1 and 2 are self-explanatory.
 
@@ -412,18 +431,20 @@ Line 8 is determining the sampling rate of IDS. When an IDS is being used, it ca
 
 Lines 9 and 10 is grouping the predicted and actual values by the rounded timestamp.
 
-
 ### 5.5.3. evaluating the IDS
+
 There are several metrics you can use to evaluate the performance of the IDS. The most common ones are:
-- True Positive (TP): the number of attacks that are correctly detected.
-- False Positive (FP): the number of normal traffic that are incorrectly detected as attacks.
-- True Negative (TN): the number of normal traffic that are correctly detected.
-- False Negative (FN): the number of attacks that are incorrectly detected as normal traffic.
+
+* True Positive (TP): the number of attacks that are correctly detected.
+* False Positive (FP): the number of normal traffic that are incorrectly detected as attacks.
+* True Negative (TN): the number of normal traffic that are correctly detected.
+* False Negative (FN): the number of attacks that are incorrectly detected as normal traffic.
 
 #### TASK 5
+
 Write a code to calculate the TP, FP, TN, and FN. Then using them to calculate the accuracy, precision and recall. The following output is what you should get if done correctly.
 
-<figure><img src="./img/ti_ids_metrics.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/ti_ids_metrics.png" alt=""><figcaption></figcaption></figure>
 
 To make it more convenient, there is a Python library named [scikit-learn](https://scikit-learn.org/stable/) that provides a lot of useful functions for machine learning. We will use this library to calculate the metrics. The code below shows how to calculate the metrics using scikit-learn.
 
@@ -435,8 +456,7 @@ print(recall_score(y, y_predicted))
 
 ```
 
-This code should provide the same output as your own code above.
-Further, you can also calculate the confusion matrix using scikit-learn.
+This code should provide the same output as your own code above. Further, you can also calculate the confusion matrix using scikit-learn.
 
 ```python
 from sklearn.metrics import confusion_matrix, classification_report
@@ -449,30 +469,32 @@ print(classification_report(y, y_predicted, digits=4))
 Looking at our IDS performance, it is not very good! Another important metric is the F1-score, a harmonic mean of precision and recall. Simply, having an F1-score of 0.5 for binary decision (such as our IDS example) is the same as randomly guessing (e.g., a coin toss). So our IDS needs to be improved significantly if we really want to use this in practice.
 
 #### TASK 6 (optional)
+
 There are three variables to our time interval-based IDS: (1) upper SD, (2) lower SD, and (3) ceiling value. Try to change these values and see how much you can improve the performance of our IDS.
 
 To give you an idea, the best accuracy you can achieve is 0.9136, the best F1-score is 0.8637.
 
-
-
 ## 5.6. Entropy-based IDS
 
 {% hint style="info" %}
-We will be using the entropy_ids.ipynb from the zip file.
+We will be using the entropy\_ids.ipynb from the zip file.
 {% endhint %}
 
 ### 5.6.1. Entropy calculation
+
 As seen from the previous section, the time interval-based IDS is not very effective. We will now try another approach, which is to use the entropy of the payload. The idea is that the entropy of the payload is consistent for normal traffic, but varies a lot more for attack traffic. So we can use this information to detect attacks.
 
-The equation used to calculate the entropy is as follows: $H' = -\sum_{i=1}^N p_i \ln p_i$
+The equation used to calculate the entropy is as follows: $H' = -\sum\_{i=1}^N p\_i \ln p\_i$
 
 where
-- $N$ the number of types
-- $p_i$ the proportion of individuals belonging to the $i$-th species
+
+* $N$ the number of types
+* $p\_i$ the proportion of individuals belonging to the $i$-th species
 
 #### TASK 7
-Write a code to compute the entropy $H$ of the payload. A template code you can work with is given below. 
-    
+
+Write a code to compute the entropy $H$ of the payload. A template code you can work with is given below.
+
 ```python
 import numpy as np
 count = df_driving['Arbitration_ID'].value_counts()
@@ -481,13 +503,14 @@ p_i = count / df_driving.shape[0]
 # you will find numpy useful here
 ```
 
-You should wrap the code above in a function (say, named it ‘get_H’), so that you can reuse it later. The input parameter to the function would be the series you wish to compute the entropy of. The following outputs are two examples you should get if implemented correctly.
+You should wrap the code above in a function (say, named it ‘get\_H’), so that you can reuse it later. The input parameter to the function would be the series you wish to compute the entropy of. The following outputs are two examples you should get if implemented correctly.
 
-<figure><img src="./img/entropy_h.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/entropy_h.png" alt=""><figcaption></figcaption></figure>
 
 There are a couple of other examples in the provided notebook you can run to see if you get the correct outputs.
 
 ### 5.6.2. Sliding window concept
+
 The sliding window concept is used to compute the entropy for given timeframe in the dataset so that the running average can be computed. Once we can compute the running average, we can use it to detect attacks. We will first compute the running average for 1 second windows, which in our case is 2402 (i.e., the average number of messages per second in our dataset). The code is already provided to you in the notebook.
 
 We first look at our driving dataset entropy variation using the code below.
@@ -496,12 +519,14 @@ We first look at our driving dataset entropy variation using the code below.
 df_driving.plot(x='monotime', y='entropy', figsize=(12, 3))
 ```
 
-We observe that it seems quite random over time, but the peak to trough gap is actually quite small (3.7 to 3.715). 
+We observe that it seems quite random over time, but the peak to trough gap is actually quite small (3.7 to 3.715).
 
 #### TASK 8
-Analyse the intrusion dataset to see what you observe. Clearly, we see more distinct difference in the entropy values. This is because the attack traffic is more random than the normal traffic, yielding significantly higher or lower running entropy value averages. 
+
+Analyse the intrusion dataset to see what you observe. Clearly, we see more distinct difference in the entropy values. This is because the attack traffic is more random than the normal traffic, yielding significantly higher or lower running entropy value averages.
 
 ### 5.6.3. Entropy-based IDS
+
 Now we are ready to implement our entropy-based IDS. To do this, we need to define a threshold value for our entropy value. For starter, we'll set an arbitrary value that seems good enough, say $3.69 \leq H \leq 3.72$.
 
 The code to perform this is provided below.
@@ -517,8 +542,8 @@ The first line simply sets the predicted value to 0 (i.e., normal traffic). The 
 The evaluation code is also provided in the notebook, so have a look at the result and compare with the time interval-based IDS. We'll see that there has been a significant improvement in the performance of our IDS - an f1-score of 0.87!
 
 #### TASK 9 (optional)
-Explore different entropy threshold values to see whether you could improve the performance of our IDS or not.
 
+Explore different entropy threshold values to see whether you could improve the performance of our IDS or not.
 
 {% hint style="info" %}
 Credits to Prof. Seonghoon Jeong, Korea University, for providing the dataset and the lab materials.
