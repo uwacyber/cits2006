@@ -51,7 +51,7 @@ You are to investigate the security issues in the community. This could be a com
 3. Details and impact of the security issues identified.
 4. Recommendations to mitigate the security issues identified.
 
-Please note, this exercise does not only involve vulnerability patching, but could also involve security awareness, policy, and other security measures to improve the security posture of the community. Also, not only cybersecurity but also physical security could be considered.
+Please note, this exercise does not only involve vulnerability patching, but could also involve security awareness, policy, and other security measures to improve the security posture of the community. The primary aim is to investigate the cybersecurity issues in the community, but some physical security could be considered. However, physical security only will not be sufficient to receive full marks.
 
 
 {% hint style="warning" %}
@@ -82,7 +82,9 @@ Finally, create a short video (no more than 1 minute) indicating the problem fac
 
 ## Task 3: Project report and demo (week 12)
 
-You are to submit a group report on the security enhancements implemented. The report should include the details provided in Tasks 1 and 2 above. The demo will be conducted in the scheduled labs in week 12. The demo is for your group to showcase the security enhancements implemented and elaborate on the impact it had in the community. 
+You are to submit a group report on the security enhancements implemented. The report should include the details provided in Tasks 1 and 2 above. Please remember to clearly indicate the individual contributions of each group member in the report. How you indicate the contributions is up to you (e.g., a table, or contributing member noted in each section, etc.). Also make sure you include all technical details of the security enhancements implemented, including the tools used, the configurations made, and any other relevant information. The report should be no more than 10 pages long (including references). It is crucial that you provide FULL justifications for the security enhancements implemented, including the impact of the security enhancements implemented. Lastly, please double check the rubrics below to ensure you have met all the requirements.
+
+The demo will be conducted in the scheduled labs in week 12. The demo is for your group to showcase the security enhancements implemented and elaborate on the impact it had in the community. Each member is expected to present their contributions to the project. 
 
 {% hint style="info" %}
 The live demo will be no longer than 30 mins, you should aim it to be around 20 mins demonstration with Q&A throughout the demo.

@@ -67,13 +67,13 @@ C15. Design and implement a threat intelligence module of your choice.
 C16. Design and implement a privacy-preserving technique for an appropriate application.
 C17. Help another student in this unit struggling to understand/learn a cybersecurity concept.
 C18. Apply a learned concept in this unit to a real-world application/problem/environment.
-C19. Produce a cyber safety flyer for (choose 1): elders, high school students, CEOs, Uni students.
+C19. Produce a cyber safety flyer for (choose 1): elderly, high school students, CEOs, Uni students.
 C20. Complete an online cybersecurity module.
 
 
 ## Submission
 
-You will submit your portfolio on LMS. The due date is **Monday of week 12 at 11.59pm**. The format accepted for grading is **PDF ONLY**. You may include links (e.g., to your GitHub projects) in your portfolio as necessary. Any code used should also be included in your portfolio. You may submit additional files (e.g., code).
+You will submit your portfolio on LMS. The due date is **Monday of week 12 at 11.59pm**. The report format accepted for grading is **PDF ONLY**. You may include links (e.g., to your GitHub projects) in your portfolio as necessary. Any code used should also be included in your portfolio. You may submit additional files (e.g., code).
 
 Your portfolio must have a cover page. Following the cover page, you must include a table outlining which activities were completed. In addition, the table must also include a self-assessment indicating how many marks each of your activity should receive following the marking scheme below.
 
