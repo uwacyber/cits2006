@@ -12,7 +12,7 @@ Passwords are the most common form of authentication. They are a knowledge facto
 We'll start with the most simplest implementation, then add features to make it more secure. Download the template code for this section:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/password.py
+wget https://github.com/uwacyber/cits2006/raw/2026/cits2006-labs/files/password.py
 ```
 
 Run this code to check that it is working correctly (i.e., with the right username and password, you can authenticate yourself).
@@ -54,7 +54,7 @@ Time-based One-time Passwords (TOTP) are a form of two-factor authentication. Th
 You can start with the basic template provided below:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2025/cits2006-labs/files/totp_mfa.py
+wget https://github.com/uwacyber/cits2006/raw/2026/cits2006-labs/files/totp_mfa.py
 ```
 
 The code is not quite complete, you will have to complete the `verify_totp` function to make it work properly (currently it will authenticate any code!). But first, let's look at the rest of the functions provided to you.
