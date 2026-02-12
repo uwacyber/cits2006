@@ -6,6 +6,11 @@ Note that materials are still being updated as noted below.
 
 
 
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
+
 
 
 ## Week 01
@@ -75,12 +80,6 @@ Note that materials are still being updated as noted below.
 
 * [07. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2025/cits2006-lectures/10.Threat\_intelligence.pdf)
 * Lab Quiz 2 Demo this week.
-
-
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
-
 
 
 ## Week 11
