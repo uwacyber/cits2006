@@ -115,6 +115,6 @@ Below are some additional guidelines and tips.
 
 Each activity is worth 2 marks. There are 50 activities to complete, a total of 100 marks is achievable in this assessment. Extra tasks completed won’t count towards your marks, just the first 50 activities completed.
 
-0 mark:	This means you did not complete the activity (no submission/completion, or unsatisfactory attempt has been made).
-1 mark:	This means your activity completion is satisfactory.
-2 marks:	This means your activity completion is outstanding.
+0 mark:	This means you did not complete the activity (no submission/completion, or unsatisfactory attempt has been made).  
+1 mark:	This means your activity completion is satisfactory.  
+2 marks:	This means your activity completion is outstanding.  
