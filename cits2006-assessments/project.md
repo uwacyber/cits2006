@@ -19,7 +19,7 @@ As a owner of the system, you can provide permission and/or access to our studen
 Thank you for working with our students and their journey to learn more about cybersecurity, we wish to improve the cybersecurity posture of our community through these exercises, and your help is greatly appreciated.
 {% endhint %}
 
-## Pretask: Group forming (week 3)
+## Pretask: Group forming (Due end of week 3)
 
 This project is to be carried out as a group, and you are to form your own group. If you don't have a group, you can find one in the labs or using MS Teams. Do not expect me to put you in a group, because I won't and you won't have a group.
 
@@ -33,7 +33,7 @@ Once the group has been formed, go to MS Teams -> Project Discussion, and there 
 
 Please note that you are required to indicate clearly of the individual contributions of the project, so you should also be keeping records of individual contributions so that individual assessment components can be evaluated later. No individual contribution means you will not get any marks for that component. Please note that this doesn't mean you are competing with your group members, but instead, a chance to demonstrate your own skills and contributions to the project.
 
-Complete Task 0 Group forming by end of week 3 (i.e., by Friday 14 March).
+Complete Task 0 Group forming by end of week 3 (i.e., by Friday 13 March).
 
 {% hint style="info" %}
 Please note:
@@ -44,7 +44,7 @@ Please note:
 
 ## Task 1: Security issues in the community (weeks 4 - 6)
 
-You are to investigate the security issues in the community. This could be a community of your choice, such as a school, a small business, a local government, etc. You are to identify the security issues in the community and provide a report on the security issues identified. The report should include the following:
+You are to investigate the security issues in the community. This could be a community of your choice, such as a local store, a (sports, arts, hobby) club, a daycare, a restaurant, etc. You are to identify the security issues in the community and provide a report on the security issues identified. The report should include the following:
 
 1. Communities investigated.
 2. Security issues identified.
@@ -80,19 +80,19 @@ Finally, create a short video (no more than 1 minute) indicating the problem fac
 
 
 
-## Task 3: Project report and demo (week 12)
+## Task 3: Project report (due week 11) and demo (week 12)
 
 You are to submit a group report on the security enhancements implemented. The report should include the details provided in Tasks 1 and 2 above. Please remember to clearly indicate the individual contributions of each group member in the report. How you indicate the contributions is up to you (e.g., a table, or contributing member noted in each section, etc.). Also make sure you include all technical details of the security enhancements implemented, including the tools used, the configurations made, and any other relevant information. The report should be no more than 10 pages long (including references). It is crucial that you provide FULL justifications for the security enhancements implemented, including the impact of the security enhancements implemented. Lastly, please double check the rubrics below to ensure you have met all the requirements.
 
 The demo will be conducted in the scheduled labs in week 12. The demo is for your group to showcase the security enhancements implemented and elaborate on the impact it had in the community. Each member is expected to present their contributions to the project. 
 
 {% hint style="info" %}
-The live demo will be no longer than 30 mins, you should aim it to be around 20 mins demonstration with Q&A throughout the demo.
+The live demo will be no longer than 30 mins, you should aim it to be around 20 mins demonstration with Q&A throughout the demo. You don't have to demo everything you implemented, but you should demo the key features of your implementation, and be prepared to answer questions about the details of your implementation and the impact it had in the community.
 {% endhint %}
 
 
 ## Peer Evaluation
-You are to submit peer evaluation of your group members, including yourself of the contribution made for the project. The link will be provided to you on MS Teams. The value you enter will be between 0 and 1, where 0 indicates no contribution and 1 indicates expected contribution. For example, if the peer completed given tasks, you should give your peer 1. If they didn't complete some given tasks, but completed most, you may give 0.9, and so on. The peer evaluation is due by the end of week 12.
+You are to submit peer evaluation of your group members, including yourself of the contribution made for the project. The link will be provided to you on MS Teams. The value you enter will be between 0 and 1, where 0 indicates no contribution and 1 indicates expected contribution. For example, if the peer completed the assigned tasks, you should give your peer 1. If they didn't complete some tasks assigned, but completed most, you may give 0.9, and so on. The peer evaluation is due by the end of week 12.
 
 The actual value for you is calculated by removing minimum and maximum values, then computing MAX(average, median) using the remaining 3 values.
 
