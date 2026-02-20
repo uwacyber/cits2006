@@ -2,15 +2,16 @@
 
 Learning cybersecurity involves not only understanding concepts and techniques, but also applying them in practice, as well as being able to discuss with others. To encourage this, you are to conduct various cybersecurity related activities and create a portfolio for submission. This will involve not only the theoretical and technical skills, but also other soft skills. 
 
-The final delivery of the portfolio is a private GitHub repository consisting of activities completed, with sufficient details to describe how the objectives of the activity have been achieved, as well as any additional evidence to demonstrate that you have completed the activities as applicable (e.g., code, scripts, support letters, etc.). If the details are not sufficiently evident to support the completion of the activity, then you may not be rewarded with marks for those activities. Therefore, it is essential that you provide sufficient details how you completed the activity with any supporting evidence. If ever in doubt, please talk with the facilitators or the UC. Once the final grade for the portfolio has been released, you can change the repository to public status if you wish to.
+You are required to create a GitHub project (repo) for collecting evidence and completion of the activities. DO NOT name this repo "CITS2006 ..." or use the keyword "CITS2006". You should create 2 directories for each part to separate the evidence collection. You should also update the repo as you complete the activities as indication of your progress. To submit your portfolio, you will create a PDF report consisting of activities completed with details, and submit via LMS by the due dates. Your repo should consist of additional evidences that support the activities you have completed (e.g., code, scripts, support letters, etc.). If the details are not sufficiently evident to support the completion of the activity, then you may not be rewarded with marks for those activities. Therefore, it is essential that you provide sufficient details how you completed the activity with any supporting evidence. If ever in doubt, please talk with the facilitators or the UC. 
 
-The portfolio will be marked in 2 parts: Part 1 activities are submitted by the end of week 6 (Friday 11.59pm AWST). Part 2 activities are submitted by the end of week 12 (Friday 11.59pm AWST). This allows you to receive feedback about the portfolio contents, format, and evidence collection, which can be reflected in part 2 submission. Please note, you are expected to work on ALL activities early on regardless of their due dates, as some activities take much longer than others.
+The portfolio will be marked in 2 parts: Part 1 activities are submitted by the end of week 6 (Friday 11.59pm AWST). Part 2 activities are submitted by the end of week 12 (Friday 11.59pm AWST). Part 1 submission allows you to receive feedback about the portfolio contents, format, and evidence collection, which can be reflected in part 2 submission. Please note, you are expected to work on ALL activities early on regardless of their due dates, as some activities take much longer than others.
 
 
+{% hint style="important" %}
+You are expected to spend on average 3 hours a week on completing your portfolio activities. While this is an assessment, it is also part of your self-learning time, as you are required to investigate and research on your own to complete the activities. Therefore, it is important that you start early and manage your time well to complete the activities. It is advised you spend more time in the first half of the semester to complete as many activities as possible, so that you can spend more time completing the project in the second half of the semester. 
+{% endhint %}
 
 ## Activities
-
-Below is the list of activities you need to complete and include in your portfolio. They are grouped into three different types of activities:
 
 ### Part 1 activities (due end of week 6, Friday 11.59pm AWST).
 Choose any 25 activities from the following list to complete and submit.
@@ -87,9 +88,7 @@ B30\.	Generate an AI-created image, applying an imperceptible watermark on it an
 
 ## Submission
 
-You will submit your portfolio as a private GitHub project. You should create 2 directories for each part to separate the activities. You will add the teaching staff to your repository for marking. Further details will be given in class. Failure to add teaching staff for marking will result in getting ZERO for the assessment. 
-
-At the root directory, you must have a cover page including your name and student ID. Following the cover page, you must include two tables outlining a self-assessment for each part 1 and part 2, indicating how many marks each of your activity should receive following the marking scheme below.
+You will submit your portfolio as a PDF only document via LMS. Other formats are not accepted.You must have a cover page that includes your name, student ID and the link to your repo. Following the cover page, you must include a table outlining a self-assessment for the activities completed, indicating how many marks each of your activity should receive following the marking scheme below.
 
 
 
