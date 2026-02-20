@@ -88,7 +88,7 @@ B30\.	Generate an AI-created image, applying an imperceptible watermark on it an
 
 ## Submission
 
-You will submit your portfolio as a PDF only document via LMS. Other formats are not accepted.You must have a cover page that includes your name, student ID and the link to your repo. Following the cover page, you must include a table outlining a self-assessment for the activities completed, indicating how many marks each of your activity should receive following the marking scheme below.
+You will submit your portfolio as a PDF only document via LMS. Other formats are not accepted. You must have a cover page that includes your name, student ID and the link to your repo. Following the cover page, you must include a table outlining a self-assessment for the activities completed, indicating how many marks each of your activity should receive following the marking scheme below.
 
 
 
