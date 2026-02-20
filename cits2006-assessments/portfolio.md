@@ -33,11 +33,11 @@ A14\.	Discover 5 AI-enabled security solutions.
 A15\.	Discover 5 recent security incidents.  
 A16\.	Discover 3 local security incidents.  
 A17\.	Discover 10 different types of locks in use.  
-A18\.	Discover a generative AI system by yourself to identify two hallucination cases.  
+A18\.	Discover two hallucination cases when using a generative AI system.  
 A19\.	Join a CS/DS/cybersecurity club.  
 A20\.	Participate in a discussion with your friends about cybersecurity event.  
 A21\.	Participate in an online cybersecurity discussion.  
-A22\.	Perform a prompt injection attack on a generative AI assistant.  
+A22\.	Perform a prompt injection attack on a generative AI assistant (controlled test only).  
 A23\.	Enhance the cybersecurity at your home.  
 A24\.	Teach your family about cybersecurity topic of your choice.  
 A25\.	Design and implement a privacy-preserving technique for an appropriate application.  
@@ -63,8 +63,8 @@ B8\.	Participate in a hackathon.
 B9\.	Participate in an industry-related cybersecurity event.  
 B10\.	Participate in a cybersecurity activity as part of job/internship/volunteering etc.  
 B11\.	Talk to 2 cybersecurity experts from the industry and find out their latest projects.  
-B12\.	Discover a generative AI system by yourself to identify two bias cases.  
-B13\.	Perform a jailbreak attack on a generative AI assistant.  
+B12\.	Discover two bias cases when using a generative AI system.  
+B13\.	Perform a jailbreak attack on a generative AI assistant (controlled test only).  
 B14\.	Teach your friends about cybersecurity topic of your choice.  
 B15\.	Teach an elderly person about cybersecurity topic of your choice.  
 B16\.	Survey the current state-of-the-art solutions in cybersecurity.  
@@ -81,7 +81,7 @@ B26\.	Help another student in this unit struggling to understand/learn a cyberse
 B27\.	Apply a learned concept in this unit to a real-world application/problem/environment.  
 B28\.	Produce a cyber safety flyer for (choose 1): elders, high school students, CEOs, Uni students.  
 B29\.	Find a CVE in this year and fix it using three different generative AI systems (e.g., ChatGPT, Gemini), comparing the consistency.  
-B30\.	Generate an AI-created image, applying an imperceptible watermark on it and then perform an image-to-image regeneration or editing process to make sure the watermark being detectable.  
+B30\.	Generate an AI-created image, applying an imperceptible watermark on it and then perform an image-to-image regeneration or editing process to make sure the watermark is detectable---the watermark survives.  
 
 
 
