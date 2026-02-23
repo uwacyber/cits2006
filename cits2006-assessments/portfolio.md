@@ -4,7 +4,7 @@ Learning cybersecurity involves not only understanding concepts and techniques, 
 
 You are required to create a GitHub project (repo) for collecting evidence and completion of the activities. DO NOT name this repo "CITS2006 ..." or use the keyword "CITS2006". You should create 2 directories for each part to separate the evidence collection. You should also update the repo as you complete the activities as indication of your progress. To submit your portfolio, you will create a PDF report consisting of activities completed with details, and submit via LMS by the due dates. Your repo should consist of additional evidences that support the activities you have completed (e.g., code, scripts, support letters, etc.). If the details are not sufficiently evident to support the completion of the activity, then you may not be rewarded with marks for those activities. Therefore, it is essential that you provide sufficient details how you completed the activity with any supporting evidence. If ever in doubt, please talk with the facilitators or the UC. 
 
-The portfolio will be marked in 2 parts: Part 1 activities are submitted by the end of week 6 (Friday 11.59pm AWST). Part 2 activities are submitted by the end of week 12 (Friday 11.59pm AWST). Part 1 submission allows you to receive feedback about the portfolio contents, format, and evidence collection, which can be reflected in part 2 submission. Please note, you are expected to work on ALL activities early on regardless of their due dates, as some activities take much longer than others.
+The portfolio will be marked in 2 parts: Part 1 activities are submitted by the end of week 6 (Thursday 11.59pm AWST). Part 2 activities are submitted by the end of week 12 (Friday 11.59pm AWST). Part 1 submission allows you to receive feedback about the portfolio contents, format, and evidence collection, which can be reflected in part 2 submission. Please note, you are expected to work on ALL activities early on regardless of their due dates, as some activities take much longer than others.
 
 
 {% hint style="important" %}
@@ -13,7 +13,7 @@ You are expected to spend on average 3 hours a week on completing your portfolio
 
 ## Activities
 
-### Part 1 activities (due end of week 6, Friday 11.59pm AWST).
+### Part 1 activities (due end of week 6, Thursday 11.59pm AWST).
 Choose any 25 activities from the following list to complete and submit.
 
 A1\.	Discover security concepts used on campus.  
