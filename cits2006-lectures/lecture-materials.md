@@ -6,13 +6,6 @@ Note that materials are still being updated as noted below.
 
 
 
-{% hint style="warning" %}
-The below has not been updated yet.
-{% endhint %}
-
-
-
-
 ## Week 01
 
 * [01a. Introduction](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/01a.Introduction.pdf)
@@ -26,6 +19,15 @@ The below has not been updated yet.
 
 * [02. Cryptography](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/02.Cryptography.pdf)
 * Complete [lab 1](../cits2006-labs/lab-1-hashing-and-blockchain.md).
+
+
+
+
+{% hint style="warning" %}
+The below has not been updated yet.
+{% endhint %}
+
+
 
 
 ## Week 03
