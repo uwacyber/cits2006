@@ -17,7 +17,7 @@ Students are able to (1) identify and analyse vulnerabilities and potential secu
 
 ### Assessments
 
-There are 3 lab quizzes that are worth a total of 60% of unit marks. There will be a group project worth 40% of unit marks. There is **NO** final exam in this unit. Please note that assessment items and schedules may change, and the best effort will be taken to inform you of such change - but as a student, you are expected to also regularly check for any new updates here.
+There are 2 lab quizzes that are worth a total of 40% of unit marks. There will be a group project worth 40% of unit marks. There is **NO** final exam in this unit. Please note that assessment items and schedules may change, and the best effort will be taken to inform you of such change - but as a student, you are expected to also regularly check for any new updates here.
 
 ### Advisable prior studies
 
