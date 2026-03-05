@@ -174,7 +174,7 @@ A conflict can occur in a Blockchain network when one node has a different chain
 Two methods in the blockchain class, `valid_chain` and `resolve_conflicts`, are provided. The valid_chain() method ensures that the existing chain is valid by checking each block of its hash and the proof. The resolve_conflicts() method will check all the neighbouring nodes, which downloads their chains and verifies them using the above method. If we find a valid chain that has a greater length that the existing one, we will replace it. Both methods are already implemented for you.
 
 #### TASK 7 Checking the consensus algorithm
-In this task, you are required to run two blockchain nodes on different ports. You can do this by running another flask app of the same code on a different port. Once both blockchains are running, we can use them to test the consensus algorithm as follows. Make sure you add some transactions in both blockchains. First, register the second node to the first one (and vice versa), which the output should look like below. Note, you will need to write your code to add a new node.
+In this task, you are required to run two blockchain nodes on different ports. You can do this by running another flask app of the same code on a different port. Once both blockchains are running, we can use them to test the consensus algorithm as follows. Make sure you add some transactions in both blockchains. First, register the second node to the first one (and vice versa, note you indeed need to register both directions), which the output should look like below. Note, you will need to write your code to add a new node.
 
 <figure><img src="./img/blockchain_new_node.png" alt=""><figcaption></figcaption></figure>
 
