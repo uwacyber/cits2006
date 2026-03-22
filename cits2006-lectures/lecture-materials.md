@@ -46,7 +46,7 @@ The below has not been updated yet.
 
 ## Week 05
 
-* [05. Security Management](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/05.Security\_management.pdf)
+* [05. Risk Management](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/05.Risk\_management.pdf)
 * Lab Quiz 1 this week (20%).
 * No new lab this week.
 
