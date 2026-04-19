@@ -71,7 +71,7 @@ The below has not been updated yet.
 
 ## Week 08
 
-* [08. Threat Modeling](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/08.SecurityModeling.pdf)
+* [08. Threat Modeling](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/08.ThreatModeling.pdf)
 * Complete [lab 5](../cits2006-labs/lab-5-ids.md).
 
 
