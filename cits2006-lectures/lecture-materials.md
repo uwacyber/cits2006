@@ -86,20 +86,20 @@ The below has not been updated yet.
 
 ## Week 10
 
-* [10. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/10.Threat\_intelligence.pdf)
+* 10\. Guest Lecture and/or Unit Review (Done)
 * Lab Quiz 2 this week (20%).
 
 
 
 ## Week 11
 
-* [11. AI and Security](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/11.AI\_and\_security.pdf)
+* [11. Threat Intelligence](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/10.Threat\_intelligence.pdf)
 * Lab Quiz 2 Demo this week.
 * Project report due Friday 11.59pm (submission via LMS) (40%).
 
 
 ## Week 12
 
-* 12\. Guest Lecture and/or Unit Review (TBC)
+* [12. AI and Security](https://github.com/uwacyber/cits2006/raw/2026/cits2006-lectures/11.AI\_and\_security.pdf)
 * Project demo in scheduled labs.
 * Portfolio part 2 due Friday 11.59pm (submission via LMS) (10%).
