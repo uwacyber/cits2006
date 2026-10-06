@@ -9,17 +9,18 @@ More details are as follows.
 The standard UWA late penalty applies to ALL members if you defer your group deliverable/demo (i.e., -5% per day from raw marks for 7 days, then 0).
 {% endhint %}
 
-{% hint style="important" %}
-You should show the below information to the community entities you wish to engage with:
+{% hint style="danger" %}
+**Rules for working with community organisations (read before you start):**
+1. **Owner authorisation before any active work.** No scanning, logging in, changing settings or installing anything until the owner has signed the [Owner Authorisation Form](project-authorisation.md) and you have uploaded it to LMS. Until then, only passive work is allowed: public information, site visits and conversations with the owner.
+2. **Task 1 is passive only.**
+3. **No changes to live systems** without the owner's written sign-off for that specific change.
+4. **Sensitive organisations need the unit coordinator's approval first.** This includes schools, childcare, health clinics and places of worship.
+5. **Keep it anonymous.** Do not name the organisation, or show identifying details, in your reports or video. Share the video as an **unlisted** link.
 
-The students in this unit completing the project below are learning more about defensive cybersecurity, and the project is for them to explore some vulnerabilities found in our communities’ systems and see if they can improve/enhance it. Having said that, they are not professionals, so they won’t be comprehensive, but rather focused on their learning through these activities. Regardless, they still need owner’s permission to carry out any active scanning and whatnot.
-
-As a owner of the system, you can provide permission and/or access to our students things that you are happy for them to see. If required, you may ask them, myself and other teaching team to sign an NDA, as me and some teaching staff will be marking their submissions outlining the system details they found/have access to. Even if we trust our students, it is best practice to have them sign NDA, and any other required contracts (if necessary) for them to inspect your system, especially if it is not public facing. 
-
-Thank you for working with our students and their journey to learn more about cybersecurity, we wish to improve the cybersecurity posture of our community through these exercises, and your help is greatly appreciated.
+Breaking these rules can be a criminal offence (unauthorised access to a computer system), and will be treated as misconduct.
 {% endhint %}
 
-## Pretask: Group forming (Due end of week 3)
+## Pretask: Group forming (due Friday 12 March 2027)
 
 This project is to be carried out as a group, and you are to form your own group. If you don't have a group, you can find one in the labs or using MS Teams. Do not expect me to put you in a group, because I won't and you won't have a group.
 
@@ -42,13 +43,13 @@ Please note:
 
 ### Task 0 Deliverables
 
-Complete Task 0 Group forming by end of week 3 (i.e., by Friday 13 March).
+Complete Task 0 Group forming by end of week 3 (i.e., by Friday 12 March 2027).
 
 
 
 ## Task 1: Security issues in the community (weeks 4 - 6)
 
-You are to investigate the security issues in the community. This could be a community of your choice, such as a local store, a (sports, arts, hobby) club, a daycare, a restaurant, etc. You are to identify the security issues in the community and provide a report on the security issues identified. You are expected to do this for several community entities. The report should include the following:
+You are to investigate the security issues in the community. This could be a community of your choice, such as a local store, a (sports, arts, hobby) club, a daycare, a restaurant, etc. You are to identify the security issues in the community and provide a report on the security issues identified. Investigate two or three community entities in depth. Task 1 is passive only: public information, site visits and conversations with owners. No scanning, logging in or other access to their systems. The report should include the following:
 
 1. Communities investigated.
 2. Security issues identified.
@@ -67,8 +68,8 @@ Of course, you will need to meet all requirements to receive marks for other tas
 {% endhint %}
 
 ### Task 1 Deliverables
-- Submit the Task 1 report via LMS by the start of week 7 (i.e., by 13 April 12.59pm AWST).
-- Demo Task 1 in week 7 during the scheduled labs (timeslot to be entered on the spreadsheet on MS Teams).
+- Submit the Task 1 report via LMS by Monday 5 April 2027 (week 7), 11:59 pm AWST.
+- Upload the signed [Owner Authorisation Form](project-authorisation.md) for the entity you will work with in Task 2, by the same date. Without it, you cannot start any active work in Task 2.
 
 
 
@@ -84,11 +85,11 @@ Based on the security issues identified in Task 1, you are to further explore an
 5. Impact of the security enhancements implemented.
 6. Feedback from the community entity of the solutions implemented.
 
-Finally, create a short video (no more than 1 minute) indicating the problem faced and the solution implemented. Upload it on a platform where you can share it (e.g., YouTube). The link should be included in the report near the top.
+Finally, create a short video (no more than 1 minute) indicating the problem faced and the solution implemented. Share it as an **unlisted** link (e.g., unlisted on YouTube), and do not name or identify the organisation. Put the link near the top of the report.
 
 ### Task 2 Deliverables
-- Submit the Task 2 report via LMS by the end of week 11 (i.e., by 15 May 12.59pm AWST).
-- Demo Task 2 in week 12 during the scheduled labs (timeslot to be entered on the spreadsheet on MS Teams).
+- Submit the Task 2 report via LMS by Friday 14 May 2027 (week 11), 11:59 pm AWST.
+- Demo Task 2 in your week 12 lab (book a 30-minute slot on MS Teams). The Friday week 12 workshop is the overflow slot.
 
 
 
@@ -96,7 +97,7 @@ Finally, create a short video (no more than 1 minute) indicating the problem fac
 
 In your group reports, please remember to clearly indicate the individual contributions of each group member in the report. You should have a table of contributions at the top of the report after the cover page, as well as clearly noting the contributing member(s) in each section. Also make sure you include all technical details of the security enhancements implemented, including the tools used, the configurations made, and any other relevant information. The report should be no more than 30 pages long (including references). It is crucial that you provide FULL justifications for the security enhancements implemented, including the impact of the security enhancements implemented. Lastly, please double check the rubrics below to ensure you have met all the requirements.
 
-The demo will be conducted in the scheduled labs in weeks 7 and 12. The demo is for your group to showcase the flaws found and security enhancements implemented, and elaborate on the impact it had in the community. Each member is expected to present their contributions to the project. 
+The demo will be conducted in the scheduled labs in week 12. The demo is for your group to showcase the flaws found and security enhancements implemented, and elaborate on the impact it had in the community. Each member is expected to present their contributions to the project. 
 
 {% hint style="info" %}
 The live demo will be no longer than 30 mins, you should aim it to be around 25 mins demonstration (i.e., ~5 mins per member) with Q&A throughout the demo. You don't have to demo everything you implemented, but you should demo the key features of your implementation, and be prepared to answer questions about the details of your implementation and the impact it had in the community.
@@ -136,13 +137,13 @@ You are expected to spend on average 3 hours a week on completing this project. 
     </thead>
     <tbody>
         <tr>
-            <td>Discovering community entities and their security issues</td>
+            <td>Discovering security issues in two or three community entities</td>
             <td>20%</td>
             <td>Unable to identify security issues in the community.</td>
             <td>(1) Some community entities were found, but the security details are general and not comprehensive.<br><br>(2) Mitigations are described but of generic nature and lacks details.</td>
             <td>(1) Community entities were found, and the security details are clear and descriptive.<br><br>(2) Mitigations are described with sufficient details.</td>
-            <td>(1) Various community entities were found, and the security details are clear and comprehensive.<br><br>(2) Advanced mitigations are described with sufficient details and reasonings.</td>
-            <td>(1) Many community entities were found, and the security details are clear and comprehensive.<br><br>(2) Advanced and practical mitigations are described with sufficient details and reasonings.</td>
+            <td>(1) Two or three community entities were analysed, and the security details are clear and comprehensive.<br><br>(2) Advanced mitigations are described with sufficient details and reasoning.</td>
+            <td>(1) Two or three community entities were analysed in depth, and the security details are clear, comprehensive and evidence-based.<br><br>(2) Advanced and practical mitigations are described with sufficient details and reasoning.</td>
         </tr>
         <tr>
             <td>Enhancing the security of chosen community entity</td>

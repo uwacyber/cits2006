@@ -26,7 +26,7 @@ Week 1 starts on Monday 22 February 2027. All deadlines are 11:59 pm AWST unless
 
 Lab numbers follow the lab sheets, so Lab 3 (access control) runs before Lab 2 (privacy).
 
-How the workshop CTF and the lab quizzes are marked: see [In-class Assessments](../cits2006-assessments/lab-quizzes.md).
+How the workshop CTF and the lab quizzes are marked: see [In-class Assessments](../cits2006-assessments/in-class-assessments.md).
 
 ## Lecture slides
 

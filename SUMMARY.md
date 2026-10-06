@@ -19,6 +19,7 @@
 
 ## CITS2006 Assessments
 
+* [In-class Assessments](cits2006-assessments/in-class-assessments.md)
 * [Portfolio](cits2006-assessments/portfolio.md)
-* [Lab Quizzes](cits2006-assessments/lab-quizzes.md)
 * [Project](cits2006-assessments/project.md)
+  * [Owner Authorisation Form](cits2006-assessments/project-authorisation.md)
