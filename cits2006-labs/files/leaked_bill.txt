@@ -1,0 +1,5 @@
+WATER ACCOUNT - 12 Example Street (customer: A. Resident)
+Meter readings (litres):
+  10/03/2016  353950
+  14/05/2016  370783
+  13/08/2016  402290
