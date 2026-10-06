@@ -1,0 +1,17 @@
+# Every push to this year's branch fast-forwards `live`, which GitBook publishes,
+# so links can always use raw/live/. At rollover, cut the new year's branch from
+# this one and change the branch name below (same set-up as CITS3006).
+name: Sync live
+on:
+  push:
+    branches: ["2027"]
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git push origin ${GITHUB_SHA}:refs/heads/live
