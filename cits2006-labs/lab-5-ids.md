@@ -1,4 +1,4 @@
-# Lab 5: Intrusion Detection System (NOT READY)
+# Lab 5: Intrusion Detection System
 
 ## 5.1. Introduction
 In a world where everything is becoming smarter, have you ever wondered what it truly means for a device to be "smart"? With the Internet of Things (IoT) connecting everything, including our cars, smart vehicles are becoming increasingly popular as they offer advanced features such as streaming audio and video directly from your car and updating firmware on the go. But this also leaves our vehicles vulnerable to cyber-attacks from hackers who can take control of our cars. Check out [this video](https://youtu.be/AdZ8nx6nRfA) to understand the implication of cyberattacks against smart cars for more motivations. 
@@ -15,7 +15,7 @@ If you are stuck getting Jupyter notebook running, it is a good time to seek hel
 {% hint style="info" %}
 Before you start, download the files you need:
 ```
-wget https://github.com/uwacyber/cits2006/raw/2026/cits2006-labs/files/ids.zip
+curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/ids.zip
 ```
 {% endhint %}
 

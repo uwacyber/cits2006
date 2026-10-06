@@ -17,7 +17,13 @@ Students are able to (1) identify and analyse vulnerabilities and potential secu
 
 ### Assessments
 
-There are 2 lab quizzes that are worth a total of 40% of unit marks. There will be a group project worth 40% of unit marks. There is **NO** final exam in this unit. Please note that assessment items and schedules may change, and the best effort will be taken to inform you of such change - but as a student, you are expected to also regularly check for any new updates here.
+| Item | Weight | What |
+|---|---|---|
+| In-class assessments | 55% | Lab Quiz 1 (15%, week 6), Lab Quiz 2 (20%, week 10) and the weekly workshop CTF (20%, best 5 of 7 rounds) |
+| Portfolio | 15% | Real-world cybersecurity activities you choose from a list of about 60 |
+| Project | 30% | Group project improving the security of a community organisation |
+
+There is **NO** final exam in this unit. Assessment details may change. Any change will be announced on LMS, and you are expected to check this site regularly.
 
 ### Advisable prior studies
 
@@ -26,4 +32,4 @@ Although the prerequisite for this unit is only CITS1401 and CITS1003 (Intro to 
 
 ### License Terms
 
-Copyright © Jin Hong 2024. Except where otherwise specified, the text in this course is licensed under the Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0).
+Copyright © Jin Hong 2024–2027. Except where otherwise specified, the text in this course is licensed under the Creative Commons Attribution-ShareAlike License 4.0 (International) (CC-BY-SA 4.0).

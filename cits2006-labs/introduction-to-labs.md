@@ -1,14 +1,14 @@
 # Introduction to Labs
 
-These labs are intended to provide a practical complement to the CITS2006 Penetration Testing unit. The materials are designed for you to complete individually, but you are welcome to work with your peers as well. However, please note that the lab quizzes are **individually assessed**, so it is essential that you fully understand the concepts and techniques covered in the labs to receive good marks.
+These labs are intended to provide a practical complement to the CITS2006 Defensive Cybersecurity unit. The materials are designed for you to complete individually, but you are welcome to work with your peers as well. However, please note that the in-class assessments are **individually assessed**, so it is essential that you fully understand the concepts and techniques covered in the labs to receive good marks.
 
 As always, please contact the lab facilitator if you are stuck. We may use the UWA CSSE Help Server to submit your question ticket, so that questions can be answered in the order of requests. The details are outlined in the welcome lecture slide, but you can also ask the lab facilitator on site or via their emails or through MS Teams. If nothing works, please contact the UC explaining your issue.
 
 ## Laptop Requirement
 
-This unit requires software that the University IT team can't install on the lab machines and so you will need to use your own laptop. This can be either Windows, Mac or Linux and instructions will be provided for those platforms as necessary. We will be running (often) two or more VMs at the same time, so it is advisable to get a laptop that has high core counts (minimum 4), additional RAM (minimum 16GB), and enough storage space (extra 50GB in addition to whatever you use already). Details for considerations are shown below.
+This unit requires software that the University IT team can't install on the lab machines and so you will need to use your own laptop. This can be either Windows, Mac or Linux and instructions will be provided for those platforms as necessary. Labs run in Python and in Docker containers rather than full VMs, so a laptop with at least 4 cores, 8 GB RAM (16 GB recommended) and 30 GB of free disk space is enough. Details for considerations are shown below.
 
-If you do not have a laptop, it will make your life easier by getting one that meets the requirements specified in the above link.
+If you do not have a laptop, it will make your life easier by getting one that meets the requirements described below.
 
 You may also request a loan laptop from the student office. Please contact the Student Office to ask for more details: [studentwelfare-studserv@uwa.edu.au](mailto:studentwelfare-studserv@uwa.edu.au)
 
@@ -20,7 +20,7 @@ It is essential that you reserve at least 10GB of additional disk space to store
 ## Considerations when purchasing a laptop
 
 ### Operating system
-This choice is critical. While most CSSE units can be successfully undertaken using a laptop running Windows, Linux, or macOS, Apple's macOS can only be (legally) run on Apple's hardware. Nearly all non-Apple laptops use an Intel or AMD processor, older Apple laptops use an Intel processor, and Apple laptops since 2020(ish) run an ARM-based Apple Silicon processors (M1, M2 etc.). It is possible to emulate Windows and Linux on Apple computers, but the performance differs due to significantly different architecture they run. Whether Windows is better than macOS, and whether Linux is better than them both, is almost a religious argument that won't be resolved here! Based on the CSSE course you're taking, investigate the recommended hardware and software for each unit. Geting through the degree, you should be fine with any of the OS.
+This choice is critical. While most CSSE units can be successfully undertaken using a laptop running Windows, Linux, or macOS, Apple's macOS can only be (legally) run on Apple's hardware. Nearly all non-Apple laptops use an Intel or AMD processor, older Apple laptops use an Intel processor, and Apple laptops since 2020(ish) run an ARM-based Apple Silicon processors (M1, M2 etc.). It is possible to emulate Windows and Linux on Apple computers, but the performance differs due to significantly different architecture they run. Whether Windows is better than macOS, and whether Linux is better than them both, is almost a religious argument that won't be resolved here! Based on the CSSE course you're taking, investigate the recommended hardware and software for each unit. Getting through the degree, you should be fine with any of the OS.
 
 ### Screen size
 Screen size obviously influences a laptop's overall size which, in turn, limits its portability and weight. While screen size matters little when sitting at a table, larger sizes affect your ability to work effectively on buses and trains. A 13-inch screen is considered a reasonable minimum, with a 15-inch screen being the sweet-spot. 17-inch and 19-inch behemoths are great for playing games, and anchoring large ships, but are far larger than required to complete CSSE assignments.

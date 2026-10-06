@@ -23,13 +23,13 @@ datetime: The date and time of the water usage
 meter.reading: The amount of water used  
 diff: The difference in water usage from the previous reading
 
-Run the wget command to download the dataset.
+Run the curl command to download the dataset.
 
 {% hint style="info" %}  
 Before you start, download the files you need:
 
 ```
-wget https://github.com/uwacyber/cits2006/raw/2026/cits2006-labs/files/water_data.csv
+curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/water_data.csv
 ```
 
 {% endhint %}
