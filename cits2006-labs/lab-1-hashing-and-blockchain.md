@@ -4,12 +4,15 @@
 There are many fundamental concepts in cryptography and cybersecurity, hashing and blockchain are among one of those. In this lab, we will explore the concept of hashing and blockchain and their applications. We will start with hashing.
 
 ## 1.2. Hashing
-Hashing is a process of mapping data of arbitrary size to data of fixed size. The output of a hash function is called a hash value, hash code, hash sum, or simply hash. Hashing is used in many applications, such as password storage, digital signatures, and blockchain. Hash functions have the properties of being quick, irreversible, and collision free (i.e., no two messages will end up with the same hash value). 
+Hashing is a process of mapping data of arbitrary size to data of fixed size. The output of a hash function is called a hash value, hash code, hash sum, or simply hash. Hashing is used in many applications, such as password storage, digital signatures, and blockchain. Cryptographic hash functions are fast to compute, one-way (given a hash, it is infeasible to find a message that produces it) and collision resistant (it is infeasible to find two different messages with the same hash). Collisions must exist, because there are far more possible messages than hash values; the point is that nobody can find one.
 
 ### 1.2.1. Hashing Algorithms
-There are many different hashing algorithms used in practice, such as MD5, SHA-1, SHA-2, and SHA-3. We will experiment with some of those algorithms in this lab. For this, we will use the Kali Linux VM. You should have openssl already on your VM, check by typing `openssl` in the terminal. If not, you can install it by typing `sudo apt install openssl`. If properly installed, you should see something like below when you type in `openssl help` in the terminal:
+There are many different hashing algorithms used in practice, such as MD5, SHA-1, SHA-2, and SHA-3. We will experiment with some of those algorithms in this lab. Use the terminal you set up in Lab 0 (macOS, Linux, or WSL2 on Windows). You should already have openssl installed; check by running `openssl version` in the terminal. If not, you can install it with your package manager (for example, `sudo apt install openssl` on Ubuntu or WSL2). If it is installed, you should see something like below (your version number will differ):
 
-<figure><img src="./img/hash_openssl.png" alt=""><figcaption></figcaption></figure>
+```text
+$ openssl version
+OpenSSL 3.6.4 25 Aug 2026 (Library: OpenSSL 3.6.4 25 Aug 2026)
+```
 
 To use hashing algorithms, we will use the digest command in openssl:
 
@@ -21,15 +24,24 @@ For example, to hash the file `test.txt` using MD5, type:
     openssl dgst -md5 test.txt
 
 
-It will look something like below:
+It will look something like below (the first command creates `test.txt`):
 
-<figure><img src="./img/hash_md5.png" alt=""><figcaption></figcaption></figure>
+```text
+$ echo "This is some text" > test.txt
+$ openssl dgst -md5 test.txt
+MD5(test.txt)= 6b8c327f0fc6f470c030a5b6c71154c5
+```
 
 You can hash texts without creating the file by piping the text to openssl:
 
-<figure><img src="./img/hash_md5_2.png" alt=""><figcaption></figcaption></figure>
+```text
+$ echo -n "This is some text" | openssl dgst -md5
+MD5(stdin)= 97214f63224bc1e9cc4da377aadce7c7
+```
 
-You will notice that the hash values are different, because the hash of the file includes the file headers and other information associated with the file, whereas the hash of the text does not include such information.
+(Depending on your openssl version, the label may read `(stdin)=` instead of `MD5(stdin)=`. Only the hash matters.)
+
+The hash values differ because `echo` adds a newline character (`\n`) to the end of the text it writes to the file, while `echo -n` does not. A hash covers every byte, so one extra byte gives a completely different hash. Hashing a file covers only its contents, never its name or other metadata.
 
 Voila! This is how simple it is to generate hash values of files and texts!
 
@@ -38,17 +50,22 @@ You can also hash a file using a key. This is called a keyed hash. To do this, y
 
     openssl dgst -[hashing algorithm] -hmac [key] [file]
 
-<figure><img src="./img/hash_hmac.png" alt=""><figcaption></figcaption></figure>
+```text
+$ openssl dgst -sha1 -hmac "abc123" test.txt
+HMAC-SHA1(test.txt)= b8da88d277c8f8d7eca9018bd3132ba1cc650896
+$ openssl dgst -sha1 -hmac "abcdef" test.txt
+HMAC-SHA1(test.txt)= 2041620eb7586b1fce587291286dbe7d3cd3bcde
+```
 
-You can see from the above image, that the hash value would be different if the key is incorrect. This is useful for verifying the integrity of the file sent from someone - the sender could generate a hash value using a shared secret key, so when the file needs to be verified, the receiver could use the same secret key to verify that the same hash value is generated. If they are not the same hash value, then the receiver knows that the file is different to what the sender has sent. It is also near impossible to tamper the generated hash value without knowing the secret key, so the integrity of the file can be guaranteed with high confidence.
+You can see from the output above that the hash value would be different if the key is incorrect. This is useful for verifying the integrity of the file sent from someone - the sender could generate a hash value using a shared secret key, so when the file needs to be verified, the receiver could use the same secret key to verify that the same hash value is generated. If they are not the same hash value, then the receiver knows that the file is different to what the sender has sent. It is also near impossible to tamper the generated hash value without knowing the secret key, so the integrity of the file can be guaranteed with high confidence.
 
 #### TASK 1 Experiment with different keys
 Try to use different keys to generate the hash value of the same file. Then, change something from the original file and try to generate the same hash value (by guessing a new key) that matches the original hash value. Discuss your observation with your peers and/or the lab facilitator.
 
 Question: Is there any requirement for the key to be used for keyed hashing? (Some research should be conducted to see what happens to the key!)
 
-### 1.2.3. Properties of one-way hash functions
-To understand the properties of one-way hash functions, we will setup an experiment to conduct. 
+### 1.2.3. The avalanche effect
+A good hash function shows the avalanche effect: a tiny change to the input changes the whole hash. To see this, we will set up an experiment.
 
 1. Hash the text "This is a hash message" and generate the hashvalue H1 using a specific hash algorithm (e.g., MD5, SHA256).
 2. Hash the text "This ir a hash message" and generate the hashvalue H2 using the same hash algorithm. Note that a letter 's' has been changed to 'r'.
@@ -60,8 +77,8 @@ Write a program to compare the hash values H1 and H2. The program should compare
 (optional) Examine the number of bits that are different between H1 and H2 by writing a code for bit comparions.
 
 
-### 1.2.4. One-way vs. collision-free properties
-One-way hash functions are not necessarily collision-free. Collision-free means that it is impossible to find two different messages that have the same hash value. However, one-way hash functions are designed to be computationally infeasible to find a message that has a specific hash value. This means that it is possible to find two different messages that have the same hash value, but it is computationally infeasible to find such messages.
+### 1.2.4. Preimage resistance vs. collision resistance
+A hash function should have three related properties, and they are not equally hard to break. **Preimage resistance (one-way):** given a hash value h, it is infeasible to find any message x with H(x) = h. **Second-preimage resistance:** given a message x1, it is infeasible to find a different message x2 with H(x2) = H(x1). **Collision resistance:** it is infeasible to find any two different messages x1 ≠ x2 with H(x1) = H(x2). In a collision search the attacker chooses *both* messages. That makes it much easier, because of the **birthday paradox**: with an n-bit hash, a collision takes about 2^(n/2) tries (on average about 1.25 × 2^(n/2)), against about 2^n for a preimage or a second preimage.
 
 You are given a oneway.py file:
 
@@ -69,22 +86,22 @@ You are given a oneway.py file:
 curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/oneway.py
 ```
 
-Open and inspect the code. It tests a one-way property of hash functions. It currently implements MD5, but you can easily replace that with other hash functions to test. 
+Open and inspect the code. It tests the preimage resistance (the one-way property) of hash functions. It currently implements MD5, but you can easily replace that with other hash functions to test. 
 
-#### TASK 3 Implement Collision-free property checking code
-Similar to the one-way property checking code provided above, you can check the collision-free property of hash functions. You may use the template collisionfree.py:
+#### TASK 3 Implement the collision resistance experiment
+Similar to the preimage (one-way) checking code provided above, you can check the collision resistance of hash functions. You may use the template collisionfree.py:
 
 ```
 curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/collisionfree.py
 ```
 
-Complete the code and examine the collision-free property of various hash functions.
+Complete the `tries_to_collide()` function and examine the collision resistance of hash functions.
 
 
-<b>Question:</b> Which property is easier to break using bruteforce attack? Conduct a scientific experiments to prove your point. Discuss with your peers and/or the lab facilitator.
+<b>Question:</b> A hash prefix of 3, 4 and 5 hex digits is n = 12, 16 and 20 bits long. Use 2^(n/2) and 2^n to predict the average number of tries needed to find a collision and to find a preimage for each length. Then measure each one (change `HEX_DIGITS` in `collisionfree.py` and the length of `HASH_VALUE` in `oneway.py`; lower `TRIALS` if the 5-digit preimage search is too slow) and compare your measurements with your predictions. Which property is easier to break by brute force, and by how much? Discuss with your peers and/or the lab facilitator.
 
 
-Based on the findings above, it should be clear that it is nearly impossible to break modern hash functions using bruteforce atttacks. Many of the cybersecurity concepts, methods and approaches rely on cryptographic properties such as above in order to provide security guarantees.
+For a full-length modern hash such as SHA-256, both searches are far beyond brute force. MD5 and SHA-1, however, are broken: practical collision attacks exist (MD5 since 2004, SHA-1 since 2017). Never use them where an attacker could benefit from a collision, such as in signatures or integrity checks. Many of the cybersecurity concepts, methods and approaches rely on cryptographic properties such as above in order to provide security guarantees.
 
 ## 1.3. Blockchain
 Now we will look at blockchain, which is a distributed ledger technology that is used in many applications, such as cryptocurrencies (e.g., Bitcoin, Ethereum), smart contracts, and supply chain management. Blockchain is an example of using hash functions as its primitive building blocks to create an architecture that can be useful in practice with cryptographic properties to guarantee the security. Blockchain is a chain of blocks that contain data. Each block contains a hash value of the previous block, so it is impossible to modify the data in the previous block without changing the hash value. This is because the hash value of the previous block is used to generate the hash value of the current block. So now we understand a bit more about blockchain, let's have a look at how it works in practice.
@@ -105,7 +122,7 @@ curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/block
 If you inspect the code, it has three attributes:
 1. current_transactions: the list of current transactions that are pending to be added to the blockchain.
 2. chain: the list of transactions that have been added to the blockchain.
-3. ndoes: the list of nodes in the blockchain network.
+3. nodes: the list of nodes in the blockchain network.
 
 Now let's look at the methods.
 
@@ -147,7 +164,14 @@ You can start the blockchain server by running the following command:
 python3 blockchain.py
 ```
 
-<figure><img src="./img/blockchain_start.png" alt=""><figcaption></figcaption></figure>
+```text
+$ python3 blockchain.py
+ * Serving Flask app 'blockchain'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8000
+Press CTRL+C to quit
+```
 
 Now you can open your browser, and go to the address shown in the terminal (alternatively, go to 127.0.0.1:8000). There would be nothing at the address, as we didn't define what to show at the root address. Instead, go to `[address]/chain` to see what is currently in the blockchain. You should see something like below.
 
@@ -158,7 +182,10 @@ To create a new transaction, you need to use the `blockchain_transaction.py` cod
 #### TASK 6 Complete the blockchain_transaction.py code
 Complete the `blockchain_transaction.py` code. This is done by simply creating a new `new_transaction` - you can create the value of your own choices. Once done, you can run the code to create a new transaction. Make sure the post address is correct (should be fine leaving it as localhost). If done correctly, you should see a below message in the terminal.
 
-<figure><img src="./img/blockchain_transaction.png" alt=""><figcaption></figcaption></figure>
+```text
+$ python3 blockchain_transaction.py
+{'message': 'Transaction will be added to Block 2'}
+```
 
 If you check you chain again, you may think you would see the new transaction but you won't. Because the new transaction has not been mined yet, which means it is not added to the blockchain yet. So we need to mine the block to add the new transaction to the blockchain, which is done by the `mine` method. You can do this by going to `[address]/mine` in your browser. You should see something like below.
 
@@ -168,20 +195,23 @@ And if you go back to your chain, you will see the new transaction added to the 
 
 <figure><img src="./img/blockchain_chain2.png" alt=""><figcaption></figcaption></figure>
 
-### 1.3.6. The concensus algorithm
+### 1.3.6. The consensus algorithm
 A conflict can occur in a Blockchain network when one node has a different chain to another node. A simple approach to resolve this problem is specifying rules which chain is the authoritative one. Simply, the longest valid chain is authoritative for our exercise (and this is true for typical blockchains).
 
 Two methods in the blockchain class, `valid_chain` and `resolve_conflicts`, are provided. The valid_chain() method ensures that the existing chain is valid by checking each block of its hash and the proof. The resolve_conflicts() method will check all the neighbouring nodes, which downloads their chains and verifies them using the above method. If we find a valid chain that has a greater length that the existing one, we will replace it. Both methods are already implemented for you.
 
 #### TASK 7 Checking the consensus algorithm
-In this task, you are required to run two blockchain nodes on different ports. You can do this by running another flask app of the same code on a different port. Once both blockchains are running, we can use them to test the consensus algorithm as follows. Make sure you add some transactions in both blockchains. First, register the second node to the first one (and vice versa, note you indeed need to register both directions), which the output should look like below. Note, you will need to write your code to add a new node.
+In this task, you are required to run two blockchain nodes on different ports. You can do this by running another flask app of the same code on a different port. Start the second node with `python3 blockchain.py --port 8001`. Once both blockchains are running, we can use them to test the consensus algorithm as follows. Make sure you add some transactions in both blockchains. First, register the second node to the first one (and vice versa, note you indeed need to register both directions), which the output should look like below. Note, you will need to write your code to add a new node.
 
-<figure><img src="./img/blockchain_new_node.png" alt=""><figcaption></figcaption></figure>
+```text
+$ python3 blockchain_new_node.py
+{'message': 'New nodes have been added', 'total_nodes': ['127.0.0.1:8001']}
+```
 
 You will have added transactions to your blockchains:
 
-<figure><img src="./img/blockchain_concensus1.png" alt=""><figcaption></figcaption></figure>
-<figure><img src="./img/blockchain_concensus2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="./img/blockchain_consensus1.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="./img/blockchain_consensus2.png" alt=""><figcaption></figcaption></figure>
 
 
 Finally, call the `nodes/resolve` on the nodes. You can observe that the chain is now replaced by the Consensus algorithm.

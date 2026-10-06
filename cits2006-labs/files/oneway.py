@@ -1,31 +1,32 @@
+import hashlib
 import random
 import string
-import hashlib
-#Preimage resistance -> For a given h in the output space of hash function, it's hard to find any message x with H(x) = h
-#the 'h' we are checking against
 
-#try to change the hash value to see how much harder it becomes when the length of the hash value gets longer
+# Preimage resistance: for a given hash value h, it is hard to find any message x with H(x) = h.
+# We only compare the first few hex digits of MD5. Make HASH_VALUE longer to see how much harder
+# it gets: each extra hex digit is 4 more bits, so about 16 times more tries.
 HASH_VALUE = 'b86d'
-avg_tried = 0
+TRIALS = 20  # increase for a better average
+ALPHABET = string.ascii_letters + string.digits + string.punctuation
 
-#you may need to change the number of trials to get a better average
-trials = 20
 
-for i in range(trials):
-	tried = 0
-	while True:
-		#generates random strings of length 20
-		randomStr = ''.join([random.choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(16)])
-		#hash the random string, using MD5	
-		hash_object = hashlib.md5(randomStr.encode())
-		#get a HEX string representing the hash
-		hash_string = hash_object.hexdigest()
-		#check first 32 bits of hash value against our 'h'
-		tried += 1
-		if hash_string[0:4] == HASH_VALUE:
-			break
-	print(f"run {i+1}: {tried}")
-	avg_tried += tried
+def random_message(length=16):
+    return ''.join(random.choice(ALPHABET) for _ in range(length))
 
-print(f"average: {avg_tried / trials}")
 
+def tries_to_match(prefix):
+    """Hash random messages until one's MD5 hex digest starts with prefix; return the number of tries."""
+    tried = 0
+    while True:
+        tried += 1
+        if hashlib.md5(random_message().encode()).hexdigest().startswith(prefix):
+            return tried
+
+
+if __name__ == '__main__':
+    total = 0
+    for i in range(TRIALS):
+        tried = tries_to_match(HASH_VALUE)
+        print(f"run {i+1}: {tried}")
+        total += tried
+    print(f"average: {total / TRIALS}")

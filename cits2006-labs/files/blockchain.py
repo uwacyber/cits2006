@@ -292,4 +292,10 @@ def consensus():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run a toy blockchain node")
+    parser.add_argument("--port", type=int, default=8000, help="port to listen on (default 8000)")
+    args = parser.parse_args()
+    # 127.0.0.1: only your own laptop can reach this toy server, not the whole lab network
+    app.run(host='127.0.0.1', port=args.port)
