@@ -27,7 +27,9 @@ def totp(secret_b32: str, at: float | None = None) -> str:
 def verify_totp(code: str, secret_b32: str, window: int = 1, at: float | None = None) -> bool:
     """TASK 2: return True if `code` matches the code for the current time step, or for up to
     `window` steps before or after it (to allow for clock drift and typing time).
-    Compare with hmac.compare_digest, not ==."""
+    Compare with hmac.compare_digest, not ==.
+    `code` is untrusted input: return False unless it is exactly `DIGITS` ASCII digits
+    (`str.isdigit()` alone also accepts '١٢٣')."""
     # YOUR CODE GOES HERE
     return True
 

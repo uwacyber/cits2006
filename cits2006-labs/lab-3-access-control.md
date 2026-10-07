@@ -15,7 +15,7 @@ We'll start with the most simplest implementation, then add features to make it 
 curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/password.py
 ```
 
-Run this code to check that it is working correctly (i.e., with the right username and password, you can authenticate yourself). The starter now rejects unknown usernames and limits attempts to three. Earlier versions printed "Authenticated!" for any unknown username. Can you see why?
+Run this code to check that it is working correctly (i.e., with the right username and password, you can authenticate yourself). The starter rejects unknown usernames and limits attempts to three. Skipping the password check when the username is not found is a classic bug in login code, so make sure yours never does that.
 
 ```text
 $ python3 password.py
@@ -88,13 +88,13 @@ Complete `verify_totp()`. Accept the code for the current 30-second step, or for
 
 
 ## 3.3. Linux ACLs
-Access Control Lists (ACLs) are a way to define more fine-grained access control than the traditional Unix file permissions. In this section, we will explore how to use ACLs to control access to files and directories in the Linux environment. Please note, if you are not familiar with permissions in Linux, please revisit lab 0. To do this section, you will need an access to a Linux environment (use the Lab 0 container: `docker run --rm -it cits2006-env`, where you have sudo). In the container you are the user `student`. Do not mount a folder from your laptop with `-v` for this section: file ownership and ACL changes do not work reliably on mounted folders.
+Access Control Lists (ACLs) are a way to define more fine-grained access control than the traditional Unix file permissions. In this section, we will explore how to use ACLs to control access to files and directories in the Linux environment. Please note, if you are not familiar with permissions in Linux, please revisit lab 0. To do this section, you will need access to a Linux environment (use the Lab 0 container: `docker run --rm -it cits2006-env`, where you have sudo). In the container you are the user `student`. Do not mount a folder from your laptop with `-v` for this section: file ownership and ACL changes do not work reliably on mounted folders.
 
 The output below was produced in that container. Your dates will differ, and the user and group IDs may differ if you create users in a different order.
 
 
 ### 3.3.1. Setting up the environment
-We will start by creating a folder to keep files for sales department. We will work in `/tmp/acl`, because other users (created below) must be able to reach the folder: your home folder is private to you, and `/work` belongs to root.
+We will start by creating a folder to keep files for sales department. We will work in `/tmp/acl`, because other users (created below) must be able to reach the folder: your home folder is private to you.
 
 ```text
 $ mkdir /tmp/acl && cd /tmp/acl
@@ -119,7 +119,7 @@ other::r-x
 ```
 
 #### TASK 3
-Obviously, we don't want to own this folder ourselves (assuming you are using your own account and created the folder as above), as well as to give everyone access to this folder. We will (1) create a new group called `sales` and a new user called `salesuser`, and give the ownership of the folder to this user and group, and (2) give the owner and the group full access (`rwx`) and remove all permissions for `other`. 
+Obviously, we don't want to own this folder ourselves (assuming you are using your own account and created the folder as above), as well as to give everyone access to this folder. We will (1) create a new group called `sales` and a new user called `salesuser` whose primary group is `sales`, and give the ownership of the folder to this user and group, and (2) give the owner and the group full access (`rwx`) and remove all permissions for `other`. 
 
 {% hint style="hint" %}
 If this isn't familiar, please revise Lab 0!
@@ -171,7 +171,7 @@ At this stage, create a couple of files inside the `sales` directory (for exampl
 Next, we will create a user `john`, and give him the permission to ONLY read the files inside the `sales` directory.
 
 #### TASK 4
-Create a user `john` and give him the permission to read the files inside the `sales` directory. To act as John, run a command with `sudo -u john` (for example, `sudo -u john ls sales`). Once complete, you should be able to check as below.
+Create a user `john` whose primary group is `sales`, then use an ACL entry so that he can only read and list (`r-x`) in `sales`. To act as John, run a command with `sudo -u john` (for example, `sudo -u john ls sales`). Once complete, you should be able to check as below.
 
 ```text
 $ groups john
@@ -212,7 +212,7 @@ sudo useradd -m david && sudo usermod -aG sales david
 sudo setfacl -m u:david:- sales/john
 ```
 
-The `setfacl` command adds an entry for David with no permissions, so he is disallowed from accessing John's directory, even though he is a member of `sales`. You should try and check that this is working as intended. When you have done it, you should observe the same behaviour as below: David is refused, while another member of `sales` is not.
+The `setfacl` command adds an entry for David with no permissions, so he is disallowed from accessing John's directory, even though he is a member of `sales`. You should try and check that this is working as intended. When you have done it, you should observe the same behaviour as below: David is refused, while `salesuser`, another member of `sales`, is not.
 
 ```text
 $ sudo setfacl -m u:david:- sales/john
@@ -228,7 +228,7 @@ Next, we remove the access of the rest of the `sales` group and of everyone else
 sudo setfacl -m g::-,o::- sales/john
 ```
 
-`g::` is the entry for the directory's owning group (here, `sales`) and `o::` is `other`. Why not `g:sales:-`? Because `sales` is already the owning group, so the `group::` entry would still let its members in: a user is allowed when any group entry that applies to them grants the access. Check that John's directory is now private to John, as below.
+`g::` is the entry for the directory's owning group (here, `sales`) and `o::` is `other`. Why not `g:sales:-`? Because `sales` is already the owning group, so the `group::` entry would still let its members in: a user is allowed when any group entry that applies to them grants the access (subject to the mask). We also clear `o::` because users outside `sales` who can reach the folder, such as you with your entry on `sales`, would otherwise fall through to `other::r-x`. Check that John's directory is now private to John, as below.
 
 ```text
 $ sudo setfacl -m g::-,o::- sales/john
