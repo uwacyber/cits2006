@@ -1,85 +1,36 @@
-from diffprivlib.mechanisms import Laplace
+"""Differencing attack on a sum query, with and without differential privacy.
+
+Run: python dp_demo.py   (needs numpy and pandas; data.csv in the same folder)
+The attacker knows the sum over everyone and the sum over everyone except the target (row 0),
+so subtracting the two reveals the target's value. The Laplace mechanism adds noise ONCE to each
+query answer, scaled to the sensitivity (the most one person can change the sum) divided by epsilon.
+"""
+import numpy as np
 import pandas as pd
 
-
-def example1():
-    # higher value of epsilon means weaker protection (i.e., less noise)
-    # higher sensitivity means how much noise is required (0 means none)
-    pri_mechanism = Laplace(epsilon=1.2, sensitivity=1.0)
-
-    runs = 10
-    sums = 0
-
-    for i in range(runs):
-        data = [6, 7, 8, 9, 10]
-        result =[]
-        for val in data:
-            result.append(pri_mechanism.randomise(val))
-        print(f"({i+1:2}) Difference: {sum(data) - sum(result)}")
-        print()
-        sums += sum(data) - sum(result)
-
-    print(f"Average difference: {sums/runs}")
+CLIP = 250.0  # clip every sales_amount to [0, CLIP] (max in data.csv is about 249.52), so sensitivity = CLIP
+RUNS = 1000
 
 
+def clipped_sum(values):
+    return float(np.clip(values, 0, CLIP).sum())
 
 
-def example2():
-    #import partitioned database files
-    dataset = pd.read_csv("data.csv" ,sep=",", engine = "python")
-
-    #create a copy of the db
-    redact_dataset = dataset.copy()
-
-    #remove the first row data
-    redact_dataset = redact_dataset[1:]
-
-    ##uncomment to see the removed first row
-    #print(original_dataset.head())
-    #print(redact_dataset.head())
-
-    #now, only use the sales_amount column for calculations
-    sum_original_dataset = round(sum(dataset['sales_amount'].to_list()), 2)
-    sum_redact_dataset = round(sum(redact_dataset['sales_amount'].to_list()), 2)
-    sales_amount_Osbourne = round((sum_original_dataset - sum_redact_dataset), 2)
-
-    ##uncomment below to check the difference, which we can use to identify the person
-    #print(sales_amount_Osbourne)
-    #assert sales_amount_Osbourne == original_dataset.iloc[0, 4]
+def dp_sum(values, epsilon, rng):
+    return clipped_sum(values) + rng.laplace(0.0, CLIP / epsilon)
 
 
-    #######################
-    ###    Now use DP   ###
-    #######################
-    pri_mechanism = Laplace(epsilon=10.0, sensitivity=1.0)
-
-    #This is the sum for the original db
-    dp_sum_original_dataset =[]
-    for val in dataset['sales_amount'].to_list():
-        dp_sum_original_dataset.append(pri_mechanism.randomise(val))
-    dp_sum_og = sum(dp_sum_original_dataset)
-
-    #this is the sum for the modified db
-    dp_redact_dataset =[]
-    for val in redact_dataset['sales_amount'].to_list():
-        dp_redact_dataset.append(pri_mechanism.randomise(val))
-    dp_sum_redact = sum(dp_redact_dataset)
+def main():
+    rng = np.random.default_rng()
+    everyone = pd.read_csv("data.csv")["sales_amount"].to_numpy()
+    without_target, target = everyone[1:], everyone[0]
+    print(f"Target's real value: {target:.2f}")
+    print(f"No DP: sum(all) - sum(all but target) = {clipped_sum(everyone) - clipped_sum(without_target):.2f}")
+    # Each attack uses two queries, so its total privacy cost is 2 x epsilon (sequential composition).
+    for eps in (10.0, 1.0, 0.1):
+        errors = [abs(dp_sum(everyone, eps, rng) - dp_sum(without_target, eps, rng) - target) for _ in range(RUNS)]
+        print(f"epsilon={eps:>4}: attacker's average error = {np.mean(errors):.2f}")
 
 
-
-    #Final output
-    #note, DP output changes every run since it adds random value
-    print(f"Sum of sales_value in the orignal dataset: {sum_original_dataset}")
-    print(f"Sum of sales_value in the orignal dataset with DP: {dp_sum_og:.2f}")
-    print()
-    print(f"Sum of sales_value in the second dataset: {sum_redact_dataset}")
-    print(f"Sum of sales_value in the second dataset with DP: {dp_sum_redact:.2f}")
-    print()
-    print(f"Actual Difference in Sum: {sales_amount_Osbourne}")
-    print(f"Difference in Sum with DP: {round(dp_sum_og - dp_sum_redact, 2)}")
-
-
-
-# example1()
-
-example2()
+if __name__ == "__main__":
+    main()
