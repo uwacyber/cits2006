@@ -1,0 +1,8 @@
+flask>=3.0,<4
+requests>=2.32,<3
+numpy>=2.0,<3
+pandas>=2.2,<4
+scikit-learn>=1.5,<2
+bcrypt>=4.2,<6
+phe>=1.5,<2
+jupyterlab>=4.2,<5

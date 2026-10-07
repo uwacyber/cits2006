@@ -1,37 +1,76 @@
-# Lab 0: Linux and Networking
+# Lab 0: Setup, Linux and Networking
 
-This lab is a refresher/crash course on Linux and Networking. So please do these, as you will make yourself more efficient at carrying out the rest of the labs and project later on. For the environment setup, you should be fine using your host machine for most tasks as it would involve some coding in Python (or other selected languages), but if other environment is needed (e.g., VMs, Docker), we will advise you accordingly. The instructions on how to set these up is available from CITS1003 page, so it won't be repeated here. Okay, then let's dig into Linux first!
+## 0.1. Set up your laptop (do this in week 1, before Friday's workshop)
 
-## 0.1 Linux refresher
+Every lab and every workshop CTF uses this setup. If anything fails, bring your laptop to your week 1 lab and a facilitator will help.
 
-This lab is to provide a refresher on your Linux knowledge, and you can do this on your Kali VM. You may skim/skip through this lab if you feel confident, but if you haven't done much in Linux for a while (a semester or two), you are strongly advised to complete this lab before moving on to other labs to improve your workflow efficiency. For each example, you should try it yourself before moving on to the next section.
+**Supported systems:** macOS 14 or later (Apple Silicon or Intel); Windows 11 with **WSL2** (Ubuntu 24.04); Ubuntu 24.04 or later. On Windows, run every command below inside the Ubuntu (WSL2) terminal.
 
-### 0.1.1. Distributions
+**1. Install the tools**
+- macOS: install [Homebrew](https://brew.sh), then `brew install git curl uv` and [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+- Windows: in PowerShell (as administrator) run `wsl --install -d Ubuntu-24.04` and restart. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) with the WSL2 backend. Then, in Ubuntu: `sudo apt update && sudo apt install -y git curl` and `curl -LsSf https://astral.sh/uv/install.sh | sh`.
+- Ubuntu: `sudo apt update && sudo apt install -y git curl docker.io` and `curl -LsSf https://astral.sh/uv/install.sh | sh`, then `sudo usermod -aG docker $USER` and log out and in again.
+
+On Windows and Ubuntu, close and reopen the terminal after installing `uv`, so that the `uv` command is found.
+
+**2. Create the course Python environment.** Modern systems block `pip install` outside a virtual environment, so we always use one:
+```
+mkdir -p ~/cits2006 && cd ~/cits2006
+uv venv --python 3.13 .venv
+source .venv/bin/activate
+curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/env/requirements.txt
+uv pip install -r requirements.txt
+```
+Each time you open a new terminal, run `source ~/cits2006/.venv/bin/activate` first.
+
+**3. Build the lab container.** Some labs need Linux root access (users, groups, ACLs) or YARA. You get both in a container, on any laptop:
+```
+docker build -t cits2006-env "https://github.com/uwacyber/cits2006.git#live:cits2006-labs/env"
+docker run --rm -it -v "$PWD:/work" cits2006-env
+```
+Inside the container you are user `student` with `sudo`, and your current folder is at `/work`. Type `exit` to leave.
+
+**4. Check everything.**
+```
+curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/env/check_setup.py
+python check_setup.py
+```
+Every line should say `[OK]`.
+
+**5. FlagBoard.** You will log in to FlagBoard (the workshop CTF platform) in the week 1 workshop and solve the onboarding challenge. That proves your setup works end to end.
+
+## 0.2. Linux and networking refresher
+
+The rest of this sheet is a refresher on Linux and networking from CITS1003. Read it if you need it.
+
+If you haven't done much in Linux for a while (a semester or two), you are strongly advised to work through the Linux part before moving on to the other labs: it will make you more efficient at the rest of the labs and the project. You may skim or skip it if you feel confident. Try the examples in a terminal on your laptop (macOS, Linux, or Ubuntu in WSL2) or in the lab container from 0.1. For each example, try it yourself before moving on to the next section. Okay, then let's dig into Linux first!
+
+### 0.2.1. Distributions
 
 The base system of Linux comes in many different distributions which contain different packages and features written by different groups. These are referred to as distros for short, and they have a wide variety of different uses, purposes, systems, features, and fan bases. This guide will attempt to be distro-independent, however, a few of the more popular distros are listed:
 
 | <p>· Ubuntu</p><p>· Debian</p><p>· Fedora</p><p>· Linux Mint</p> | <p>· Red Hat</p><p>· CentOS</p><p>· Arch Linux</p><p>· Gentoo</p> |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
 
-### 0.1.2. Package manager and repositories
+### 0.2.2. Package manager and repositories
 
-Each distribution comes with a package manager, which handles software installed on the system and has a number of remote repositories from which it gets its software. For example, Ubuntu (also Kali) uses a package manager called aptitude (apt for short). You can type:
+Each distribution comes with a package manager, which handles software installed on the system and has a number of remote repositories from which it gets its software. For example, Debian and Ubuntu use the APT package manager (the `apt` command). You can type:
 
-`sudo apt-get install firefox`
+`sudo apt install firefox`
 
-to install the Mozilla Firefox web browser. It will search the remote repositories (listed in `/etc/apt/-sources.list`) for the required packages and instructions to install them and once found, it will install the software on your computer for you. The package manager can also update and remove software, and manage your local package database. This is one of the brilliant things of a package manager: you can run a single command and you've installed new software - You can run a single command, and update all your packages, etc.
+to install the Mozilla Firefox web browser. It will search the remote repositories (listed in `/etc/apt/sources.list.d/`; on current Ubuntu, the file is `ubuntu.sources`) for the required packages and instructions to install them and once found, it will install the software on your computer for you. The package manager can also update and remove software, and manage your local package database. This is one of the brilliant things of a package manager: you can run a single command and you've installed new software - You can run a single command, and update all your packages, etc.
 
 {% hint style="info" %}
-`apt-get` is the package manager for Ubuntu. Fedora uses `dnf` (previously `yum`), Arch uses `pacman`, and Debian uses aptitude, etc. For instance:
+Debian and Ubuntu use the APT package manager (the `apt` command; older guides use `apt-get`). Fedora uses `dnf` (previously `yum`), Arch uses `pacman`, and so on. For instance:
 
 `dnf install firefox`
 
 will install Firefox on a Fedora machine. You can also install multiple package managers on any one distro, but as they say\_: too many cooks spoil the broth\_.
 {% endhint %}
 
-### 0.1.3. The Terminal
+### 0.2.3. The Terminal
 
-**0.1.3.1. Commands**
+**0.2.3.1. Commands**
 
 Firstly you should get familiar with the man pages, which are essentially the manual, and will display help pages on almost all commands.
 
@@ -73,21 +112,21 @@ These are some extra commands which aren't totally essential but are certainly h
 
 ####
 
-#### **0.1.3.2. Shortcuts**
+#### **0.2.3.2. Shortcuts**
 
-Every key pressed ends a character to the terminal, and you can send different characters by holding down keys like \[Ctrl] or \[Alt]. This is how the shell can tell what key is pressed, and thus, allow shortcuts to be defined. Some of the more useful keyboard shortcuts are defined:
+Every key pressed sends a character to the terminal, and you can send different characters by holding down keys like \[Ctrl] or \[Alt]. This is how the shell can tell what key is pressed, and thus, allow shortcuts to be defined. Some of the more useful keyboard shortcuts are defined:
 
 * `Up or Down arrows :` Scroll through typed commands
 * `Home or End :` Move to the start or end of a line, respectively
 * `Tab :` Autocomplete a file name, directory name or command name.
 * `Ctrl + C :` End a running process
-* `Ctrl + D :` End an End-Of-File (EOF) character (usually ends a process or signifies the end of input data)
-* `Ctrl + Z :` Send the currently running process to the background
+* `Ctrl + D :` Send an End-Of-File (EOF) character (usually ends a process or signifies the end of input data)
+* `Ctrl + Z :` Suspend (stop) the foreground process; `bg` resumes it in the background and `fg` brings it back
 * `Ctrl + L :` Clear the screen, same as running the clear command
 
 ####
 
-#### 0.1.3.3. **Piping and redirection**
+#### 0.2.3.3. **Piping and redirection**
 
 There are a number of little quirks that the shell has that gives it more functionality. Piping takes the `stdout` of the left program and connects it (i.e. _pipes_ it) into `stdin` of the right program with the pipe operator `|`. For example:
 
@@ -105,7 +144,7 @@ Redirection directs data in and out of files, i.e.
 
 ####
 
-#### **0.1.3.4. Wildcards**
+#### **0.2.3.4. Wildcards**
 
 The shell uses a number of special characters called wildcards, similar to regular expressions or regex, which can be used to manipulate what is being dealt with on the command line. The standard wildcards are thus:
 
@@ -117,7 +156,7 @@ The shell uses a number of special characters called wildcards, similar to regul
 
 `{}` Match any item in the braces. For example, `cp {*.doc,*.pdf} ~` copies any files with the extension \`.doc' or \`.pdf' to the home directory.
 
-**0.1.3.5. Conditional execution**
+**0.2.3.5. Conditional execution**
 
 You can chain commands together on one line by separating them with a semicolon \`;'.
 
@@ -139,7 +178,7 @@ To run a command if and only if the last command failed, we use `||`:
 `bash: cd: foo: No such file or directory`\
 `drwxrwxr-x 2 user user 4096 May 24 00:57 foo`
 
-#### **0.1.3.6. Processes**
+#### **0.2.3.6. Processes**
 
 Every program that runs, runs in virtual memory as a process, even the shell. You can list the currently running processes with the command `top`. When you run a command, the terminal session runs it on its process, waits for it to complete, then regains control once the command is finished. So, if you were to close the terminal window while a command was running, that would stop the command. Since this can be inconvenient, we can \`fork' the command into its own process to run in the background, and still use the shell while it runs (which is useful for commands that take a long time). To do this, we end the command with a single ampersand `&`. For example:
 
@@ -156,11 +195,11 @@ Every program that runs, runs in virtual memory as a process, even the shell. Yo
 
 There is a command, `nohup` (no hangup), which prevents a program from being forcefully terminated under normal circumstances. We can combine this with `&` to run programs that need to run uninterrupted for long periods of time.
 
-Another way to list the processes running is with `ps`, and then end them with `killall` (kill by process name), or with `pkill` (kill by process ID), or even with the keyboard shortcut \[Ctrl] + \[C] as mentioned above. Check the man page, as well as \[8] for more options.
+Another way to list the processes running is with `ps`, and then end them with `kill` or `pkill`: `kill` sends a signal to a process by PID; `pkill` matches processes by name or pattern. You can also stop a foreground process with the keyboard shortcut \[Ctrl] + \[C] as mentioned above. Check the man pages for more options.
 
-You can also check what is running in the background and foreground with `bg` and `fg`, respectively.
+You can list the jobs running or suspended in your current shell with `jobs`, resume a suspended job in the background with `bg`, and bring a job back to the foreground with `fg`.
 
-### 0.1.4. File system structure
+### 0.2.4. File system structure
 
 The file system is structured as a tree that flows down from the root directory, which is simply represented as /. Below shows an example listing of a system’s root directory using the ls command:
 
@@ -183,17 +222,17 @@ Linux will automatically complete a command or filename if you are part-way thro
 
 #### \*\*\*\*
 
-#### **0.1.4.1. File operations**
+#### **0.2.4.1. File operations**
 
 There are a number of useful programs that allow us to do file manipulation. To list some of the main operations:
 
 |   `cp` | Copy a file from one location to the other.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | -----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |   `mv` | Move a file from one location to the other. Note, this is also used to rename files - you just \`move' the file to the directory it is already in but as a new name, for example `mv foo bar` would rename the file from \`foo' to \`bar', assuming you didn't have a directory named \`bar', in which case, the file would be moved to that directory instead.                                                                                                                                              |
-|   `rm` | Delete a file. Note that you can also delete empty directories this way, and you can delete a directory and its subdirectories by using `rm -r`. However, be **VERY** careful: if you were to run `rm -rf /`, you would erase every file on your whole computer, because it would delete the root directory and then every file and subdirectory below it and it wouldn't stop because the \`f' in \`-rf' means \`force'. Use `rm -rf` with extreme caution, or even use `rmdir`, which removes a directory. |
-| `grep` | grep stands for Global Regular Expressions Parser, and can search through text for a match. For example, `grep foo bar` searches the file bar for the string foo, and you can also use `ls -l \| grep "foo"`, which searches the file listing for a file called foo. When combined with `sed` and `awk`, you can do almost anything string related.                                                                                                                                                          |
+|   `rm` | Delete a file (use `rm -r` for directories). However, be **VERY** careful: if you were to run `rm -rf /`, you would erase every file on your whole computer, because it would delete the root directory and then every file and subdirectory below it and it wouldn't stop because the \`f' in \`-rf' means \`force'. Use `rm -rf` with extreme caution, or even use `rmdir`, which only removes an empty directory. |
+| `grep` | grep (from the ed command g/re/p, "global regular expression print") searches text for lines matching a pattern. For example, `grep foo bar` searches the file bar for the string foo, and you can also use `ls -l \| grep "foo"`, which searches the file listing for a file called foo. When combined with `sed` and `awk`, you can do almost anything string related.                                                                                                                                                          |
 
-#### **0.1.4.2. $PATH and the environment**
+#### **0.2.4.2. $PATH and the environment**
 
 Variables in the shell are defined using the export command, and when variables are used, they start with a `$`.\
 \
@@ -212,7 +251,7 @@ This would mean that if I were to use the command `ls`, it would search for a bi
 
 This is sometimes used as an exploit by modifying the user's `$PATH` variable so that a path containing malicious binaries with the same names as common commands is on the front. When the user runs these commands, then the malicious binaries are run instead.
 
-### 0.1.5. Users and Permissions
+### 0.2.5. Users and Permissions
 
 Every user has a user ID (uid) and a group ID (gid). Each user also has a list of groups they are a part of which give them the permissions that are assigned to those groups. You can see this by using the 'id' command:\
 \
@@ -221,7 +260,7 @@ Every user has a user ID (uid) and a group ID (gid). Each user also has a list o
 
 #### \*\*\*\*
 
-#### **0.1.5.1. sudo and root**
+#### **0.2.5.1. sudo and root**
 
 Now for the most powerful user on Linux: The root user. Root's uid and gid are both 0.
 
@@ -238,7 +277,7 @@ Say you want to edit the hostname file, which contains the name of your computer
 
 to which it asks you for your password, and then opens nano with the extra privileges provided by `sudo`. There is a `sudoers` file which contains a list of users who can use `sudo`, and what privileges they get from using it.
 
-#### **0.1.5.2. File permissions**
+#### **0.2.5.2. File permissions**
 
 Linux inherits its file permissions system from Unix. You can use the command `ls -l` to display the permissions of a file or files:
 
@@ -261,7 +300,7 @@ where the first set, `u`, refers to the permissions for the user who owns the fi
 
 This is a directory, the user has read/write/execute access, users belonging to the group of the file have read/write/execute access, and everyone else has read/execute access, but not write access.
 
-#### **0.1.5.3. Changing permissions**
+#### **0.2.5.3. Changing permissions**
 
 If you want to change a file's permissions, you can use `chmod`, meaning "change mode". There are two ways to do this: using u/g/o and +/- r/w/x:\
 \
@@ -303,9 +342,13 @@ etc...
 
 So when we set our file junk1 to 755 earlier, we set it to rwxr-xr-x, which is a pretty good permission set on your average file. Realistically, you will usually always have your own user permissions set to rwx or rw-, otherwise you are just inconveniencing yourself. You can also use `chown` to change ownership of a file.
 
-### 0.1.6. Network commands
+### 0.2.6. Network commands
 
-#### 0.1.6.1. ping
+{% hint style="info" %}
+Modern Linux replaces the net-tools commands `netstat`, `ifconfig` and `arp` (covered below, and often not installed by default): use `ss -tulpn` instead of netstat, `ip addr` instead of ifconfig, and `ip neigh` instead of arp.
+{% endhint %}
+
+#### 0.2.6.1. ping
 
 * Can be a handful for DNS checks (up / or down) | is a DNS tool to resolve web addresses to an IP address.
 * Test reachability - determine round-trip time, and uses ICMP protocol.
@@ -321,7 +364,7 @@ PING www.google.com (172.217.168.164): 56 data bytes
 round-trip min/avg/max/stddev = 25.236/25.608/25.981/0.373 ms
 ```
 
-#### 0.1.6.2. netstat
+#### 0.2.6.2. netstat
 
 * Network statistics
 * Get info on host system TCP / UDP connections and status of all open and listening ports and routing table.
@@ -334,7 +377,7 @@ netstat -n # (hosts)
 netstat -b # (Show binaries Windows)
 ```
 
-#### 0.1.6.3. traceroute
+#### 0.2.6.3. traceroute
 
 * Traceroute - how packets get from the host to another endpoint. Traceroute is helpful to see what routers are being hit, both internal and external.
 * **Take advantage of ICMP Time to Live (TTL) Exceeded error message**
@@ -364,7 +407,7 @@ traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets
     79.125.252.199 (79.121.251.191)  22.885 ms
 ```
 
-#### 0.1.6.4. arp
+#### 0.2.6.4. arp
 
 * Address resolution protocol - caches of ip-to-ethernet
 * Determine a MAC address based on IP addresses
@@ -379,7 +422,7 @@ traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets
 _gateway (192.168.1.1) at 00:31:33:8b:2a:da [ether] on enp0s10
 ```
 
-#### 0.1.6.5. ifconfig
+#### 0.2.6.5. ifconfig
 
 * Equivalent to ipconfig in Windows for UNIX/Linux OS.
 
@@ -402,7 +445,7 @@ enp0s10: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-#### 0.1.6.6. iwconfig
+#### 0.2.6.6. iwconfig
 
 similar to ifconfig, but is dedicated to the wireless network interface.
 
@@ -421,7 +464,7 @@ wlp3s0b1  IEEE 802.11  ESSID:off/any
 docker0   no wireless extensions.
 ```
 
-#### 0.1.6.7. ip addr
+#### 0.2.6.7. ip addr
 
 show / manipulate routing, network devices, interfaces and tunnels.
 
@@ -443,7 +486,7 @@ Show all the ip configuration, mac address, ipv6 etc.
        valid_lft forever preferred_lft forever
 ```
 
-#### 0.1.6.8. nslookup
+#### 0.2.6.8. nslookup
 
 * Query Internet name servers interactively; check if the DNS server is working
 
@@ -467,7 +510,7 @@ Name:   certifiedhacker.com
 Address: 162.241.216.11
 ```
 
-#### 0.1.6.9. dig
+#### 0.2.6.9. dig
 
 * DNS lookup tool - Functions like `nslookup`, but allows for further functionality.
 
@@ -496,11 +539,9 @@ certifiedhacker.com.    14400   IN      A       162.241.216.11
 ;; MSG SIZE  rcvd: 92
 ```
 
-#### 0.1.6.10. netcat
+#### 0.2.6.10. netcat
 
 TCP/IP swiss army knife; you can make any type of connection and see the results from a command line. With `nc` you can connect to anything on any port number or you can make your system listen on a port number. Can be an aggressive tool for recon.
-
-![](https://www.researchgate.net/publication/329745450/figure/fig3/AS:705181092179978@1545139682702/Remote-Command-and-Control-example-through-Netcat.ppm)
 
 * "Read" or "Write" to the network
   * Open a port and send or receive some traffic
@@ -516,9 +557,8 @@ TCP/IP swiss army knife; you can make any type of connection and see the results
 
 Please have a look at the below links for more UNIX tutorials.
 
-* [http://www.ee.surrey.ac.uk/Teaching/Unix/](http://www.ee.surrey.ac.uk/Teaching/Unix/)
 * [https://www.sporcle.com/games/sporcilicious/common\_linux\_commands](https://www.sporcle.com/games/sporcilicious/common\_linux\_commands)
-* [https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8](https://0xax.gitbooks.io/linux-insides/?fbclid=IwAR1UOzoLvB-OKfCpLcxB0JMy-6GBkKVRZnSdgxydoW8jJLgjAX9BiKHKzf8) 
+* [https://0xax.gitbooks.io/linux-insides/](https://0xax.gitbooks.io/linux-insides/) 
 
 
 
@@ -530,7 +570,7 @@ Go through this if you need a refresher on Computer Networks. Otherwise skip.
 Credits to #Samsar4@Github for preparing the materials.
 {% endhint %}
 
-> ⚠ Networking 101 is a simple introduction to the most important network concepts for ethical hacking. This is a huge subject and is recommended to learn from different sources like courses, books and certifications like [Cisco CCNA](https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html) or [CompTIA Network+](https://www.comptia.org/certifications/network). Also there is a ton of **free training** out there, I recommend to [check this list](https://freetraining.dfirdiva.com/free-networking-training) later.
+> ⚠ Networking 101 is a simple introduction to the most important network concepts for defenders. This is a huge subject and is recommended to learn from different sources like courses, books and certifications like Cisco CCNA or [CompTIA Network+](https://www.comptia.org/certifications/network). There is also a lot of free training out there.
 
 #### Objectives
 
@@ -605,7 +645,7 @@ If you're using the TCP/IP stack and making your own LAN or WAN = Intranet.
 * **Network packets**: the data that is sent to and from the nodes in a network.
 * **Routers**: routers are pieces of hardware that manage router packets. They determine which node the information came from and where to send it to. A router has a routing protocol which defines how it communicates with other routers.
 * **‍Network address translation (NAT)**: a technique that routers use to provide internet service to more devices using fewer public IPs. A router has a public IP address but devices connected to it are assigned private IPs that others outside of the network can't see.
-* **Dynamic host configuration protocol (DHCP)**: assigns dynamic IP addresses to hosts and is maintained by the internet service provider.
+* **Dynamic host configuration protocol (DHCP)**: assigns dynamic IP addresses to hosts and is usually provided by your local router or a server on the network.
 * **Internet service providers (ISP)**: companies that provide everyone with their internet connection, both to individuals and to businesses and other organizations.
 
 ## 2. IP & MAC Address
@@ -618,7 +658,7 @@ An IP address is a unique address that identifies a device on the internet or a 
 
 ### Check your local IP address
 
-1. If you are using Linux or MacOS you can open your terminal and type `ifconfig` command
+1. If you are using macOS you can open your terminal and type the `ifconfig` command; on Linux, type `ip addr` (the output is similar, with `link/ether` in place of `ether`)
 2. For Windows machine you can open up the cmd prompt or powershell, then type `ipconfig /all`
 
 ![inet](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/5a56240010acbc33026413ad6b5c6f66e9450413/inet.png)
@@ -680,8 +720,6 @@ To calculate the first octet (192.), from binary format to decimal:
 
 All IPv4 addresses can be divided into two major groups: **global (or public, external)** - this group can also be called 'WAN addresses' — those that are used on the Internet, and **private (or local, internal) addresses** — those that are used in the local network (LAN).
 
-![priv-pub](https://wiki.teltonika-networks.com/wikibase/images/thumb/a/a7/Sip.png/1100px-Sip.png)
-
 ### More about **Private IP** addresses:
 
 Private (internal) addresses are not routed on the Internet and no traffic can be sent to them from the Internet, they only supposed to work within the local network. Private addresses include IP addresses from the following subnets:
@@ -715,13 +753,12 @@ The way IP addresses are constructed makes it relatively simple for Internet rou
 
 Because an IP address is limited to indicating the network and the device address, IP addresses cannot be used to indicate which subnet an IP packet should go to. Routers within a network use something called a subnet mask to sort data into subnetworks.
 
-> ⚠️ Subnetting is really important for penetration testers and aspiring hackers, eventually you will face several cases involving small or large networks in your future engagements. Understanding the IP address type, range, available hosts is crucial for any network analysis.
+> ⚠️ Subnetting is really important for defenders: you will meet networks of every size when you segment, monitor or investigate them. Understanding the IP address type, range and available hosts is crucial for any network analysis.
 
 ### Cheat sheet makes easier for subnetting
 
 ![subnetting](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/5ce4b7daa9c2c10ccd44675eadaceae646e487e2/cyber-mentor-subnetting.png)
 
-* CyberMentor Subnetting Sheet: https://twitter.com/thecybermentor/status/1211335431406727169
 * Subnetting Cheat sheet alternative: https://nsrc.org/workshops/2009/summer/presentations/day3/subnetting.pdf
 
 ### Exercises:
@@ -788,7 +825,7 @@ ________ ________
 
 ### Checking vendor behind MAC addresse
 
-1. Check your MAC address use the command `ifconfig` (Linux) or `/ipconfig` (Windows) ![mac](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/214242916f8947f09fc15d5bdde6a668fd4a4c1f/mac2.png)
+1. Check your MAC address use the command `ip addr` (Linux), `ifconfig` (macOS) or `ipconfig /all` (Windows) ![mac](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/214242916f8947f09fc15d5bdde6a668fd4a4c1f/mac2.png)
 2. Copy and save the **first three bytes** of your address. _(The first three bytes from image above is `00:0c:29`)_
 3. Validate the information by performing a **MAC Address Lookup** on the internet. For this example I'm using: https://aruljohn.com/ ![mac2](https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/c82686452d3e671f9a4d351cd5c02171914dd16d/mac2lookup.png)
 4. As you can see the OUI lookup identify a virtual network interface provided by VMware
@@ -875,7 +912,7 @@ In computer networking, a port is a communication endpoint. At the software leve
 
 ### The most common ports
 
-As a penetration tester or ethical hacker you should be familiar with the common ports and protocols used by popular services.
+As a defender you should be familiar with the common ports and protocols used by popular services, so that you can tell expected traffic from unexpected traffic.
 
 #### Port Numbers
 
