@@ -13,7 +13,7 @@ In this lab you will:
 
 ## 2.2. Setup
 
-Use the Python environment from Lab 0 (`source ~/cits2006/.venv/bin/activate`, or the Windows equivalent). Download the files into one folder:
+Use the Python environment from Lab 0 (`source ~/cits2006/.venv/bin/activate`). Download the files into one folder:
 
 ```
 curl -LO https://github.com/uwacyber/cits2006/raw/live/cits2006-labs/files/water_release.csv
@@ -77,7 +77,7 @@ If `dp_sum()` does not clip each value and use noise scale `clip / ε`, the scri
 
 ## 2.7. Task 5 (optional): Encrypted average
 
-With the Paillier cryptosystem, anyone can add encrypted numbers, but only the key holder can decrypt the result. Install `phe` (`pip install phe` inside your venv) and:
+With the Paillier cryptosystem, anyone can add encrypted numbers, but only the key holder can decrypt the result. `phe` (python-paillier) is already installed in your Lab 0 environment. With the venv active, write a short script that:
 1. generate a key pair;
 2. encrypt each household's usage for one day;
 3. add the ciphertexts;

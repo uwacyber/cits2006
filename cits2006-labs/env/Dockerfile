@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         acl sudo python3 python3-yara yara curl ca-certificates nano less procps \
         iproute2 iputils-ping bind9-dnsutils file xxd \
     && rm -rf /var/lib/apt/lists/*
-RUN useradd -m -s /bin/bash student && echo 'student ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/student
+# On Linux, if your user id is not 1000, build with --build-arg UID=$(id -u) so a mounted /work is writable
+ARG UID=1000
+RUN useradd -m -u "$UID" -s /bin/bash student && echo 'student ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/student
 # WORKDIR creates /work owned by root; hand it to student so it is writable when no folder is mounted
 RUN install -d -o student -g student /work
 USER student
