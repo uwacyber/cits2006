@@ -16,18 +16,16 @@ Each Friday workshop has a demo and then a 65-minute CTF round on FlagBoard. The
 - **Your mark** = 20 × min(rounds completed, 5) / 5. Each completed round is worth 4%, up to 5 rounds.
 - **Week 1** has an onboarding round that is not scored. Do it anyway: it checks that your laptop and account work.
 - **Missed rounds.** There is no late window. Two rounds are spare, for illness, clashes and bad days. If you have approved **special consideration** for a round, that round counts as completed.
-- **Your flags are yours.** Every student gets different data, so every student's flags are different. Discussing methods is fine, but submitting another student's flag is academic misconduct, and FlagBoard records it.
+- **Your flags are yours.** Every student gets different data, so every student's flags are different, and another student's flag will not work for you. Discussing methods is fine, but sharing flags or answers is academic misconduct. FlagBoard logs every submission.
 - **AI tools are allowed** in workshop rounds. Your challenge data is unique to you, so you still have to do the work.
 - **Walkthroughs** are released after each round.
 - Being in the room is not enough: marks come only from reaching the threshold.
 
 ## Lab Quizzes (15% and 20%)
 
-- **Format.**
-  - A timed practical on FlagBoard, held in the Friday workshop.
-  - Every student gets their own generated tasks.
-  - You also submit a short written explanation of your approach during the sitting.
+- **Format.** A timed practical on FlagBoard, held in the Friday workshop. Every student gets their own generated tasks.
 - **Coverage.** Lab Quiz 1 covers weeks 1–6. Lab Quiz 2 covers weeks 7–10.
-- **Interview.** In your lab the following week, a staff member asks you about your own submission for about 5 minutes. The interview checks that the work and understanding are yours, and it counts towards the quiz mark. The split between practical, explanation and interview is given on the quiz sheet.
+- **Interview.** In your lab the following week, a staff member asks you about your own submission for about 5 minutes. The interview checks that the work and understanding are yours.
+- **Marks.** Each quiz has two parts: **technical** (the flags you submit in the practical) and **interview**. The split is given on the quiz sheet.
 - **Rules.** The quiz sheet states which resources and tools are allowed.
 - **Missed quiz.** Apply for special consideration. If it is approved, you sit a deferred quiz with newly generated tasks.
