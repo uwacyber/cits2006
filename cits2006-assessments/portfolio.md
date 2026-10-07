@@ -11,11 +11,11 @@ The portfolio gets you doing real cybersecurity outside the unit: attending even
 
 ### Optional check-in (week 5)
 
-Submit up to 3 activity pages on LMS by **Thursday 25 March 2027, 11:59 pm AWST** (Friday is Good Friday) to get feedback on your report and evidence. The check-in is not marked: the feedback is a guide, not a grade. You can still include those activities in your portfolio.
+Submit up to 3 activity pages on LMS by **Thursday of week 5, 11:59 pm AWST** (Friday is a public holiday) to get feedback on your report and evidence. The check-in is not marked: the feedback is a guide, not a grade. You can still include those activities in your portfolio.
 
 ### Submitting your portfolio
 
-Due **Friday 21 May 2027 (week 12), 11:59 pm AWST**.
+Due **Friday of week 12, 11:59 pm AWST**.
 - **Upload one PDF to LMS.** Put your FlagBoard alias on the cover page, then each activity, headed with its ID.
 - **Enter your activity IDs on FlagBoard.** Enter nothing else there: never your name, student ID or any other personal information.
 - **Links are fine** for evidence such as a pull request, a CTF scoreboard or a public profile. Make sure markers can open them until marks are released.
@@ -44,7 +44,7 @@ An activity that wasn't done, or that broke a rule below, earns 0.
   - Each activity in the list counts once, and one piece of work counts for one activity only.
   - Work done for any unit's assessment can't be claimed, including this unit's lab quizzes, workshop CTF and project.
   - An in-class lab activity counts only through A10.
-- **Timing.** Activities must take place between 22 February 2027 and the due date.
+- **Only activities done this semester count.** They must take place between the start of week 1 and the due date. Anything you did or started before then doesn't count.
 - **Only activities in the list count.** If you're unsure whether something fits one, ask on the unit's Teams channel or contact the unit coordinator before you do it.
 
 ## Activities

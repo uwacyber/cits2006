@@ -10,7 +10,7 @@ Print or copy this form, complete it with the owner, and upload a scan to LMS (P
 
 **Student group name:** ______________________ **Group members:** ______________________
 
-**Dates covered:** from ____ / ____ / 2027 to ____ / ____ / 2027
+**Dates covered:** from ____ / ____ / ______ to ____ / ____ / ______
 
 ### In scope (the owner ticks and lists)
 

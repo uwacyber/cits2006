@@ -20,7 +20,7 @@ The standard UWA late penalty applies to ALL members if you defer your group del
 Breaking these rules can be a criminal offence (unauthorised access to a computer system), and will be treated as misconduct.
 {% endhint %}
 
-## Pretask: Group forming (due Friday 12 March 2027)
+## Pretask: Group forming (due Friday of week 3)
 
 This project is to be carried out as a group, and you are to form your own group. If you don't have a group, you can find one in the labs or using MS Teams. Do not expect me to put you in a group, because I won't and you won't have a group.
 
@@ -43,7 +43,7 @@ Please note:
 
 ### Task 0 Deliverables
 
-Complete Task 0 Group forming by end of week 3 (i.e., by Friday 12 March 2027).
+Complete Task 0 Group forming by Friday of week 3.
 
 
 
@@ -68,7 +68,7 @@ Of course, you will need to meet all requirements to receive marks for other tas
 {% endhint %}
 
 ### Task 1 Deliverables
-- Submit the Task 1 report via LMS by Monday 5 April 2027 (week 7), 11:59 pm AWST.
+- Submit the Task 1 report via LMS by Monday of week 7, 11:59 pm AWST.
 - Upload the signed [Owner Authorisation Form](project-authorisation.md) for the entity you will work with in Task 2, by the same date. Without it, you cannot start any active work in Task 2.
 
 
@@ -88,7 +88,7 @@ Based on the security issues identified in Task 1, you are to further explore an
 Finally, create a short video (no more than 1 minute) indicating the problem faced and the solution implemented. Share it as an **unlisted** link (e.g., unlisted on YouTube), and do not name or identify the organisation. Put the link near the top of the report.
 
 ### Task 2 Deliverables
-- Submit the Task 2 report via LMS by Friday 14 May 2027 (week 11), 11:59 pm AWST.
+- Submit the Task 2 report via LMS by Friday of week 11, 11:59 pm AWST.
 - Demo Task 2 in your week 12 lab (book a 30-minute slot on MS Teams). The Friday week 12 workshop is the overflow slot.
 
 

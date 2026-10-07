@@ -4,22 +4,22 @@ All three parts happen in class and are individual.
 
 | Part | Weight | When |
 |---|---|---|
-| Lab Quiz 1 | 15% | Week 6, Friday workshop (2 April). Interviews in your week 7 lab |
-| Lab Quiz 2 | 20% | Week 10, Friday workshop (7 May). Interviews in your week 11 lab |
+| Lab Quiz 1 | 15% | Week 6, Friday workshop. Interviews in your week 7 lab |
+| Lab Quiz 2 | 20% | Week 10, Friday workshop. Interviews in your week 11 lab |
 | Workshop CTF | 20% | Seven scored rounds in the Friday workshops of weeks 2, 3, 4, 7, 8, 9 and 11. The best 5 count |
 
 ## Workshop CTF (20%)
 
 Each Friday workshop has a demo and then a 65-minute CTF round on FlagBoard. The challenges follow that week's lecture and lab.
 
-- **Completing a round.** A round counts as completed when **your own points** reach the round's **threshold** before the round closes. The threshold is about half of the round's points. The warm-up challenges plus one core challenge are usually enough. Harder "stretch" challenges count for the scoreboard only. FlagBoard shows the threshold and your progress towards it while the round is open. If a round turns out harder than intended, its threshold may be lowered afterwards; it is never raised.
-- **Your mark** = 20 × min(rounds completed, 5) / 5. Each completed round is worth 4%, up to 5 rounds.
+- **Round score.** Each round has a full-marks total: the points for its warm-up and core challenges. Your round score is **your own points** divided by that total, capped at 1. Harder "stretch" challenges can make up for core points you missed. FlagBoard shows your points and round score while the round is open. If a round turns out harder than intended, its full-marks total may be lowered afterwards; it is never raised.
+- **Your mark** = 20 × the average of your best 5 round scores. A round you miss scores 0.
 - **Week 1** has an onboarding round that is not scored. Do it anyway: it checks that your laptop and account work.
-- **Missed rounds.** There is no late window. Two rounds are spare, for illness, clashes and bad days. If you have approved **special consideration** for a round, that round counts as completed.
+- **Missed rounds.** There is no late window. Two rounds are spare, for illness, clashes and bad days. If you have approved **special consideration** for a round, that round is left out: your mark is the average of your best 5 remaining rounds, or of all remaining rounds if fewer than 5 are left.
 - **Your flags are yours.** Every student gets different data, so every student's flags are different. Discussing methods is fine, but submitting another student's flag, or sharing yours, is academic misconduct. FlagBoard detects a flag that belongs to another student and flags it for staff review.
 - **AI tools are allowed** in workshop rounds. Your challenge data is unique to you, so you still have to do the work.
 - **Walkthroughs** are released after each round.
-- Being in the room is not enough: marks come only from reaching the threshold.
+- Being in the room is not enough: marks come only from the flags you capture.
 
 ## Lab Quizzes (15% and 20%)
 
