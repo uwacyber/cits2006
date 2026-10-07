@@ -11,7 +11,7 @@ The portfolio gets you doing real cybersecurity outside the unit: attending even
 
 ### Optional check-in (week 5)
 
-Submit up to 3 activity pages on LMS by **Thursday of week 5, 11:59 pm AWST** (Friday is a public holiday) to get feedback on your report and evidence. The check-in is not marked: the feedback is a guide, not a grade. You can still include those activities in your portfolio.
+Submit up to 3 activity pages on LMS by **Friday of week 5, 11:59 pm AWST** to get feedback on your report and evidence. The check-in is not marked: the feedback is a guide, not a grade. You can still include those activities in your portfolio.
 
 ### Submitting your portfolio
 
@@ -20,6 +20,7 @@ Due **Friday of week 12, 11:59 pm AWST**.
 - **Enter your activity IDs on FlagBoard.** Enter nothing else there: never your name, student ID or any other personal information.
 - **Links are fine** for evidence such as a pull request, a CTF scoreboard or a public profile. Make sure markers can open them until marks are released.
 - The standard UWA late penalty applies.
+- **Public holidays.** If a Friday deadline, including the check-in, falls on a public holiday, it is due the Thursday before.
 
 ## Marking
 

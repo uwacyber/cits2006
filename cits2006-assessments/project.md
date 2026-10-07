@@ -3,7 +3,7 @@
 In this project, you will be working as a group to improve cybersecurity in community.
 Please note, you are expected to conduct further research to learn more about various defensive cybersecurity techniques and use them in this project.
 
-More details are as follows.
+More details are as follows. All deadlines are 11:59 pm AWST. If a Friday deadline falls on a public holiday, it is due the Thursday before; if a Monday deadline falls on a public holiday, it is due the Tuesday after.
 
 {% hint style="warning" %}
 The standard UWA late penalty applies to ALL members if you defer your group deliverable/demo (i.e., -5% per day from raw marks for 7 days, then 0).
