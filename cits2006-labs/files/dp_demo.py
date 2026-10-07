@@ -27,9 +27,9 @@ def main():
     print(f"Target's real value: {target:.2f}")
     print(f"No DP: sum(all) - sum(all but target) = {clipped_sum(everyone) - clipped_sum(without_target):.2f}")
     # Each attack uses two queries, so its total privacy cost is 2 x epsilon (sequential composition).
-    for eps in (10.0, 1.0, 0.1):
+    for eps in (100.0, 10.0, 1.0, 0.1):
         errors = [abs(dp_sum(everyone, eps, rng) - dp_sum(without_target, eps, rng) - target) for _ in range(RUNS)]
-        print(f"epsilon={eps:>4}: attacker's average error = {np.mean(errors):.2f}")
+        print(f"epsilon={eps:>5}: attacker's average error = {np.mean(errors):.2f}")
 
 
 if __name__ == "__main__":
