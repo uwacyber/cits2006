@@ -1,119 +1,144 @@
-# Portfolio
+# Portfolio (15%)
 
-Learning cybersecurity involves not only understanding concepts and techniques, but also applying them in practice, as well as being able to discuss with others. To encourage this, you are to conduct various cybersecurity related activities and create a portfolio for submission. This will involve not only the theoretical and technical skills, but also other soft skills. 
+The portfolio gets you doing real cybersecurity outside the unit: attending events, helping people, competing, contributing to projects and securing your own world. AI can help you learn, but the activities and evidence must be your own.
 
-You are required to create a GitHub project (repo) for collecting evidence and completion of the activities. DO NOT name this repo "CITS2006 ..." or use the keyword "CITS2006". You should create 2 directories for each part to separate the evidence collection. You should also update the repo as you complete the activities as indication of your progress. To submit your portfolio, you will create a PDF report consisting of activities completed with details, and submit via LMS by the due dates. Your repo should consist of additional evidences that support the activities you have completed (e.g., code, scripts, support letters, etc.). If the details are not sufficiently evident to support the completion of the activity, then you may not be rewarded with marks for those activities. Therefore, it is essential that you provide sufficient details how you completed the activity with any supporting evidence. If ever in doubt, please talk with the facilitators or the UC. 
+## How it works
 
-The portfolio will be marked in 2 parts: Part 1 activities are submitted by the end of week 6 (Thursday 11.59pm AWST). Part 2 activities are submitted by the end of week 12 (Friday 11.59pm AWST). Part 1 submission allows you to receive feedback about the portfolio contents, format, and evidence collection, which can be reflected in part 2 submission. Please note, you are expected to work on ALL activities early on regardless of their due dates, as some activities take much longer than others.
+1. **Collect 15 points.** Each activity in the list is worth 1, 2 or 3 points. Choose any mix that adds up to 15.
+2. **Do some big ones.** At most 9 of your 15 points can come from 1-point and 2-point activities, so at least 6 points (two activities) must come from 3-point activities. Start these early: many take weeks.
+3. **Write one page per activity.** Say what you did and when, what you learned, and what your evidence is. Your evidence can go on extra pages after it.
+4. **Plan on about 3 hours a week.** 15 points take about 30–35 hours.
 
+### Optional check-in (week 5)
 
-{% hint style="important" %}
-You are expected to spend on average 3 hours a week on completing your portfolio activities. While this is an assessment, it is also part of your self-learning time, as you are required to investigate and research on your own to complete the activities. Therefore, it is important that you start early and manage your time well to complete the activities. It is advised you spend more time in the first half of the semester to complete as many activities as possible, so that you can spend more time completing the project in the second half of the semester. 
-{% endhint %}
+Submit up to 3 activity pages on LMS by **Thursday 25 March 2027, 11:59 pm AWST** (Friday is Good Friday) to get feedback on your report and evidence. The check-in is not marked: the feedback is a guide, not a grade. You can still include those activities in your portfolio.
+
+### Submitting your portfolio
+
+Due **Friday 21 May 2027 (week 12), 11:59 pm AWST**.
+- **Upload one PDF to LMS.** Put your FlagBoard alias on the cover page, then each activity, headed with its ID.
+- **Enter your activity IDs on FlagBoard.** Enter nothing else there: never your name, student ID or any other personal information.
+- **Links are fine** for evidence such as a pull request, a CTF scoreboard or a public profile. Make sure markers can open them until marks are released.
+- The standard UWA late penalty applies.
+
+## Marking
+
+Each activity gets the grade that best fits its report and evidence, and a percentage within that grade's range. It earns that percentage of its points, and your portfolio mark is the total, out of 15 points. Only the activities you enter on FlagBoard are marked, up to 15 points.
+
+| Grade | Range | Report | Evidence |
+|---|---|---|---|
+| HD | 80–100% | **Exceptional work.** In depth, specific and insightful, and goes beyond the activity, for example by applying or extending what you learned | Complete, and clearly shows every part of the activity |
+| D | 70–79% | Clear and thorough, with specific reflection on what you learned | Clearly shows the activity was done |
+| CR | 60–69% | Clear: what you did, when, and what you learned | Shows the activity was done, with minor gaps |
+| P | 50–59% | General, with little detail or reflection | Partial or unclear |
+| N | 0–49% | Doesn't show the activity was done | Missing, or doesn't show the activity was done |
+
+An activity that wasn't done, or that broke a rule below, earns 0.
+
+## Rules
+
+- **Stay legal and safe.** Only test systems you own or have written permission to test. Get consent before you touch anyone else's devices or accounts.
+- **Protect people's information.** Never include secrets, passwords or recovery codes in evidence. Include other people's details only with their permission, and only what the evidence needs.
+- **Evidence must be genuine.** Staff may contact the person who confirmed an activity. Made-up evidence is academic misconduct.
+- **No double-dipping.**
+  - Each activity in the list counts once, and one piece of work counts for one activity only.
+  - Work done for any unit's assessment can't be claimed, including this unit's lab quizzes, workshop CTF and project.
+  - An in-class lab activity counts only through A10.
+- **Timing.** Activities must take place between 22 February 2027 and the due date.
+- **Only activities in the list count.** If you're unsure whether something fits one, ask on the unit's Teams channel or contact the unit coordinator before you do it.
 
 ## Activities
 
-### Part 1 activities (due end of week 6, Thursday 11.59pm AWST).
-Choose any 25 activities from the following list to complete and submit.
+- **Points** show the effort an activity takes: 1 point is about 1–2 hours; 2 points about half a day, with other people or at an event; 3 points a day or more, sustained over weeks, or accepted by an outside party.
+- **The evidence column gives examples.** Any evidence that shows the same thing is fine.
+- **You don't need to spend money.** There are enough free activities to reach 15 points.
 
-A1\.	Discover security concepts used on campus.  
-A2\.	Discover security concepts used in public space.  
-A3\.	Discover security concepts used in your house.  
-A4\.	Discover a vulnerable website.  
-A5\.	Discover cryptographic implementation used online.  
-A6\.	Discover cryptographic implementation used offline.  
-A7\.	Discover cryptography used in modern networks.  
-A8\.	Discover cryptography used in Internet of Things devices.  
-A9\.	Discover privacy technique used online.  
-A10\.	Discover privacy technique used offline.  
-A11\.	Discover 5 unique access control devices.  
-A12\.	Discover 5 unique offline security tools.  
-A13\.	Discover 5 unique online security tools.  
-A14\.	Discover 5 AI-enabled security solutions.  
-A15\.	Discover 5 recent security incidents.  
-A16\.	Discover 3 local security incidents.  
-A17\.	Discover 10 different types of locks in use.  
-A18\.	Discover two hallucination cases when using a generative AI system.  
-A19\.	Join a CS/DS/cybersecurity club.  
-A20\.	Participate in a discussion with your friends about cybersecurity event.  
-A21\.	Participate in an online cybersecurity discussion.  
-A22\.	Perform a prompt injection attack on a generative AI assistant (controlled test only).  
-A23\.	Enhance the cybersecurity at your home.  
-A24\.	Teach your family about cybersecurity topic of your choice.  
-A25\.	Design and implement a privacy-preserving technique for an appropriate application.  
-A26\.	Research and implement a system bug.  
-A27\.	Research and implement a system vulnerability.  
-A28\.	Implement a security solution of your choice and put it on your GitHub.  
-A29\.	Find a publicly available AI-generated image, video, or audio clip, use at least one detection or verification tool to analyse it.  
-A30\.	Complete an online cybersecurity module.  
+### A. Show up (events and community)
 
+| ID | Activity | Evidence | Points |
+|---|---|---|---|
+| A1 | Attend a meeting or workshop of a UWA student club with a security focus | Evidence you attended (e.g., a photo at the event, or the organiser's confirmation) | 2 |
+| A2 | Attend an in-person industry meetup (e.g., AISA Perth branch, OWASP Perth chapter) | Evidence you attended and engaged (e.g., your registration, and a question you asked with the answer you received) | 2 |
+| A3 | Attend a day of an in-person security conference | Evidence you attended (e.g., a badge or ticket) and notes on at least two talks | 3 |
+| A4 | Attend a live webinar and ask the presenter a question | Evidence of engagement (e.g., your question in the Q&A and the answer you received) | 1 |
+| A5 | Attend a public lecture, seminar or panel on cyber law, policy or privacy | Evidence you attended (e.g., a registration or photo) and your reflection | 2 |
+| A6 | Take part in a hackathon with a security component | Evidence of your team's entry and your role in it (e.g., the submission, and confirmation from a teammate or organiser) | 3 |
+| A7 | Volunteer at a security event (registration, CTF support, AV) | Evidence you volunteered (e.g., the organiser's confirmation) | 2 |
+| A8 | Visit a security operations centre or security team on an organised tour or open day | Evidence of your visit (e.g., the host's confirmation or your registration) | 3 |
+| A9 | At a careers event, talk to a security practitioner about their job | Evidence of the conversation (e.g., the event registration, and the person's role and organisation, shared with their permission) and three things you learned | 2 |
+| A10 | Take part in three in-class lab activities | Evidence you took part (e.g., the dates and the facilitator's sign-off) and what each activity taught you | 1 |
 
+### B. Teach and help others
 
-### Part 2 activities (due end of week 12, Friday 11.59pm AWST).
-Choose any 25 activities from the following list to complete and submit.
+| ID | Activity | Evidence | Points |
+|---|---|---|---|
+| B1 | Help a family member or friend set up a password manager | Confirmation from the person you helped (e.g., a signed or emailed note saying what you did). Never show vault contents | 1 |
+| B2 | Set up passkeys or app-based MFA on at least three of someone else's accounts, with them | Confirmation from the person you helped (e.g., a signed or emailed note) | 1 |
+| B3 | Run a 15-minute scam-awareness session for family members or a community group | Your materials (e.g., handout or slides) and confirmation from a participant or organiser | 2 |
+| B4 | Help someone secure an account after a suspected compromise, with their consent | Confirmation from the person you helped, and the steps you took with personal details removed | 2 |
+| B5 | Give a short talk on a defensive topic at a club, meetup or another class | Your slides and confirmation that you presented (e.g., from the organiser) | 2 |
+| B6 | Volunteer at a school or outreach activity that teaches cyber safety | Confirmation of your involvement (e.g., from the coordinator) | 2 |
+| B7 | Run a tabletop incident-response exercise (scenario, roles, debrief) for friends, a club or a team | Your scenario and evidence it ran (e.g., a photo and sign-off from two participants) | 3 |
+| B8 | With written permission, run an Essential Eight self-assessment questionnaire with a club or small business (questions only, no technical testing) | The written permission and your findings with identifying details removed | 3 |
+| B9 | Help a club or student group move shared accounts to MFA or a shared password vault | Confirmation from the club (e.g., an office-bearer's signed or emailed note) | 2 |
+| B10 | Mentor another student in person through a security set-up task or a CTF challenge | Confirmation from the student you mentored | 2 |
 
-B1\.	Discover 5 unique weak/vulnerable security implementations.  
-B2\.	Discover 5 unique strong security implementations.  
-B3\.	Discover 3 proactive security implementations in practice.  
-B4\.	Participate in 3 in-class activities in labs (facilitators will administer such activities).  
-B5\.	Attend 2 cybersecurity related talks/seminars.  
-B6\.	Attend 2 cyber ethics/law related talks/seminars.  
-B7\.	Participate in CS/DS/cybersecurity clubs’ activity.  
-B8\.	Participate in a hackathon.  
-B9\.	Participate in an industry-related cybersecurity event.  
-B10\.	Participate in a cybersecurity activity as part of job/internship/volunteering etc.  
-B11\.	Talk to 2 cybersecurity experts from the industry and find out their latest projects.  
-B12\.	Discover two bias cases when using a generative AI system.  
-B13\.	Perform a jailbreak attack on a generative AI assistant (controlled test only).  
-B14\.	Teach your friends about cybersecurity topic of your choice.  
-B15\.	Teach an elderly person about cybersecurity topic of your choice.  
-B16\.	Survey the current state-of-the-art solutions in cybersecurity.  
-B17\.	Implement one of the current state-of-the-art solutions and evaluate it.  
-B18\.	Contribute to an open-source project related to cybersecurity.  
-B19\.	Find and fix a vulnerability from a GitHub project.  
-B20\.	Enhance the security of a GitHub project.  
-B21\.	Design and implement a cybersecurity learning activity.  
-B22\.	Enhance the cybersecurity of a website from your community.  
-B23\.	Test an intrusion detection system and discuss its effectiveness.  
-B24\.	Design and implement access control of your choice.  
-B25\.	Design and implement a threat intelligence module of your choice.  
-B26\.	Help another student in this unit struggling to understand/learn a cybersecurity concept.  
-B27\.	Apply a learned concept in this unit to a real-world application/problem/environment.  
-B28\.	Produce a cyber safety flyer for (choose 1): elders, high school students, CEOs, Uni students.  
-B29\.	Find a CVE in this year and fix it using three different generative AI systems (e.g., ChatGPT, Gemini), comparing the consistency.  
-B30\.	Generate an AI-created image, applying an imperceptible watermark on it and then perform an image-to-image regeneration or editing process to make sure the watermark is detectable---the watermark survives.  
+### C. Practise and compete
 
+| ID | Activity | Evidence | Points |
+|---|---|---|---|
+| C1 | Compete in an external CTF (solo or team) and appear on its final scoreboard | Evidence you competed (e.g., a scoreboard link or screenshot) and a write-up of one challenge you solved, with your own screenshots | 3 |
+| C2 | Solve 10 picoCTF challenges in the Forensics or Cryptography categories | Evidence of your solves (e.g., your public profile) | 2 |
+| C3 | Complete 3 free Blue Team Labs Online investigations | Evidence of your completed investigations (e.g., your public profile) | 2 |
+| C4 | Complete a free defensive learning module that issues a certificate (e.g., Cisco Networking Academy Introduction to Cybersecurity) | Evidence of completion (e.g., the certificate or its link) | 2 |
+| C5 | Compete in a live, time-boxed defensive or forensics competition | Evidence you competed (e.g., official results or a certificate) | 3 |
+| C6 | Sit a recognised entry-level certification exam (e.g., ISC2 CC, CompTIA Security+) | Evidence you sat the exam (e.g., the result letter, with ID numbers redacted) | 3 |
+| C7 | Complete a university-level online course on security that has graded assessments | Evidence of completion (e.g., a certificate or your graded results) | 3 |
+| C8 | Take part in an in-person CTF run by a UWA club or the School | Evidence you competed (e.g., the scoreboard or the organiser's confirmation) | 2 |
+| C9 | After an external CTF ends, publish a walkthrough of a challenge you solved, with a narrated screen recording of at most 5 minutes | Links to your walkthrough and your recording | 3 |
+| C10 | Analyse a real phishing email you received (headers, SPF/DKIM/DMARC results, links checked in a sandbox such as urlscan.io) and report it to the impersonated organisation or Scamwatch | Your analysis (e.g., redacted headers and the checks you ran) and evidence that you reported it | 1 |
 
+### D. Build and contribute
 
+| ID | Activity | Evidence | Points |
+|---|---|---|---|
+| D1 | Get a pull request merged into an open-source security project (code, tests or docs) | The merged pull request (e.g., its link) | 3 |
+| D2 | Open an issue in a security tool's repository that reproduces a bug, acknowledged by a maintainer | The issue and the maintainer's acknowledgement (e.g., its link) | 3 |
+| D3 | Get a detection rule (Sigma, YARA or Suricata) accepted into a public rule repository | The accepted rule (e.g., its link) | 3 |
+| D4 | Translate a security guide (e.g., an OWASP cheat sheet) into another language and get it merged | The merged translation (e.g., the pull request link) | 3 |
+| D5 | Run a honeypot on a machine or cloud VM you control for at least 7 days and analyse what connected to it | Evidence it ran for at least 7 days (e.g., dated logs or commits) and your analysis | 3 |
+| D6 | Run a network IDS or DNS filter (e.g., Suricata, Zeek, Pi-hole) on your own home network for at least 7 days and report three findings | Evidence it ran for at least 7 days (e.g., dated logs or dashboards) and your three findings | 3 |
+| D7 | Build a small defensive tool with tests and publish it, with commit history spanning at least two weeks | The published tool and its history (e.g., a repository link) | 3 |
+| D8 | Harden a server or VM you own against a CIS Benchmark, with before and after results from an automated checker (e.g., Lynis) | Before and after results from the checker, and the changes you made | 3 |
+| D9 | Collect logs from at least two of your own devices centrally (e.g., Wazuh) for 7 days and write one detection rule | Evidence of the set-up (e.g., dashboard screenshots), the rule, and an alert it raised | 3 |
+| D10 | Write a security policy (e.g., acceptable use or passwords) for a real club or small organisation, and get it adopted | The policy and evidence it was adopted (e.g., an office-bearer's confirmation) | 3 |
 
-## Submission
+### E. Secure your own world
 
-You will submit your portfolio as a PDF only document via LMS. Other formats are not accepted. You must have a cover page that includes your name, student ID and the link to your repo. Following the cover page, you must include a table outlining a self-assessment for the activities completed, indicating how many marks each of your activity should receive following the marking scheme below.
+| ID | Activity | Evidence | Points |
+|---|---|---|---|
+| E1 | Complete an Essential Eight self-assessment of your own devices and fix one gap | Evidence of the assessment and the fix (e.g., before and after screenshots) | 2 |
+| E2 | Enable passkeys on at least five of your own accounts | Evidence that passkeys are set up (e.g., screenshots of the settings, with no codes) | 1 |
+| E3 | Set up a 3-2-1 backup and perform a restore test | Evidence of the backup and a successful restore (e.g., a dated restore log) | 1 |
+| E4 | Check your data exposure (e.g., Have I Been Pwned) and send at least three deletion or opt-out requests | Evidence you sent the requests (e.g., confirmation emails, redacted) | 1 |
+| E5 | Make an access request under Australian Privacy Principle 12 to an organisation that holds your data, and analyse the reply | Your request and the reply, redacted | 1 |
+| E6 | Secure your home router: update the firmware, change the admin password, turn off WPS and UPnP, and set up a guest network | Evidence of the changes (e.g., before and after screenshots of the settings) | 1 |
+| E7 | Write a personal incident-response plan (lost phone, hacked email) and test one step of it | Your plan and evidence that you tested one step (e.g., a dated record) | 1 |
+| E8 | Review the app permissions on your phone and remove at least five you don't need | Evidence of the changes (e.g., before and after screenshots) | 1 |
+| E9 | Over four weeks, act on two ASD/ACSC alerts or advisories that apply to your own devices | The advisories and what you changed, with dates | 2 |
+| E10 | Turn on full-disk encryption and confirm you can recover (BitLocker, FileVault or LUKS, with the recovery key stored safely) | Evidence that encryption is on and recovery works (e.g., screenshots, with no keys) | 1 |
 
+### F. Professional practice
 
-
-## Additional Information
-
-Below are some additional rules you must follow.
--	You cannot double-dip, which means one activity cannot be counted towards another, unless they are inherently different. For example, you cannot use the same example to claim A1, A2 and A3, but you can claim B14 and B21 with a single implementation (B21 is the implementation whereas B14 is an application of the implementation, so they are inherently different). 
--	You cannot use lab quiz and project tasks for your portfolio activities.
--	Ever in doubt, check with the facilitators and/or the UC.
--	Non-personal questions can be discussed on Teams for the benefits of others who might have similar questions, and this is the recommended first step.
-
-
-Below are some additional guidelines and tips.
--	When preparing the evidence, you can explore various options to do so. For example, having an active GitHub project recording your activities (i.e., the history can easily be checked looking at commits), photographs, consent forms, etc. appropriate for the activity.
--	Please use the discussion channel on Teams. You can use the channel to discuss about approaches, how to document activities, what evidence best suits the activity etc. 
--	Get started early, some activities are not meant to be done overnight!
--	Remember, you don’t have to complete all activities to get a pass grade in this assessment.
--	Remember, we expect you to complete each activity to a reasonable standard. For example, you cannot just post “hi” in a discussion and claim that as an activity. Academic judgement will be used to determine the completeness of each activity you submit. If you aren’t sure, you can always discuss on the discussion channel (this should be the first step, unless its personal matters) on Teams, as well as contact the UC.
-
-
-
-## Marking Scheme
-
-Each activity is worth 2 marks. There are 50 activities to complete, a total of 100 marks is achievable in this assessment. Extra tasks completed won’t count towards your marks, just the first 50 activities completed.
-
-0 mark:	This means you did not complete the activity (no submission/completion, or unsatisfactory attempt has been made).  
-1 mark:	This means your activity completion is satisfactory.  
-2 marks:	This means your activity completion is outstanding.  
+| ID | Activity | Evidence | Points |
+|---|---|---|---|
+| F1 | Interview a security practitioner for 20–30 minutes about their role | Confirmation from the practitioner (e.g., an email) and three insights | 2 |
+| F2 | Shadow a security professional for a day, with the employer's permission | Confirmation from the host | 3 |
+| F3 | Have your CV reviewed for a security role (UWA Careers or a practitioner) and revise it | Evidence of the review (e.g., the booking or feedback) and your CV before and after | 1 |
+| F4 | Do a mock technical interview for a security role with a practitioner or UWA Careers | Confirmation from the interviewer | 2 |
+| F5 | Apply for a security internship, graduate role or scholarship | Evidence that you applied (e.g., the submission confirmation, redacted) | 1 |
+| F6 | Present your own security work at a public showcase or poster session | Evidence that you presented (e.g., the programme listing or a photo) | 3 |
+| F7 | Write a one-page brief for a non-technical manager (e.g., at your workplace or club) on a current threat relevant to them, and get their written response | Your brief and the manager's written response | 2 |
+| F8 | Join a mentoring programme (e.g., through UWA or a professional body) and meet your mentor at least twice | Evidence of the programme and your meetings (e.g., the confirmation and dated meeting notes) | 3 |
+| F9 | Write at least two answers on Information Security Stack Exchange that are upvoted | Your answers and their votes (e.g., your profile link) | 2 |
+| F10 | Organise a security event (study session, CTF night or talk) with at least 8 attendees | Evidence of the event and attendance (e.g., the event page and a sign-in sheet with names redacted) | 3 |
