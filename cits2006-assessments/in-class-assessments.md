@@ -12,11 +12,11 @@ All three parts happen in class and are individual.
 
 Each Friday workshop has a demo and then a 65-minute CTF round on FlagBoard. The challenges follow that week's lecture and lab.
 
-- **Completing a round.** A round counts as completed when **your own points** reach the round's **threshold** before the round closes. The threshold is about half of the round's points. The warm-up challenges plus one core challenge are usually enough. Harder "stretch" challenges count for the scoreboard only.
+- **Completing a round.** A round counts as completed when **your own points** reach the round's **threshold** before the round closes. The threshold is about half of the round's points. The warm-up challenges plus one core challenge are usually enough. Harder "stretch" challenges count for the scoreboard only. FlagBoard shows the threshold and your progress towards it while the round is open. If a round turns out harder than intended, its threshold may be lowered afterwards; it is never raised.
 - **Your mark** = 20 × min(rounds completed, 5) / 5. Each completed round is worth 4%, up to 5 rounds.
 - **Week 1** has an onboarding round that is not scored. Do it anyway: it checks that your laptop and account work.
 - **Missed rounds.** There is no late window. Two rounds are spare, for illness, clashes and bad days. If you have approved **special consideration** for a round, that round counts as completed.
-- **Your flags are yours.** Every student gets different data, so every student's flags are different, and another student's flag will not work for you. Discussing methods is fine, but sharing flags or answers is academic misconduct. FlagBoard logs every submission.
+- **Your flags are yours.** Every student gets different data, so every student's flags are different. Discussing methods is fine, but submitting another student's flag, or sharing yours, is academic misconduct. FlagBoard detects a flag that belongs to another student and flags it for staff review.
 - **AI tools are allowed** in workshop rounds. Your challenge data is unique to you, so you still have to do the work.
 - **Walkthroughs** are released after each round.
 - Being in the room is not enough: marks come only from reaching the threshold.
@@ -27,5 +27,6 @@ Each Friday workshop has a demo and then a 65-minute CTF round on FlagBoard. The
 - **Coverage.** Lab Quiz 1 covers weeks 1–6. Lab Quiz 2 covers weeks 7–10.
 - **Interview.** In your lab the following week, a staff member asks you about your own submission for about 5 minutes. The interview checks that the work and understanding are yours.
 - **Marks.** Each quiz has two parts: **technical** (the flags you submit in the practical) and **interview**. The split is given on the quiz sheet.
+- **Marks are for work you can explain.** In the interview you talk us through how you solved your tasks, using your own data. Whatever tools you use, make sure you understand every step you submit: technical marks are awarded only for tasks you can explain.
 - **Rules.** The quiz sheet states which resources and tools are allowed.
 - **Missed quiz.** Apply for special consideration. If it is approved, you sit a deferred quiz with newly generated tasks.
