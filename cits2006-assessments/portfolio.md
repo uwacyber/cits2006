@@ -17,14 +17,15 @@ Submit up to 3 activity pages on LMS by **Friday of week 5, 11:59 pm AWST** to g
 
 Due **Friday of week 12, 11:59 pm AWST**.
 - **Upload one PDF to LMS.** Put your FlagBoard alias on the cover page, then each activity, headed with its ID.
-- **Enter your activity IDs on FlagBoard.** Enter nothing else there: never your name, student ID or any other personal information.
+- **Enter your activity IDs on FlagBoard.** You can add or change them any time from week 1, and FlagBoard shows your running total. Enter nothing else there: never your name, student ID or any other personal information.
 - **Links are fine** for evidence such as a pull request, a CTF scoreboard or a public profile. Make sure markers can open them until marks are released.
-- The standard UWA late penalty applies.
+- **Late submissions.** The standard UWA late penalty applies. Your portfolio is late if the PDF is uploaded, or your FlagBoard entry is changed, after the due time.
+- **Approved Exceptional Variation of Assessment (EVA)**, such as an extension: email the approval to the unit coordinator.
 - **Public holidays.** If a Friday deadline, including the check-in, falls on a public holiday, it is due the Thursday before.
 
 ## Marking
 
-Each activity gets the grade that best fits its report and evidence, and a percentage within that grade's range. It earns that percentage of its points, and your portfolio mark is the total, out of 15 points. Only the activities you enter on FlagBoard are marked, up to 15 points.
+Each activity gets the grade that best fits its report and evidence, and a percentage within that grade's range. It earns that percentage of its points, and your portfolio mark is the total, out of 15 points. Only the activities you enter on FlagBoard are marked. If you enter more than 15 points, or more than 9 points from 1-point and 2-point activities, the activities that give you the highest mark within those limits count.
 
 | Grade | Range | Report | Evidence |
 |---|---|---|---|
